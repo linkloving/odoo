@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data> 
+        <record id="hr_expense_expense_form_robotime" model="ir.ui.view">
+			<field name="model">hr.expense.expense</field>
+			<field name="inherit_id" ref="hr_expense.view_expenses_form"/>
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="order_type"/>
+					<field name="code"/>
+				</field>
+			<button name="action_view_move" position="attributes">
+                <attribute name='states' />
+                <attribute name='attrs'>{'invisible': [('state', 'not in', ['done','paid'])]}</attribute>
+			</button>
+			</field>
+		</record>
+        <record id="sales_orders_view_form_ext" model="ir.ui.view">
+			<field name="name">ydit_sales_orders_view_form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                     <attribute name="editable">True</attribute>
+            	</xpath>   
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='product_id']" position="after">              
+                    <field name="product_sepcs" string="产品规格" />
+                </xpath>	                     			
+			</field>
+		</record>  
+        <record id="view_sales_order_tree_ext" model="ir.ui.view">
+			<field name="name">view_sales_order_tree_ext</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree" />
+			<field name="arch" type="xml">
+	            <field name="name" position="after">
+	                <field name="order_type" string="订单类别"/>
+	            </field>      	
+			</field>
+		</record>  
+        <record id="tr_purchase_order_form" model="ir.ui.view">
+            <field name="name">tr_purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name='inherit_id' ref='purchase.purchase_order_form' />
+            <field name="arch" type="xml">
+                <field name='picking_type_id' position='after'>
+                    <field name='receive_amount'/>  
+                </field>  
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position='before'>
+                    <field name="product_sepcs" string="产品规格" />
+                </xpath>  
+           </field>
+        </record> 
+        <record id="tr_purchase_order_tree" model="ir.ui.view">
+            <field name="name">tr_purchase.order.tree</field>
+            <field name="model">purchase.order</field>
+            <field name='inherit_id' ref='purchase.purchase_order_tree' />
+            <field name="arch" type="xml">
+                <field name='state' position='before'>
+                    <field name='receive_amount'/>    
+                </field>
+                <field name='origin' position='attributes'>
+                      <attribute name='invisible'>1</attribute>
+                </field>
+            </field>
+        </record>        
+        <record id="stock_picking" model="workflow">
+            <field name="name">出入库审批流</field>
+            <field name="osv">stock.picking</field>
+            <field name="on_create">True</field>
+        </record>
+        <record id="act_stock_picking_draft" model="workflow.activity">
+            <field name="wkf_id" ref="stock_picking"/>
+            <field name="name">草稿</field>
+            <field name="flow_start">True</field>
+            <field name='action'>write({'validate_state': 'draft'})</field>
+            <field name='kind'>function</field>
+        </record>
+        <record id="act_stock_picking_submited" model="workflow.activity">
+            <field name="wkf_id" ref="stock_picking"/>
+            <field name="name">已提交审核</field>
+            <field name="action">write({'validate_state':'submited'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_stock_picking_1st" model="workflow.activity">
+            <field name="wkf_id" ref="stock_picking"/>
+            <field name="name">质检审核通过</field>
+            <field name="action">write({'validate_state':'1th'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="tr_stock_picking_submit" model="workflow.transition">
+            <field name="act_from" ref="act_stock_picking_draft"/>
+            <field name="act_to" ref="act_stock_picking_submited"/>
+            <field name="signal">submit</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="tr_stock_picking_1st" model="workflow.transition">
+            <field name="act_from" ref="act_stock_picking_submited"/>
+            <field name="act_to" ref="act_stock_picking_1st"/>
+            <field name="signal">agree</field>
+            <field name="condition">(validate_state=='submited' and picking_type_id.code=='incoming')</field>
+        </record>
+
+        <record id="reject_tr_stock_picking_submit" model="workflow.transition">
+            <field name="act_to" ref="act_stock_picking_draft"/>
+            <field name="act_from" ref="act_stock_picking_submited"/>
+            <field name="signal">reject</field>
+            <field name="condition">(validate_state=='submited' and picking_type_id.code=='incoming')</field>
+        </record>
+        <record id="reject_tr_stock_picking_1st" model="workflow.transition">
+            <field name="act_to" ref="act_stock_picking_submited"/>
+            <field name="act_from" ref="act_stock_picking_1st"/>
+            <field name="signal">reject</field>
+            <field name="condition">(validate_state=='1th' and picking_type_id.code=='incoming')</field>
+        </record>
+        <record id='tr_view_picking_form' model='ir.ui.view'>
+            <field name='name'>tr.stock.picking.form</field>
+            <field name='model'>stock.picking</field>
+            <field name='inherit_id' ref='stock.view_picking_form' />
+            <field name='arch' type='xml' >
+                <button name="action_confirm" position='before'>
+                    <button name="submit" string="提交审核" attrs="{'invisible': [('validate_state', 'not in', ['draft'])]}" class="oe_highlight"/>
+                    <button name="agree" string="同意" attrs="{'invisible': [('validate_state', 'in', ['draft', '1th'])]}" class="oe_highlight" context="{'approve': True}" />
+                    <button name="reject" string='拒绝' attrs="{'invisible': [('validate_state', 'in', ['draft', '1th'])]}" context="{'reject': True}" />
+                </button>
+                <xpath expr="//button[@name='do_enter_transfer_details']" position='attributes'>
+                    <attribute name="attrs">{'invisible': [('state', 'not in', ['assigned','partially_available'])]}</attribute>
+                    <attribute name='states' ></attribute> 
+                </xpath>
+                <field name='state' position='after'>
+                    <field name="validate_state" widget="statusbar" readonly="1" attrs="{'invisible': ['|', ('validate_state', '==', '1th')]}" />
+                </field>                
+                <field name='state' position='attributes'>
+                    <attribute name='attrs'>{'invisible': ['|', ('state', '!=', 'draft'), '|',('validate_state', '!=', '1th')]}</attribute>
+                </field> 
+                <button name='action_confirm' position='attributes'>
+                    <attribute name='states' />
+                    <attribute name='attrs'>{'invisible': ['|', ('state', '!=', 'draft'), '|',('validate_state', '!=', '1th')]}</attribute>
+                </button>
+            </field>
+        </record>
+
+	</data>
+	<data noupdate='0'>
+        <record id="seq_type_ydit_box" model="ir.sequence.type">
+            <field name="name">ydit_box</field>
+            <field name="code">ydit.box.number</field>
+        </record>
+
+        <record id="seq_ydit_box" model="ir.sequence">
+            <field name="name">ydit_box</field>
+            <field name="code">ydit.box.number</field>
+            <field name="prefix">BX/%(year)s/%(month)s/%(day)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record> 
+    </data>       
+  
+</openerp>
