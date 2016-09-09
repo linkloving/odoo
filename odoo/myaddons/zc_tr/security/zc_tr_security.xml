@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="ceo" model="res.groups">
+            <field name="name">总经理</field>
+        </record>
+        <record id="sale_director" model="res.groups">
+            <field name="name">营销中心总监</field>
+        </record>
+        <record id="purchase_director" model="res.groups">
+            <field name="name">采购经理</field>
+        </record>
+        <record id="cfo" model="res.groups">
+            <field name="name">财务总监</field>
+        </record>
+        <record id='president' model='res.groups'>
+            <field name='name'>董事长</field>
+        </record>
+        <record id='business' model='res.groups'>
+            <field name='name'>商务负责人</field>
+        </record>
+        <record id='price_approve' model='res.groups'>
+            <field name='name'>报价审核人</field>
+        </record>
+        <record id='vp' model='res.groups'>
+            <field name='name'>常务副总</field>
+        </record>
+        <record id='service' model='res.groups'>
+            <field name='name'>技术支持</field>
+        </record>
+
+        <record id="tr_rule_personal_customer" model="ir.rule">
+            <field name="name">Personal Customer</field>
+            <field ref="base.model_res_partner" name="model_id"/>
+            <field name="domain_force">['|',('id','=',user.partner_id.id),'|',('user_id','=',user.id),('id','=',user.company_id.partner_id.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman'))]"/>
+        </record>
+        <record id="tr_rule_sale_ok" model="ir.rule">
+            <field name="name">Sale ok product only</field>
+            <field ref="product.model_product_template" name="model_id"/>
+            <field name="domain_force">[('sale_ok','=',True)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman'))]"/>
+        </record>
+        <record id="tr_rule_all_customers" model="ir.rule">
+            <field name="name">All Customers</field>
+            <field ref="base.model_res_partner" name="model_id"/>
+            <field name="domain_force">[('customer','=',True)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman_all_leads'))]"/>
+        </record>
+        <record id="tr_rule_no_customers" model="ir.rule">
+            <field name="name">no Customers</field>
+            <field ref="base.model_res_partner" name="model_id"/>
+            <field name="domain_force">[('supplier','=',True)]</field>
+            <field name="groups" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+        </record>
+        <record id="tr_test_protocol_personal_rule" model="ir.rule">
+            <field name="name">Personal test Orders</field>
+            <field ref="model_tr_test_protocol" name="model_id"/>
+            <field name="domain_force">['|',('order_sale_id','=',user.id),('order_sale_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman'))]"/>
+        </record>
+        <record id="tr_test_protocol_see_all" model="ir.rule">
+            <field name="name">All test Orders</field>
+            <field ref="model_tr_test_protocol" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman_all_leads'))]"/>
+        </record>
+        <record id="tr_purchase_order_personal_rule" model="ir.rule">
+            <field name="name">Personal Purchase Orders</field>
+            <field ref="purchase.model_purchase_order" name="model_id"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+        </record>
+        <record id="tr_purchase_report_personal_rule" model="ir.rule">
+            <field name="name">Personal Purchase Report</field>
+            <field ref="purchase.model_purchase_report" name="model_id"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+        </record>
+        <record id="tr_purchase_order_manager_rule" model="ir.rule">
+            <field name="name">All Purchase Orders</field>
+            <field ref="purchase.model_purchase_order" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+        </record>
+          <record id="tr_purchase_presale_rule" model="ir.rule">
+            <field name="name">Personal Presale</field>
+            <field name="model_id" search="[('model','=','stock.picking')]" model="ir.model"/>
+            <field name="domain_force">['|', ('create_uid','=',user.id),'|',('is_forecast', '=',False),('is_forecast', '=',False)]</field>
+            <field name="groups" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+        </record>
+        <record id="tr_budget_manager_rule" model="ir.rule">
+            <field name="name">All Budget</field>
+            <field name="model_id" search="[('model','=','stock.picking')]" model="ir.model"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+        </record>
+    </data>
+</openerp>

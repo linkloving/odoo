@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<!-- 付款预算 -->
+        <record id="payment_budget" model="workflow">
+            <field name="name">付款预算审批流</field>
+            <field name="osv">tr.payment.budget</field>
+            <field name="on_create">True</field>
+        </record>
+        <record id="act_budget_draft" model="workflow.activity">
+            <field name="wkf_id" ref="payment_budget"/>
+            <field name="name">草稿</field>
+            <field name='action'>write({'state': 'draft'})</field>
+            <field name='kind'>function</field>
+            <field name="flow_start">True</field>
+        </record>
+        <record id="act_budget_submited" model="workflow.activity">
+            <field name="wkf_id" ref="payment_budget"/>
+            <field name="name">已提交审核</field>
+            <field name="action">write({'state':'submited'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_budget_1st" model="workflow.activity">
+            <field name="wkf_id" ref="payment_budget"/>
+            <field name="name">一级审核通过</field>
+            <field name="action">write({'state':'1st'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_budget_2nd" model="workflow.activity">
+            <field name="wkf_id" ref="payment_budget"/>
+            <field name="name">二级审核通过</field>
+            <field name="action">write({'state':'2nd'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_budget_3rd" model="workflow.activity">
+            <field name="wkf_id" ref="payment_budget"/>
+            <field name="name">三级审核通过</field>
+            <field name="action">write({'state':'3rd'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_budget_4th" model="workflow.activity">
+            <field name="wkf_id" ref="payment_budget"/>
+            <field name="name">四级审核通过</field>
+            <field name="flow_stop">True</field>
+            <field name="action">write({'state':'4th'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="tr_budget_submit" model="workflow.transition">
+            <field name="act_from" ref="act_budget_draft"/>
+            <field name="act_to" ref="act_budget_submited"/>
+            <field name="signal">submit</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="tr_budget_1st" model="workflow.transition">
+            <field name="act_from" ref="act_budget_submited"/>
+            <field name="act_to" ref="act_budget_1st"/>
+            <field name="signal">approve</field>
+            <field name="condition">(state=='submited')</field>
+        </record>
+        <record id="tr_budget_2nd" model="workflow.transition">
+            <field name="act_from" ref="act_budget_1st"/>
+            <field name="act_to" ref="act_budget_2nd"/>
+            <field name="signal">approve</field>
+            <field name="condition">(state=='1st')</field>
+        </record>
+        <record id="tr_budget_3rd" model="workflow.transition">
+            <field name="act_from" ref="act_budget_2nd"/>
+            <field name="act_to" ref="act_budget_3rd"/>
+            <field name="signal">approve</field>
+            <field name="condition">(state=='2nd')</field>
+        </record>
+        <record id="tr_budget_4th" model="workflow.transition">
+            <field name="act_from" ref="act_budget_3rd"/>
+            <field name="act_to" ref="act_budget_4th"/>
+            <field name="condition">(state=='3rd')</field>
+        </record>
+<!-- 付款预算拒绝流程 -->
+        <record id="reject_tr_budget_submit" model="workflow.transition">
+            <field name="act_to" ref="act_budget_draft"/>
+            <field name="act_from" ref="act_budget_submited"/>
+            <field name="signal">reject</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="reject_tr_budget_1st" model="workflow.transition">
+            <field name="act_to" ref="act_budget_submited"/>
+            <field name="act_from" ref="act_budget_1st"/>
+            <field name="signal">reject</field>
+            <field name="condition">(state=='1st')</field>
+        </record>
+        <record id="reject_tr_budget_2nd" model="workflow.transition">
+            <field name="act_to" ref="act_budget_1st"/>
+            <field name="act_from" ref="act_budget_2nd"/>
+            <field name="signal">reject</field>
+            <field name="condition">(state=='2nd')</field>
+        </record>
+        <record id="reject_tr_budget_3rd" model="workflow.transition">
+            <field name="act_to" ref="act_budget_2nd"/>
+            <field name="act_from" ref="act_budget_3rd"/>
+            <field name="signal">reject</field>
+            <field name="condition">(state=='3rd')</field>
+        </record>
+
+        <!-- 供应商付款 -->
+        <record id="payment_account_voucher" model="workflow">
+            <field name="name">供应商付款审批流</field>
+            <field name="osv">account.voucher</field>
+            <field name="on_create">True</field>
+        </record>
+        <record id="act_account_voucher_draft" model="workflow.activity">
+            <field name="wkf_id" ref="payment_account_voucher"/>
+            <field name="name">草稿</field>
+            <field name='action'>write({'state': 'draft'})</field>
+            <field name='kind'>function</field>
+            <field name="flow_start">True</field>
+        </record>
+        <record id="act_account_voucher_submited" model="workflow.activity">
+            <field name="wkf_id" ref="payment_account_voucher"/>
+            <field name="name">已提交审核</field>
+            <field name="action">write({'state':'submited'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_account_voucher_1st" model="workflow.activity">
+            <field name="wkf_id" ref="payment_account_voucher"/>
+            <field name="name">一级审核通过</field>
+            <field name="action">write({'state':'1st'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_account_voucher_2nd" model="workflow.activity">
+            <field name="wkf_id" ref="payment_account_voucher"/>
+            <field name="name">二级审核通过</field>
+            <field name="action">write({'state':'2nd'})</field>
+            <field name="kind">function</field>
+        </record>
+        
+        <record id="tr_account_voucher_submit" model="workflow.transition">
+            <field name="act_from" ref="act_account_voucher_draft"/>
+            <field name="act_to" ref="act_account_voucher_submited"/>
+            <field name="signal">submit</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="tr_account_voucher_1st" model="workflow.transition">
+            <field name="act_from" ref="act_account_voucher_submited"/>
+            <field name="act_to" ref="act_account_voucher_1st"/>
+            <field name="signal">approve</field>
+            <field name="condition">(state=='submited')</field>
+        </record>
+        <record id="tr_account_voucher_2nd" model="workflow.transition">
+            <field name="act_from" ref="act_account_voucher_1st"/>
+            <field name="act_to" ref="act_account_voucher_2nd"/>
+            <field name="signal">approve</field>
+            <field name="condition">(state=='1st')</field>
+        </record>
+        
+<!-- 供应商付款拒绝流程 -->
+        <record id="reject_account_voucher_submit" model="workflow.transition">
+            <field name="act_to" ref="act_account_voucher_draft"/>
+            <field name="act_from" ref="act_account_voucher_submited"/>
+            <field name="signal">reject</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="reject_account_voucher_1st" model="workflow.transition">
+            <field name="act_to" ref="act_account_voucher_submited"/>
+            <field name="act_from" ref="act_account_voucher_1st"/>
+            <field name="signal">reject</field>
+            <field name="condition">(state=='1st')</field>
+        </record>
+        <record id="reject_account_voucher_2nd" model="workflow.transition">
+            <field name="act_to" ref="act_account_voucher_1st"/>
+            <field name="act_from" ref="act_account_voucher_2nd"/>
+            <field name="signal">reject</field>
+            <field name="condition">(state=='2nd')</field>
+        </record>        
+    </data>
+</openerp>

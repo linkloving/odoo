@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report 
+            string="打印销售订单" 
+            id="tr_action_report_sale_order" 
+            model="sale.order"
+            menu="False"
+            name="zc_tr.report_sale_order"
+        />
+        <record id='tr_action_report_sale_order' model='ir.actions.report.xml'>
+            <field name='report_type'>controller</field>
+            <field name='report_rml'>/report/zc_tr.report_sale_order</field>
+        </record>
+        <report 
+            string="打印财务用订单执行汇总" 
+            id="tr_action_report_financial" 
+            model="sale.order"
+            menu="False"
+            name="zc_tr.report_financial"
+        />
+
+        <record id='tr_action_report_financial' model='ir.actions.report.xml'>
+            <field name='report_type'>controller</field>
+            <field name='report_rml'>/report/zc_tr.report_financial</field>
+        </record>
+
+        <report 
+            string="打印财务用订单执行汇总" 
+            id="tr_action_report_financial_move" 
+            model="sale.order"
+            menu="False"
+            name="zc_tr.report_financial_move"
+        />
+
+        <record id='tr_action_report_financial_move' model='ir.actions.report.xml'>
+            <field name='report_type'>controller</field>
+            <field name='report_rml'>/report/zc_tr.report_financial_move</field>
+        </record>
+
+        <report 
+            string="打印采购合同汇总表" 
+            id="tr_action_report_purchase" 
+            model="purchase.order"
+            menu="False"
+            name="zc_tr.report_purchase"
+        />
+
+        <record id='tr_action_report_purchase' model='ir.actions.report.xml'>
+            <field name='report_type'>controller</field>
+            <field name='report_rml'>/report/zc_tr.report_purchase</field>
+        </record>
+
+        <report 
+            string="打印材料结存" 
+            id="tr_action_report_purchase_report" 
+            model="stock.move"
+            menu="False"
+            name="zc_tr.report_material"
+        />
+
+        <record id='tr_action_report_purchase_report' model='ir.actions.report.xml'>
+            <field name='report_type'>controller</field>
+            <field name='report_rml'>/report/zc_tr.report_material</field>
+        </record>
+
+        <report 
+            string="打印材料结存" 
+            id="tr_action_report_financial_purchase" 
+            model="stock.move"
+            menu="False"
+            name="zc_tr.report_financial_purchase"
+        />
+
+        <record id='tr_action_report_financial_purchase' model='ir.actions.report.xml'>
+            <field name='report_type'>controller</field>
+            <field name='report_rml'>/report/zc_tr.report_financial_purchase</field>
+        </record>
+      
+      
+
+    </data>
+</openerp>

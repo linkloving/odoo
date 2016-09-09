@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id='tr_product_template_form' model='ir.ui.view'>
+            <field name='name'>ll_love.product.template.common.form</field>
+            <field name='model'>product.template</field>
+            <field name='inherit_id' ref='product.product_template_only_form_view' />
+            <field name='arch' type='xml' >
+                <field name='list_price' position='after'>
+                    <field name='product_sepcs'/>
+                </field>
+                <field name='email_template_id' position='replace'>
+                  
+                </field> 
+            </field>
+
+        </record>
+        <record id='tr_product_template_tree_view' model='ir.ui.view'>
+            <field name='name'>ll_love.product.template.common.tree</field>
+            <field name='model'>product.template</field>
+            <field name='inherit_id' ref='product.product_template_tree_view'/>
+            <field name='arch' type='xml' >
+                <field name='name' position='before'>
+                   <field name='default_code'/>   
+                </field> 
+                <field name='name' position='after'>
+                   <field name='product_sepcs'/>
+                </field>  
+                
+              
+            </field>
+        </record>
+   
+      
+    </data>
+</openerp>

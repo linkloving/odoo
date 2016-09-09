@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="seq_type_pay_budget_number" model="ir.sequence.type">
+            <field name="name">Pay_Budget_Nubmber</field>
+            <field name="code">payment.budget.order</field>
+        </record>
+        <record id="seq_pay_budget_number" model="ir.sequence">
+            <field name="name">Pay_Budget_Nubmber</field>
+            <field name="code">payment.budget.order</field>
+            <field name="prefix">PB%(year)s%(month)s%(day)s%(h24)s%(min)s</field>
+            <field name="padding">4</field>
+        </record>
+          <record id='tr_payment_budget_form' model='ir.ui.view'>
+            <field name='name'>tr.payment.budget.form</field>
+            <field name='model'>tr.payment.budget</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form string='付款预算'>
+                    <header>
+                        <button name="submit" string="提交审核" states="draft" class="oe_highlight"/>
+                        <button name="%(tr_approve_wizard_action)d" type='action' string="同意" states="submited,1st,2nd,3rd" class="oe_highlight" context="{'approve': True}" />
+                        <button name='%(tr_approve_wizard_action)d' string='拒绝' type='action' states='submited,1st,2nd,3rd' context="{'reject': True}" />
+                        <button name='create_voucher' string='生成付款' type='object' states='4th' class='oe_highlight' />
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class='oe_title'>
+                        <h1>
+                        付款预算单<field name='name' class='oe_inline' readonly="1" />
+                        </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='period_id' required='1' on_change="onchange_period(period_id)" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                            <group>
+                                <field name='create_uid' string='预算人' readonly='1'/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string='已到期付款'>
+                                <field name='supplier_invoice_ids' attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree editable='1' >
+                                        <field name='po' on_change="onchange_po(po)" context="{'search_default_not_shipped':1}"/>
+                                        <field name='partner_id' />
+                                        <field name='products' />
+					<!--
+                                        <field name='project'/>
+					 隐藏 -->
+                                        <field name='date_due' />
+                                        <field name='po_amount' readonly='0'/>
+                                        <field name='paid' readonly='1'/>
+					<field name='po_due' readonly='1'/>
+					<!-- <field name='in_due'/>  -->
+					<field name='incoming' readonly='1'/> 
+					<field name='period_due' readonly='1'/>
+                                        <field name='amount' on_change="onchange_amount(amount)" />
+                                        <!-- <field name='reason' /> -->
+                                        <!--<field name='voucher_id' readonly='1'/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        <group>
+                            <field name='amount'/>
+                        </group>
+                        <group string='审批备注'>
+                            <field name='approve_ids' readonly='1' nolabel='1'/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id='tr_payment_budget_search' model='ir.ui.view'>
+            <field name='name'>tr.payment.budget.search</field>
+            <field name='model'>tr.payment.budget</field>
+            <field name='arch' type='xml'>
+                <search string='付款预算'>
+					 <field name='create_uid' string='预算人'/>
+                     <group expand="0" string="Group By">
+                        <filter string='报表期间' domain='[]' context="{'group_by': 'period_id'}" />
+                        <filter string='状态' domain='[]' context="{'group_by': 'state'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id='tr_payment_budget_tree' model='ir.ui.view'>
+            <field name='name'>tr.payment.budget.tree</field>
+            <field name='model'>tr.payment.budget</field>
+            <field name='type'>tree</field>
+            <field name='arch' type='xml'>
+                <tree string='付款预算'>
+                    <field name='name' />
+                    <field name='period_id'/>
+                    <field name='state' />
+                    <field name='create_uid' string='预算人'/>
+                    <field name="amount" string="合计" />
+                </tree>
+            </field>
+        </record>
+        <record id='tr_payment_budget_action' model='ir.actions.act_window'>
+            <field name='name'>预算付款</field>
+            <field name='res_model'>tr.payment.budget</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+            <field name='search_view_id' ref='tr_payment_budget_search' />
+            <field name='view_id' ref='tr_payment_budget_tree' />
+        </record>
+        
+        
+        <record id="tr_view_vendor_payment_form" model="ir.ui.view">
+            <field name="name">tr_account_voucher.form</field>
+            <field name="model">account.voucher</field>
+            <field name='inherit_id' ref='account_voucher.view_vendor_payment_form' />
+            <field name="arch" type="xml">
+                <form string="Voucher Payment" position="attributes">
+                    <attribute name="create">false</attribute>
+                </form>
+                <button name="proforma_voucher" position="attributes">
+                    <attribute name="states">2nd</attribute>
+                </button>
+                <button name="proforma_voucher" position="after">
+                    <button name="submit" string="提交审核" states="draft" class="oe_highlight"/>
+                    <button name="%(tr_approve_wizard_action)d" type='action' string="同意" states="submited,1st" class="oe_highlight" context="{'approve': True}"/>
+                    <button name='%(tr_approve_wizard_action)d' type='action' string='拒绝' states='submited,1st,2nd' context="{'reject': True}" />
+                </button>
+                <field name="state" position="attributes">
+                    <attribute name='statusbar_visible'>"draft,submited,1st,2nd"</attribute>
+                </field>
+                <field name="amount" position="attributes">
+                    <attribute name='readonly'>1</attribute>
+                </field>
+                <field name='journal_id' position='after'>
+                    <field name='end_date'/>
+                    <field name='budget'/>
+                    <field name='po'/>
+                    
+                </field>
+                <notebook position='after'>
+                    <group string='审批备注'>
+                        <field name='approve_ids' readonly='1' nolabel='1'/>
+                    </group>
+                </notebook>
+
+            </field>
+        </record>
+
+        <record id="tr_view_vendor_payment_tree" model="ir.ui.view">
+            <field name="name">tr_account_voucher.tree</field>
+            <field name="model">account.voucher</field>
+            <field name='inherit_id' ref='account_voucher.view_voucher_tree' />
+            <field name="arch" type="xml">
+                <tree string="Voucher Entries" position="attributes">
+                    <attribute name="create">false</attribute>
+                </tree>
+                <field name='state' position='before'>
+                    <field name='end_date'/>
+                    <field name='budget'/>
+                    <field name='po'/>
+		    <field name='create_uid' string="创建人"/>	
+                </field>
+             </field>
+        </record>
+        <menuitem id='tr_payment_budget_menu' name='付款预算' parent='purchase.menu_procurement_management' action='tr_payment_budget_action' sequence='12'/>
+
+        <menuitem id='tr_action_report_sale_order_menu' parent='base.menu_sales' action='tr_print_report_action' sequence='7' name='销售合同汇总表' />
+        
+        <menuitem id='tr_financial_menu' parent='account.menu_finance' sequence='3' name='打印报表' groups='account.group_account_user' />
+        <menuitem id='tr_action_report_financial_menu' parent='tr_financial_menu' action='tr_print_report_financial_action' string='打印财务用订单执行汇总' sequence='12' />
+
+        <menuitem id='tr_action_report_financial_move_menu' parent='tr_financial_menu' action='tr_print_report_financial_move_action' string='打印财务用库存流水' sequence='12' />
+
+        <menuitem id='tr_print_report_financial_purchase_menu' parent='tr_financial_menu' action='tr_print_report_financial_purchase' string='打印财务采购合同表' sequence='12' />
+
+        <menuitem id='tr_print_material_balance_menu' parent='tr_financial_menu' action='tr_print_material_balance_action' string='打印材料结存' sequence='12' />
+        <menuitem id='tr_action_report_purchase_menu' parent='purchase.menu_procurement_management' 
+            action='tr_print_report_purchase_action' sequence='15' />
+    </data>
+
+
+</openerp>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>                   
+    <!-- Purchase done -->
+        <record id="purchase.act_done" model="workflow.activity">
+            <field name="action">wkf_done()</field>
+        </record>
+        
+    <!-- Purchase reject -->
+        <record id="act_reject" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="name">reject</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'rejected'})</field>
+        </record>
+
+        <record id="trans_confirmed_router" model="workflow.transition">
+            <field name="act_from" ref="purchase.act_confirmed"/>
+            <field name="act_to" ref="act_reject"/>
+            <field name="signal">purchase_reject</field>
+        </record>        
+
+        <record id="trans_rejected_confirmed" model="workflow.transition">
+            <field name="act_from" ref="act_reject"/>
+            <field name="act_to" ref="purchase.act_confirmed"/>
+            <field name="signal">purchase_confirm</field>
+        </record>  
+                <record id="purchase.act_draft" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="flow_start">True</field>
+            <field name="name">draft</field>
+            <field name="action">write({'state':'draft'})</field>
+            <field name="kind">function</field>
+        </record>
+
+        <record id="act_purchase_submited" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="name">已提交审核</field>
+            <field name="action">write({'state':'submited'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_purchase_1st" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="name">一级审核通过</field>
+            <field name="action">write({'state':'1st'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_purchase_2nd" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="name">二级审核通过</field>
+            <field name="action">write({'state':'2nd'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_purchase_3rd" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="name">三级审核通过</field>
+            <field name="action">write({'state':'3rd'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_purchase_4th" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="name">四级审核通过</field>
+            <field name="action">write({'state':'4th'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="tr_purchase_submit" model="workflow.transition">
+            <field name="act_from" ref="purchase.act_draft"/>
+            <field name="act_to" ref="act_purchase_submited"/>
+            <field name="signal">submit</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="tr_purchase_bid_submit" model="workflow.transition">
+            <field name="act_from" ref="purchase.act_bid"/>
+            <field name="act_to" ref="act_purchase_submited"/>
+            <field name="signal">submit</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="tr_purchase_1st" model="workflow.transition">
+            <field name="act_from" ref="act_purchase_submited"/>
+            <field name="act_to" ref="act_purchase_1st"/>
+            <field name="signal">agree</field>
+            <field name="condition">(state =='submited')</field>
+        </record>
+        <record id="tr_purchase_2nd" model="workflow.transition">
+            <field name="act_from" ref="act_purchase_1st"/>
+            <field name="act_to" ref="act_purchase_2nd"/>
+            <field name="signal">agree</field>
+            <field name="condition">(state=='1st')</field>
+        </record>
+        <record id="tr_purchase_3rd" model="workflow.transition">
+            <field name="act_from" ref="act_purchase_2nd"/>
+            <field name="act_to" ref="act_purchase_3rd"/>
+            <field name="signal">agree</field>
+            <field name="condition">(state=='2nd')</field>
+        </record>
+        <record id="tr_purchase_4th" model="workflow.transition">
+            <field name="act_from" ref="act_purchase_3rd"/>
+            <field name="act_to" ref="act_purchase_4th"/>
+            <field name="signal">agree2</field>
+            <field name="condition">(state=='3rd')</field>
+        </record>
+        <record id="purchase.trans_draft_confirmed" model="workflow.transition">
+            <field name="act_from" ref="act_purchase_4th"/>
+            <field name="act_to" ref="purchase.act_confirmed"/>            
+            <field name="signal">purchase_confirm</field>
+        </record>
+        <record id="tr_purchase_1st1" model="workflow.transition">
+            <field name="act_to" ref="purchase.act_draft"/>
+            <field name="act_from" ref="act_purchase_submited"/>
+            <field name="signal">disagree</field>
+            <field name="condition">(state =='submited')</field>
+        </record>
+        <record id="tr_purchase_1st2" model="workflow.transition">
+            <field name="act_to" ref="act_purchase_submited"/>
+            <field name="act_from" ref="act_purchase_1st"/>
+            <field name="signal">disagree</field>
+            <field name="condition">(state =='1st')</field>
+        </record>
+        <record id="tr_purchase_2nd2" model="workflow.transition">
+            <field name="act_to" ref="act_purchase_1st"/>
+            <field name="act_from" ref="act_purchase_2nd"/>
+            <field name="signal">disagree</field>
+            <field name="condition">(state=='2nd')</field>
+        </record>
+        <record id="tr_purchase_3rd2" model="workflow.transition">
+            <field name="act_to" ref="act_purchase_2nd"/>
+            <field name="act_from" ref="act_purchase_3rd"/>
+            <field name="signal">disagree</field>
+            <field name="condition">(state=='3rd')</field>
+        </record>
+        <record id="tr_purchase_4th2" model="workflow.transition">
+            <field name="act_to" ref="act_purchase_3rd"/>
+            <field name="act_from" ref="act_purchase_4th"/>
+            <field name="signal">disagree</field>
+            <field name="condition">(state=='4th')</field>
+        </record>
+        <record id="purchase.trans_draft_confirmed" model="workflow.transition">
+            <field name="act_from" ref="act_purchase_4th"/>
+            <field name="act_to" ref="purchase.act_confirmed"/>            
+            <field name="signal">purchase_confirm</field>
+        </record>
+    <!-- Purchase changing request -->
+                  
+    </data>
+</openerp>

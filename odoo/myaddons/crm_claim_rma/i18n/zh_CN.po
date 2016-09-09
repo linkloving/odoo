@@ -1,0 +1,1042 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* crm_claim_rma
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-13 00:31+0000\n"
+"PO-Revision-Date: 2016-04-13 00:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\wizards\claim_make_picking.py:121
+#, python-format
+msgid "A picking has already been created for this claim."
+msgstr "该索赔已创建分拣单"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\wizards\claim_make_picking.py:233
+#, python-format
+msgid "A product return cannot be created for various destination addresses, please choose line with a same address."
+msgstr "产品退货不能创建不同的目标地址, 请选择同一地址行"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\wizards\claim_make_picking.py:223
+#, python-format
+msgid "A product return cannot be created for various destination locations, please choose line with a same destination location."
+msgstr "产品退货不能创建不同的目标库位, 请选择同一库位"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\account_invoice.py:75
+#, python-format
+msgid "A refund has already been created for this claim !"
+msgstr "该索赔已经退款!"
+
+#. module: crm_claim_rma
+#: model:crm.case.section,name:crm_claim_rma.section_after_sales_service
+msgid "After Sales Service"
+msgstr "售后服务"
+
+#. module: crm_claim_rma
+#: selection:claim.line,applicable_guarantee:0
+msgid "Brand manufacturer"
+msgstr "品牌厂商"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim12
+msgid "Buyer Cancelled"
+msgstr "客户取消"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_form_view
+msgid "Calculate warranty state"
+msgstr "计算保修状态"
+
+#. module: crm_claim_rma
+#: view:claim_make_picking.wizard:crm_claim_rma.view_claim_picking
+msgid "Cancel"
+msgstr "取消"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:308
+#, python-format
+msgid "Cannot find any date for invoice. Must be a validated invoice."
+msgstr "找不到任何发票日期. 必须是有效的发票."
+
+#. module: crm_claim_rma
+#: field:account.invoice,claim_id:0
+#: model:ir.model,name:crm_claim_rma.model_crm_claim
+#: field:stock.picking,claim_id:0
+msgid "Claim"
+msgstr "索赔"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_form_view
+msgid "Claim Line"
+msgstr "索赔行"
+
+#. module: crm_claim_rma
+#: field:claim.line,date:0
+msgid "Claim Line Date"
+msgstr "索赔行日期"
+
+#. module: crm_claim_rma
+#: help:claim.line,number:0
+msgid "Claim Line Identification Number"
+msgstr "索赔行识别号"
+
+#. module: crm_claim_rma
+#: field:claim.line,claim_type:0
+msgid "Claim Line Type"
+msgstr "索赔行类型"
+
+#. module: crm_claim_rma
+#: field:claim.line,claim_origin:0
+msgid "Claim Subject"
+msgstr "索赔主题"
+
+#. module: crm_claim_rma
+#: help:claim.line,claim_type:0
+msgid "Claim classification"
+msgstr "索赔分类"
+
+#. module: crm_claim_rma
+#: field:claim.line,claim_diagnosis:0
+msgid "Claim diagnosis"
+msgstr "索赔诊断"
+
+#. module: crm_claim_rma
+#: model:ir.actions.act_window,name:crm_claim_rma.act_crm_claim_substates
+#: model:ir.ui.menu,name:crm_claim_rma.menu_crm_case_claims_claim_line_substates
+msgid "Claim line substates"
+msgstr "索赔行子状态"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_tree_view
+#: field:claim_make_picking.wizard,claim_line_ids:0
+#: model:ir.actions.act_window,name:crm_claim_rma.act_crm_case_claim_lines
+#: model:ir.ui.menu,name:crm_claim_rma.menu_crm_case_claims_claim_lines
+msgid "Claim lines"
+msgstr "索赔列表"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "Claim n°"
+msgstr "Claim n°"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_form_view
+msgid "Claims"
+msgstr "索赔"
+
+#. module: crm_claim_rma
+#: selection:claim.line,applicable_guarantee:0
+#: field:claim.line,company_id:0
+msgid "Company"
+msgstr "公司"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_tree_view
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Compute Warranty"
+msgstr "电脑保修"
+
+#. module: crm_claim_rma
+#: selection:claim.line,state:0
+msgid "Confirmed, waiting for product"
+msgstr "已确认, 等待退货"
+
+#. module: crm_claim_rma
+#: view:res.partner:crm_claim_rma.view_partner_contact_tree
+msgid "Contacts"
+msgstr "联系人"
+
+#. module: crm_claim_rma
+#: selection:claim.line,state:0
+msgid "Controlled, to treate"
+msgstr "Controlled, to treate"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim14
+msgid "Could Not Ship"
+msgstr "无法运输"
+
+#. module: crm_claim_rma
+#: model:ir.actions.act_window,name:crm_claim_rma.action_claim_picking_out
+msgid "Create Outgoing Shipments"
+msgstr "创建外运货物"
+
+#. module: crm_claim_rma
+#: view:claim_make_picking.wizard:crm_claim_rma.view_claim_picking
+msgid "Create picking"
+msgstr "创建分拣"
+
+#. module: crm_claim_rma
+#: field:claim.line,create_uid:0
+#: field:claim_make_picking.wizard,create_uid:0
+#: field:substate.substate,create_uid:0
+msgid "Created by"
+msgstr "创建人"
+
+#. module: crm_claim_rma
+#: field:claim.line,create_date:0
+#: field:claim_make_picking.wizard,create_date:0
+#: field:substate.substate,create_date:0
+msgid "Created on"
+msgstr "创建于"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "Current"
+msgstr "当前"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\crm_claim.py:161
+#, python-format
+msgid "Customer"
+msgstr "客户"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\crm_claim.py:165
+#, python-format
+msgid "Customer Email"
+msgstr "客户 Email"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim11
+msgid "Customer Return"
+msgstr "客户退货"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Damaged delivered product"
+msgstr "交付产品已损坏"
+
+#. module: crm_claim_rma
+#: help:claim.line,message_last_post:0
+#: help:stock.move,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr "最后一条信息记录时间."
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim20
+msgid "Delivered Late by Carrier"
+msgstr "送货交付日期"
+
+#. module: crm_claim_rma
+#: field:claim.line,name:0
+#: field:substate.substate,substate_descr:0
+msgid "Description"
+msgstr "描述"
+
+#. module: crm_claim_rma
+#: field:claim_make_picking.wizard,claim_line_dest_location_id:0
+msgid "Dest. Location"
+msgstr "目的库位"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim15
+msgid "Different Item"
+msgstr "不同项目"
+
+#. module: crm_claim_rma
+#: selection:claim.line,state:0
+msgid "Draft"
+msgstr "草案"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "Draft and Open Claims"
+msgstr "草案和开放的索赔"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:308
+#: code:addons\crm_claim_rma\models\claim_line.py:312
+#: code:addons\crm_claim_rma\models\claim_line.py:395
+#: code:addons\crm_claim_rma\models\claim_line.py:399
+#: code:addons\crm_claim_rma\wizards\claim_make_picking.py:120
+#: code:addons\crm_claim_rma\wizards\claim_make_picking.py:222
+#: code:addons\crm_claim_rma\wizards\claim_make_picking.py:232
+#, python-format
+msgid "Error"
+msgstr "错误"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Exchange request"
+msgstr "交换请求"
+
+#. module: crm_claim_rma
+#: field:crm.claim,planned_cost:0
+msgid "Expected cost"
+msgstr "预期成本"
+
+#. module: crm_claim_rma
+#: field:crm.claim,planned_revenue:0
+msgid "Expected revenue"
+msgstr "预期收入"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:64
+#: selection:claim.line,warning:0
+#, python-format
+msgid "Expired"
+msgstr "过期"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Follow Up"
+msgstr "跟进"
+
+#. module: crm_claim_rma
+#: field:claim.line,message_follower_ids:0
+#: field:stock.move,message_follower_ids:0
+msgid "Followers"
+msgstr "关注者"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim13
+msgid "General Adjustement"
+msgstr "普遍调整"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Generated Documents"
+msgstr "生成文件"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "Group By..."
+msgstr "分组"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "Grouping by state"
+msgstr "按状态分组"
+
+#. module: crm_claim_rma
+#: selection:claim.line,priority:0
+msgid "High"
+msgstr "高"
+
+#. module: crm_claim_rma
+#: help:claim.line,message_summary:0
+#: help:stock.move,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "抓取聊天总结 (信息数量, ...). 该总结直接以html格式以便于插入看板视图."
+
+#. module: crm_claim_rma
+#: field:claim.line,id:0
+#: field:claim_make_picking.wizard,id:0
+#: field:substate.substate,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: crm_claim_rma
+#: help:claim.line,message_unread:0
+#: help:stock.move,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "是否有新信息需要注意."
+
+#. module: crm_claim_rma
+#: help:claim.line,warning:0
+msgid "If warranty has expired"
+msgstr "是否已过保修期"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Imperfection"
+msgstr "缺陷"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "In Progress"
+msgstr "进行中"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "In Progress Claims"
+msgstr "进行中的索赔"
+
+#. module: crm_claim_rma
+#: model:ir.actions.act_window,name:crm_claim_rma.act_crm_claim_rma_picking_in
+msgid "Incoming Shipment and Returns"
+msgstr "新进货物和退货"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+#: field:crm.claim,invoice_id:0
+#: model:ir.model,name:crm_claim_rma.model_account_invoice
+msgid "Invoice"
+msgstr "发票"
+
+#. module: crm_claim_rma
+#: field:claim.line,invoice_line_id:0
+#: model:ir.model,name:crm_claim_rma.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "发票行"
+
+#. module: crm_claim_rma
+#: model:ir.model,name:crm_claim_rma.model_account_invoice_refund
+msgid "Invoice Refund"
+msgstr "发票退款"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+#: model:ir.actions.act_window,name:crm_claim_rma.act_crm_claim_rma_invoice
+msgid "Invoices"
+msgstr "发票列表"
+
+#. module: crm_claim_rma
+#: field:claim.line,message_is_follower:0
+#: field:stock.move,message_is_follower:0
+msgid "Is a Follower"
+msgstr "是一个关注者"
+
+#. module: crm_claim_rma
+#: field:claim.line,message_last_post:0
+#: field:stock.move,message_last_post:0
+msgid "Last Message Date"
+msgstr "最后一条信息日期"
+
+#. module: crm_claim_rma
+#: field:claim.line,write_uid:0
+#: field:claim_make_picking.wizard,write_uid:0
+#: field:substate.substate,write_uid:0
+msgid "Last Updated by"
+msgstr "最后更新人"
+
+#. module: crm_claim_rma
+#: field:claim.line,write_date:0
+#: field:claim_make_picking.wizard,write_date:0
+#: field:substate.substate,write_date:0
+msgid "Last Updated on"
+msgstr "最后更新于"
+
+#. module: crm_claim_rma
+#: field:claim.line,last_state_change:0
+msgid "Last change"
+msgstr "最后变化"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Legal retractation"
+msgstr "Legal retractation"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_form_view
+msgid "Linked Document"
+msgstr "关联文档"
+
+#. module: crm_claim_rma
+#: model:ir.model,name:crm_claim_rma.model_claim_line
+msgid "List of product to return"
+msgstr "退回产品列表"
+
+#. module: crm_claim_rma
+#: help:claim_make_picking.wizard,claim_line_source_location_id:0
+msgid "Location where the returned products are from."
+msgstr "退回产品原库位."
+
+#. module: crm_claim_rma
+#: help:claim_make_picking.wizard,claim_line_dest_location_id:0
+msgid "Location where the system will stock the returned products."
+msgstr "系统储存退回产品的库位."
+
+#. module: crm_claim_rma
+#: view:claim_make_picking.wizard:crm_claim_rma.view_claim_picking
+msgid "Locations"
+msgstr "库位列表"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Lost during transport"
+msgstr "运输途中丢失"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim17
+msgid "Merchandise Not As Described"
+msgstr "商品与描述不符"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim16
+msgid "Merchandise Not Received"
+msgstr "没有收到商品"
+
+#. module: crm_claim_rma
+#: field:claim.line,message_ids:0
+#: field:stock.move,message_ids:0
+msgid "Messages"
+msgstr "信息"
+
+#. module: crm_claim_rma
+#: help:claim.line,message_ids:0
+#: help:stock.move,message_ids:0
+msgid "Messages and communication history"
+msgstr "消息和通信历史"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim21
+msgid "Missed Fulfilment Promise"
+msgstr "错失服务承诺"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "More"
+msgstr "更多"
+
+#. module: crm_claim_rma
+#: help:claim.line,name:0
+msgid "More precise description of the problem"
+msgstr "关于该问题更精确的描述"
+
+#. module: crm_claim_rma
+#: field:claim.line,move_in_id:0
+msgid "Move Line from picking in"
+msgstr "入库分拣移动行"
+
+#. module: crm_claim_rma
+#: field:claim.line,move_out_id:0
+msgid "Move Line from picking out"
+msgstr "出库分拣移动行"
+
+#. module: crm_claim_rma
+#: view:stock.picking:crm_claim_rma.view_picking_internal_search_claim_id
+msgid "Moves created from claims"
+msgstr "由索赔产生的移动"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "New Delivery"
+msgstr "新交付"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "New Products Return"
+msgstr "新产品退货"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "New Refund"
+msgstr "新退款"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim10
+msgid "No Inventory"
+msgstr "没有库存"
+
+#. module: crm_claim_rma
+#: selection:claim.line,priority:0
+msgid "Normal"
+msgstr "正常"
+
+#. module: crm_claim_rma
+#: selection:claim.line,priority:0
+msgid "Not Define"
+msgstr "未定义"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:65
+#: selection:claim.line,warning:0
+#, python-format
+msgid "Not Defined"
+msgstr "未被定义"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Not specified"
+msgstr "未标明"
+
+#. module: crm_claim_rma
+#: field:claim.line,number:0
+msgid "Number"
+msgstr "数字"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Order cancellation"
+msgstr "订单取消"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Other"
+msgstr "其他"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+#: field:crm.claim,delivery_address_id:0
+msgid "Partner delivery address"
+msgstr "合作伙伴的送货地址"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Perfect Conditions"
+msgstr "完善的条件"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Physical Damage by Client"
+msgstr "由客户造成的物理损坏"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Physical Damage by Company"
+msgstr "由公司造成的物理损坏"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+#: field:crm.claim,pick:0
+msgid "Pick the product in the store"
+msgstr "分拣仓库中的产品"
+
+#. module: crm_claim_rma
+#: model:ir.model,name:crm_claim_rma.model_stock_picking
+msgid "Picking List"
+msgstr "分拣清单"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:399
+#, python-format
+msgid "Please set invoice first"
+msgstr "请先设置发票"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:395
+#, python-format
+msgid "Please set product first"
+msgstr "请先设置产品"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim18
+msgid "Pricing Error"
+msgstr "分拣错误"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+#: field:claim.line,priority:0
+msgid "Priority"
+msgstr "优先"
+
+#. module: crm_claim_rma
+#: help:claim.line,priority:0
+msgid "Priority attention of claim line"
+msgstr "优先关注的索赔行"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_form_view
+msgid "Problem"
+msgstr "问题"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+#: field:claim.line,product_id:0
+msgid "Product"
+msgstr "产品"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_diagnosis:0
+msgid "Product Damaged"
+msgstr "损坏的产品"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_diagnosis:0
+msgid "Product Repaired"
+msgstr "维修过的产品"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Product Returns"
+msgstr "产品退货"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_diagnosis:0
+msgid "Product in good condition"
+msgstr "产品处于良好状态"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_diagnosis:0
+msgid "Product with hidden physical damage"
+msgstr "带有隐藏物理损坏的产品"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+#: model:ir.actions.act_window,name:crm_claim_rma.act_crm_claim_rma_purchase_orders
+msgid "Purchases"
+msgstr "采购"
+
+#. module: crm_claim_rma
+#: field:claim.line,product_returned_quantity:0
+msgid "Quantity"
+msgstr "数量"
+
+#. module: crm_claim_rma
+#: help:claim.line,product_returned_quantity:0
+msgid "Quantity of product returned"
+msgstr "退回产品数量"
+
+#. module: crm_claim_rma
+#: model:ir.actions.act_window,name:crm_claim_rma.act_crm_claim_rma_sale_orders
+msgid "Quotations and Sales"
+msgstr "报价或销售"
+
+#. module: crm_claim_rma
+#: field:crm.claim,picking_ids:0
+msgid "RMA"
+msgstr "RMA"
+
+#. module: crm_claim_rma
+#: help:crm.claim,rma_number:0
+msgid "RMA Number provided by supplier"
+msgstr "供应商提供的RMA数字"
+
+#. module: crm_claim_rma
+#: field:crm.claim,real_cost:0
+msgid "Real cost"
+msgstr "实际成本"
+
+#. module: crm_claim_rma
+#: field:crm.claim,real_revenue:0
+msgid "Real revenue"
+msgstr "实际收入"
+
+#. module: crm_claim_rma
+#: selection:claim.line,state:0
+msgid "Received, to control"
+msgstr "Received, to control"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Receptions / Deliveries"
+msgstr "收货/交付"
+
+#. module: crm_claim_rma
+#: field:claim.line,refund_line_id:0
+msgid "Refund Line"
+msgstr "退款行"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+#: field:crm.claim,invoice_ids:0
+#: model:ir.actions.act_window,name:crm_claim_rma.act_crm_claim_rma_refunds
+msgid "Refunds"
+msgstr "退款列表"
+
+#. module: crm_claim_rma
+#: selection:claim.line,state:0
+msgid "Refused"
+msgstr "拒绝"
+
+#. module: crm_claim_rma
+#: field:claim.line,claim_id:0
+msgid "Related claim"
+msgstr "相关索赔"
+
+#. module: crm_claim_rma
+#: help:crm.claim,invoice_id:0
+msgid "Related original Cusotmer invoice"
+msgstr "相关的原始客户发票"
+
+#. module: crm_claim_rma
+#: model:ir.actions.act_window,name:crm_claim_rma.action_claim_picking_in
+msgid "Return Products"
+msgstr "退回产品"
+
+#. module: crm_claim_rma
+#: field:claim.line,location_dest_id:0
+msgid "Return Stock Location"
+msgstr "退回库位"
+
+#. module: crm_claim_rma
+#: field:crm.claim,claim_line_ids:0
+msgid "Return lines"
+msgstr "退回行"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Returned lines"
+msgstr "已退回的行"
+
+#. module: crm_claim_rma
+#: help:claim.line,product_id:0
+msgid "Returned product"
+msgstr "已退回的产品"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Returns"
+msgstr "索赔列表"
+
+#. module: crm_claim_rma
+#: field:crm.claim,rma_number:0
+msgid "Rma number"
+msgstr "RMA号"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
+msgid "Sales"
+msgstr "销售"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.view_crm_case_claims_filter
+msgid "Sales Team"
+msgstr "销售团队"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "Search Claims"
+msgstr "搜索索赔列表"
+
+#. module: crm_claim_rma
+#: help:claim.line,substate_id:0
+msgid "Select a sub state to precise the standard state. Example 1: state = refused; substate could be warranty over, not in warranty, no problem,... . Example 2: state = to treate; substate could be to refund, to exchange, to repair,..."
+msgstr "选择一个二级状态以精确标准状态. 例1: state = refused; substate could be warranty over, not in warranty, no problem,... . Example 2: state = to treate; substate could be to refund, to exchange, to repair,..."
+
+#. module: crm_claim_rma
+#: view:claim_make_picking.wizard:crm_claim_rma.view_claim_picking
+msgid "Select exchange lines to add in picking"
+msgstr "选择交换行来增加分拣"
+
+#. module: crm_claim_rma
+#: view:claim_make_picking.wizard:crm_claim_rma.view_claim_picking
+msgid "Select lines for picking"
+msgstr "选择分拣行"
+
+#. module: crm_claim_rma
+#: field:crm.claim,sequence:0
+msgid "Sequence"
+msgstr "序列"
+
+#. module: crm_claim_rma
+#: field:claim.line,prodlot_id:0
+msgid "Serial/Lot number"
+msgstr "串口/批号"
+
+#. module: crm_claim_rma
+#: model:crm.case.categ,name:crm_claim_rma.categ_claim19
+msgid "Shipping Address Undeliverable"
+msgstr "送货地址无法送达"
+
+#. module: crm_claim_rma
+#: selection:claim.line,claim_origin:0
+msgid "Shipping error"
+msgstr "运输错误"
+
+#. module: crm_claim_rma
+#: field:claim_make_picking.wizard,claim_line_source_location_id:0
+msgid "Source Location"
+msgstr "源位置"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.view_crm_case_claims_filter
+msgid "Stage"
+msgstr "阶段"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_form_view
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+#: field:claim.line,state:0
+msgid "State"
+msgstr "状态"
+
+#. module: crm_claim_rma
+#: model:ir.model,name:crm_claim_rma.model_stock_move
+msgid "Stock Move"
+msgstr "库存移动"
+
+#. module: crm_claim_rma
+#: field:claim.line,substate_id:0
+#: field:substate.substate,name:0
+msgid "Sub state"
+msgstr "子状态"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.view_crm_claim_lines_filter
+msgid "Substate"
+msgstr "子状态"
+
+#. module: crm_claim_rma
+#: field:claim.line,message_summary:0
+#: field:stock.move,message_summary:0
+msgid "Summary"
+msgstr "概要"
+
+#. module: crm_claim_rma
+#: selection:claim.line,applicable_guarantee:0
+msgid "Supplier"
+msgstr "供应商"
+
+#. module: crm_claim_rma
+#: help:claim.line,invoice_line_id:0
+msgid "The invoice line related to the returned product"
+msgstr "与退回产品相关的发票行"
+
+#. module: crm_claim_rma
+#: help:claim.line,move_in_id:0
+#: help:claim.line,move_out_id:0
+msgid "The move line related to the returned product"
+msgstr "与退回产品相关的移动行"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:312
+#, python-format
+msgid "The product has no supplier configured."
+msgstr "该产品没有配置供应商."
+
+#. module: crm_claim_rma
+#: help:claim.line,refund_line_id:0
+msgid "The refund line related to the returned product"
+msgstr "与退回产品相关的退款行"
+
+#. module: crm_claim_rma
+#: help:claim.line,location_dest_id:0
+msgid "The return stock location of the returned product"
+msgstr "退回产品的退回库位"
+
+#. module: crm_claim_rma
+#: help:claim.line,prodlot_id:0
+msgid "The serial/lot of the returned product"
+msgstr "退回产品的串口/批号"
+
+#. module: crm_claim_rma
+#: help:claim.line,guarantee_limit:0
+msgid "The warranty limit is computed as: invoice date + warranty defined on selected product."
+msgstr "保修限制的计算方法：所选产品定义发票日期+保修."
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\crm_claim.py:40
+#, python-format
+msgid "There is no warehouse for the current user's company."
+msgstr "当前用户的公司没有仓库."
+
+#. module: crm_claim_rma
+#: help:crm.claim,delivery_address_id:0
+msgid "This address will be used to deliver repaired or replacement products."
+msgstr "这个地址将被用于递送需要维修或更换产品."
+
+#. module: crm_claim_rma
+#: help:claim.line,claim_diagnosis:0
+msgid "To describe the line product diagnosis"
+msgstr "描述产品诊断行"
+
+#. module: crm_claim_rma
+#: help:claim.line,claim_origin:0
+msgid "To describe the line product problem"
+msgstr "描述产品问题行"
+
+#. module: crm_claim_rma
+#: help:substate.substate,substate_descr:0
+msgid "To give more information about the sub state"
+msgstr "提供更多二级状态的信息"
+
+#. module: crm_claim_rma
+#: help:claim.line,claim_id:0
+msgid "To link to the case.claim object"
+msgstr "连接到  case.claim object"
+
+#. module: crm_claim_rma
+#: help:claim.line,last_state_change:0
+msgid "To set thelast state / substate change"
+msgstr "设置最终状态/二级状态变化"
+
+#. module: crm_claim_rma
+#: selection:claim.line,state:0
+msgid "Treated"
+msgstr "Treated"
+
+#. module: crm_claim_rma
+#: field:claim.line,unit_sale_price:0
+msgid "Unit sale price"
+msgstr "销售单价"
+
+#. module: crm_claim_rma
+#: help:claim.line,unit_sale_price:0
+msgid "Unit sale price of the product. Auto filled if retrun done by invoice selection. Be careful and check the automatic value as don't take into account previous refunds, invoice discount, can be for 0 if product for free,..."
+msgstr "产品销售单价.如果通过发票选择的退回已经完成会自动过滤. 要小心，因为检查不考虑以前的退款，发票贴现自动值，可以为0，如果产品免费"
+
+#. module: crm_claim_rma
+#: field:claim.line,message_unread:0
+#: field:stock.move,message_unread:0
+msgid "Unread Messages"
+msgstr "未读消息"
+
+#. module: crm_claim_rma
+#: code:addons\crm_claim_rma\models\claim_line.py:63
+#: selection:claim.line,warning:0
+#, python-format
+msgid "Valid"
+msgstr "有效"
+
+#. module: crm_claim_rma
+#: selection:claim.line,priority:0
+msgid "Very High"
+msgstr "非常高"
+
+#. module: crm_claim_rma
+#: field:crm.claim,warehouse_id:0
+msgid "Warehouse"
+msgstr "仓库"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_form_view
+#: field:claim.line,warning:0
+msgid "Warranty"
+msgstr "保修"
+
+#. module: crm_claim_rma
+#: field:claim.line,warranty_return_partner:0
+msgid "Warranty Address"
+msgstr "保修地址"
+
+#. module: crm_claim_rma
+#: field:claim.line,guarantee_limit:0
+msgid "Warranty limit"
+msgstr "保修限制"
+
+#. module: crm_claim_rma
+#: field:claim.line,applicable_guarantee:0
+#: field:claim.line,warranty_type:0
+msgid "Warranty type"
+msgstr "保修类型"
+
+#. module: crm_claim_rma
+#: help:claim.line,warranty_return_partner:0
+msgid "Where the customer has to send back the product(s)"
+msgstr "客户退货地址"
+
+#. module: crm_claim_rma
+#: help:claim.line,warranty_type:0
+msgid "Who is in charge of the warranty return treatment towards the end customer. Company will use the current company delivery or default address and so on for supplier and brand manufacturer. Does not necessarily mean that the warranty to be applied is the one of the return partner (ie: can be returned to the company and be under the brand warranty"
+msgstr "谁负责终端客户保修退回待遇. 公司将使用当前公司配送或默认地址，供应商和品牌制造商也一样. 并不一定意味着要应用的保修是返回合作伙伴（即一：可以根据品牌的保修退还给公司） "
+
+#. module: crm_claim_rma
+#: model:ir.model,name:crm_claim_rma.model_claim_make_picking_wizard
+msgid "Wizard to create pickings from claim lines"
+msgstr "从索赔行创建分拣单"
+
+#. module: crm_claim_rma
+#: view:claim_make_picking.wizard:crm_claim_rma.view_claim_picking
+msgid "or"
+msgstr "or"
+
+#. module: crm_claim_rma
+#: model:ir.model,name:crm_claim_rma.model_substate_substate
+msgid "substate that precise a given state"
+msgstr "精确到一个给定状态的子状态"
+
+#. module: crm_claim_rma
+#: view:claim.line:crm_claim_rma.crm_claim_line_view_form_embedded
+msgid "{'claim_id': parent.id, 'company_id': parent.company_id, 'warehouse_id': parent.warehouse_id, 'claim_type': parent.claim_type, 'claim_date': parent.date}"
+msgstr "{'claim_id': parent.id, 'company_id': parent.company_id, 'warehouse_id': parent.warehouse_id, 'claim_type': parent.claim_type, 'claim_date': parent.date}"
+
+#. module: crm_claim_rma
+#: view:crm.claim:crm_claim_rma.crm_case_claims_form_view
+msgid "{'create_lines': False}"
+msgstr "{'create_lines': False}"
+

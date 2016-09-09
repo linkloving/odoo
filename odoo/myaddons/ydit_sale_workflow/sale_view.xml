@@ -1,0 +1,32 @@
+<openerp>
+    <data>
+		<record id="view_so_form_sale_wf" model="ir.ui.view">
+			<field name="name">view_so_form_sale_wf</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">				
+				<xpath expr="//button[@name='action_button_confirm'][1]" position="after">
+				<!-- new approve buttons -->
+	                <button name="review_approved" states="review" string="Review Approve"/>
+
+	                					
+	                <button name="engineer_approved" states="engineer" string="Engineering Approve" />
+
+	                	
+	                <button name="account_approved" states="account" string="Accounting Approve" />
+	                
+	                <button name="super_approved" states="super" string="Super Approve" />
+                    <button name="disagree" string='拒绝'  states="review,engineer,account,super" />       
+				</xpath>
+                <!-- cancel button -->
+                <button name="cancel" position="after">
+                	<button name="cancel" states="review,engineer,account,super" string="Cancel" 
+                		groups="ydit_base.group_super_manager"/>
+                </button>
+				<field name="state" position="attributes">
+				    <attribute name="statusbar_visible">draft,review,progress,done</attribute>
+				</field>
+		    </field>
+		</record>
+    </data>
+</openerp>

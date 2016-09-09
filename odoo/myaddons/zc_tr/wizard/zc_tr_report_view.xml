@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id='tr_print_report_form' model='ir.ui.view'>
+    		<field name='name'>tr.print.report.form</field>
+    		<field name='model'>tr.print.report</field>
+    		<field name='type'>form</field>
+    		<field name='arch' type='xml'>
+    			<form name='打印报表' >
+    				<group>
+                        <group>
+			    <field name='start_date' required='1' />
+                            <field name='end_date' required='1' />   
+                        </group>
+    				</group>
+
+    				<footer>
+    					<button name='print_report' type='object' string='打印报表' class='oe_highlight' />
+    					or
+    					<button string='取消' class='oe_link' special='cancel' />
+    				</footer>
+    			</form>
+    		</field>
+    	</record>
+
+    	<record id='tr_print_report_action' model='ir.actions.act_window'>
+    		<field name='name'>打印报表</field>
+    		<field name='res_model'>tr.print.report</field>
+    		<field name='view_type'>form</field>
+    		<field name='view_mode'>form</field>
+    		<field name='view_id' ref='tr_print_report_form' />
+    		<field name='target'>new</field>
+    	</record>
+
+    
+
+        <record id='tr_print_report_financial_form' model='ir.ui.view'>
+            <field name='name'>tr.print.report.financial.form</field>
+            <field name='model'>tr.print.report.financial</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form name='打印报表' >
+                    <group>
+                        <group>
+							<field name='start_date' required='1' />
+                            <field name='end_date' required='1' />   
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name='print_report' type='object' string='打印报表' class='oe_highlight' />
+                        or
+                        <button string='取消' class='oe_link' special='cancel' />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id='tr_print_report_financial_action' model='ir.actions.act_window'>
+            <field name='name'>打印财务用订单执行汇总</field>
+            <field name='res_model'>tr.print.report.financial</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='view_id' ref='tr_print_report_financial_form' />
+            <field name='target'>new</field>
+        </record>
+
+        <record id='tr_print_report_financial_move_form' model='ir.ui.view'>
+            <field name='name'>tr.print.report.financial.move.form</field>
+            <field name='model'>tr.print.report.financial.move</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form name='打印报表' >
+                    <group>
+                        <group>
+							<field name='start_date' required='1' />
+                            <field name='end_date' required='1' />   
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name='print_report' type='object' string='打印报表' class='oe_highlight' />
+                        or
+                        <button string='取消' class='oe_link' special='cancel' />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id='tr_print_report_financial_move_action' model='ir.actions.act_window'>
+            <field name='name'>打印财务用库存流水</field>
+            <field name='res_model'>tr.print.report.financial.move</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='view_id' ref='tr_print_report_financial_move_form' />
+            <field name='target'>new</field>
+        </record>
+
+        <record id='tr_print_report_financial_purchase_form' model='ir.ui.view'>
+            <field name='name'>tr.report.financial.purchase.form</field>
+            <field name='model'>tr.report.financial.purchase</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form name='打印报表' >
+                    <group>
+                        <group>
+							<field name='start_date' required='1' />
+                            <field name='end_date' required='1' />   
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name='print_report' type='object' string='打印报表' class='oe_highlight' />
+                        or
+                        <button string='取消' class='oe_link' special='cancel' />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id='tr_print_report_financial_purchase' model='ir.actions.act_window'>
+            <field name='name'>打印财务采购合同表</field>
+            <field name='res_model'>tr.report.financial.purchase</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='view_id' ref='tr_print_report_financial_purchase_form' />
+            <field name='target'>new</field>
+        </record>
+
+        <record id='tr_print_material_balance_form' model='ir.ui.view'>
+            <field name='name'>tr.print.material.balance.form</field>
+            <field name='model'>tr.print.material.balance</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form name='打印报表' >
+                    <group>
+                        <group>
+                            <field name='start_date' required='1' />
+                            <field name='end_date' required='1' />      
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name='print_report' type='object' string='打印报表' class='oe_highlight' />
+                        or
+                        <button string='取消' class='oe_link' special='cancel' />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id='tr_print_material_balance_action' model='ir.actions.act_window'>
+            <field name='name'>打印材料结存</field>
+            <field name='res_model'>tr.print.material.balance</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='view_id' ref='tr_print_material_balance_form' />
+            <field name='target'>new</field>
+        </record>
+
+        <record id='tr_print_report_purchase_form' model='ir.ui.view'>
+            <field name='name'>tr.print.report.purchase.form</field>
+            <field name='model'>tr.print.report.purchase</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form name='打印报表' >
+                    <group>
+                        <group>
+							<field name='start_date' required='1' />
+                            <field name='end_date' required='1' />   
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name='print_report' type='object' string='打印报表' class='oe_highlight' />
+                        or
+                        <button string='取消' class='oe_link' special='cancel' />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id='tr_approve_wizard_form' model='ir.ui.view'>
+            <field name='name'>tr.approve.wizard.form</field>
+            <field name='model'>tr.approve.wizard</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form name='审批意见' >
+                    <group cols='4'>
+                        <group colspan='4'>
+                            <field name='message' placeholder='为空表示没有意见' />
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name='approved' type='object' string='确定' class='oe_highlight' />
+                        or
+                        <button string='取消' class='oe_link' special='cancel' />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id='tr_approve_wizard_action' model='ir.actions.act_window'>
+            <field name='name'>审批意见</field>
+            <field name='res_model'>tr.approve.wizard</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='view_id' ref='tr_approve_wizard_form' />
+            <field name='target'>new</field>
+        </record>
+
+        <record id='tr_print_report_purchase_action' model='ir.actions.act_window'>
+            <field name='name'>打印采购合同汇总表</field>
+            <field name='res_model'>tr.print.report.purchase</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='view_id' ref='tr_print_report_purchase_form' />
+            <field name='target'>new</field>
+        </record>
+        
+         
+    </data>
+</openerp>
