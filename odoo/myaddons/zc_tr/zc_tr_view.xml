@@ -83,6 +83,7 @@
             <field name='arch' type='xml'>
                 <search string='付款预算'>
 					 <field name='create_uid' string='预算人'/>
+                     <field name="supplier_invoice_ids" string="供应商" filter_domain="[('supplier_invoice_ids.partner_id', 'ilike', self)]"/>
                      <group expand="0" string="Group By">
                         <filter string='报表期间' domain='[]' context="{'group_by': 'period_id'}" />
                         <filter string='状态' domain='[]' context="{'group_by': 'state'}" />
