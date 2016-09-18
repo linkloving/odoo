@@ -42,7 +42,7 @@ This module adds several restaurant features to the Point of Sale:
     'data': [
         'restaurant_view.xml',
         'security/ir.model.access.csv',
-        'views/templates.xml',
+        'views/hr_view.xml',
     ],
     'qweb':[
         'static/src/xml/multiprint.xml',

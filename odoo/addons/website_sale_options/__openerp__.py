@@ -12,7 +12,7 @@ OpenERP E-Commerce
     'depends': ['website_sale'],
     'data': [
         'views/views.xml',
-        'views/templates.xml',
+        'views/hr_view.xml',
     ],
     'demo': [
         'data/demo.xml',

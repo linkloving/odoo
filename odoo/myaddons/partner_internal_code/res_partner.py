@@ -3,7 +3,7 @@
 # For copyright and license notices, see __openerp__.py file in module root
 # directory
 ##############################################################################
-from openerp import fields, models, api
+from openerp import fields, models, api, _
 
 
 class partner(models.Model):
@@ -13,7 +13,7 @@ class partner(models.Model):
     _inherit = 'res.partner'
 
     internal_code = fields.Char(
-        'Internal Code')
+         _(u"Internal Code"))
 
     def name_search(self, cr, uid, name, args=None,
                     operator='ilike', context=None, limit=100):
