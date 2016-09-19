@@ -1,15 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f76c1341-8ea4-4166-bc7b-212dfd711f45" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/odoo.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/myaddons/ll_love/ll_love.py" afterPath="$PROJECT_DIR$/odoo/myaddons/ll_love/ll_love.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/myaddons/ll_love/views/ll_love.xml" afterPath="$PROJECT_DIR$/odoo/myaddons/ll_love/views/ll_love.xml" />
+    <list default="true" id="f76c1341-8ea4-4166-bc7b-212dfd711f45" name="Default" comment="修改 产品 内部货号&amp;&amp;产品规格 字段 -&gt;required">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/after-menu.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/after-menu.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/cms.jpg" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/cms.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm_claim/test/customer_claim.eml" afterPath="$PROJECT_DIR$/odoo/addons/crm_claim/test/customer_claim.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm/test/customer_request.eml" afterPath="$PROJECT_DIR$/odoo/addons/crm/test/customer_request.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/folder.jpg" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/folder.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/functionalities.jpg" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/functionalities.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/page.jpg" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/page.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/page_structure.jpg" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/page_structure.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/document/test/partner.pdf" afterPath="$PROJECT_DIR$/odoo/addons/document/test/partner.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/services_page_menu.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/services_page_menu.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/services_page_nostyle.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/services_page_nostyle.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/services_page_styled.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/services_page_styled.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet.jpg" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_bar.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_bar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_default.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_default.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_options.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_options.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_options2.png" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/snippet_options2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/styles.jpg" afterPath="$PROJECT_DIR$/odoo/doc/howtos/theme_tutorial_assets/img/styles.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/CHANGES.md" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/CHANGES.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/External_id_3rd_party_application_product_categories.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/External_id_3rd_party_application_product_categories.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/External_id_3rd_party_application_products.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/External_id_3rd_party_application_products.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/LICENSE.md" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/Name_products.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/Name_products.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_report_designer/plugin/openerp_report_designer/bin/OOo_run.sh" afterPath="$PROJECT_DIR$/odoo/addons/base_report_designer/plugin/openerp_report_designer/bin/OOo_run.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_be_coda/test_coda_file/Ontvangen_CODA.2011-01-11-18.59.15.txt" afterPath="$PROJECT_DIR$/odoo/addons/l10n_be_coda/test_coda_file/Ontvangen_CODA.2011-01-11-18.59.15.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_be_coda/README.txt" afterPath="$PROJECT_DIR$/odoo/addons/l10n_be_coda/README.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_bank_statement_extensions/report/__init__.py" afterPath="$PROJECT_DIR$/odoo/addons/account_bank_statement_extensions/report/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_gt/__init__.py" afterPath="$PROJECT_DIR$/odoo/addons/l10n_gt/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_hn/__init__.py" afterPath="$PROJECT_DIR$/odoo/addons/l10n_hn/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_et/data/account.account.template.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_et/data/account.account.template.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_uk/data/account.account.template.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_uk/data/account.account.template.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_lu/account.fiscal.position.tax.template-2015.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_lu/account.fiscal.position.tax.template-2015.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_lu/account.fiscal.position.template-2011.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_lu/account.fiscal.position.template-2011.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_lu/account.tax.template-2015.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_lu/account.tax.template-2015.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_et/data/account.tax.template.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_et/data/account.tax.template.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_uk/data/account.tax.template.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_uk/data/account.tax.template.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/alerts.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/alerts.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/alerts.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/alerts.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/background-variant.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/background-variant.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/badges.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/badges.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/bootstrap.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/bootstrap.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/border-radius.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/border-radius.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/breadcrumbs.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/breadcrumbs.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/build-config.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/build-config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/button-groups.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/button-groups.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/buttons.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/buttons.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/buttons.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/buttons.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/carousel.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/carousel.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/center-block.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/center-block.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.scrollTo/changes.txt" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.scrollTo/changes.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/clear_wifi_configuration.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/clear_wifi_configuration.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/clearfix.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/clearfix.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/close.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/close.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/code.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/code.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/component-animations.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/component-animations.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/connect_to_wifi.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/connect_to_wifi.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/contents.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/contents.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/core.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm_helpdesk/test/customer_question.eml" afterPath="$PROJECT_DIR$/odoo/addons/crm_helpdesk/test/customer_question.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/date.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/date.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/codebase/dhtmlxcommon.js" afterPath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/codebase/dhtmlxcommon.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/sources/dhtmlxcommon.js" afterPath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/sources/dhtmlxcommon.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/codebase/dhtmlxgantt.css" afterPath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/codebase/dhtmlxgantt.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/codebase/dhtmlxgantt.js" afterPath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/codebase/dhtmlxgantt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/sources/dhtmlxgantt.js" afterPath="$PROJECT_DIR$/odoo/addons/web_gantt/static/lib/dhtmlxGantt/sources/dhtmlxgantt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_ie.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_ie.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_ie7.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_ie7.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_ie8.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_ie8.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_iequirks.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_iequirks.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_opera.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/dialog_opera.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/dropdowns.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/dropdowns.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/eanmaker" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/eanmaker" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_gecko.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_gecko.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_ie.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_ie.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_ie7.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_ie7.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_ie8.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_ie8.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_iequirks.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/editor_iequirks.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/lang/en.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/lang/en.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/extras.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/extras.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/forms.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/forms.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/forms.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/forms.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/glyphicons.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/glyphicons.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/gradients.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/gradients.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/openerp/tools/graph.py" afterPath="$PROJECT_DIR$/odoo/openerp/tools/graph.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/grid-framework.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/grid-framework.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/grid.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/grid.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/grid.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/grid.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/hide-text.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/hide-text.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/email_template/html2text.py" afterPath="$PROJECT_DIR$/odoo/addons/email_template/html2text.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/image.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/image.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_before_init/etc/init_posbox_image.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_before_init/etc/init_posbox_image.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/input-groups.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/input-groups.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_be_invoice_bba/invoice.py" afterPath="$PROJECT_DIR$/odoo/addons/l10n_be_invoice_bba/invoice.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_analytic_default/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/account_analytic_default/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_analytic_plans/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/account_analytic_plans/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_asset/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/account_asset/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_bank_statement_extensions/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/account_bank_statement_extensions/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_budget/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/account_budget/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_payment/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/account_payment/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/account_voucher/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/account_voucher/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/analytic/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/analytic/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/analytic_user_function/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/analytic_user_function/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/anonymization/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/anonymization/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/association/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/association/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/auth_ldap/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/auth_ldap/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_action_rule/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_action_rule/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_setup/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_setup/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/board/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/board/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/calendar/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/calendar/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/crm/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm_claim/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/crm_claim/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm_helpdesk/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/crm_helpdesk/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm_partner_assign/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/crm_partner_assign/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/crm_profiling/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/crm_profiling/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/decimal_precision/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/decimal_precision/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/delivery/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/delivery/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/document/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/document/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/email_template/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/email_template/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/event/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/event/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/fetchmail/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/fetchmail/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/google_calendar/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/google_calendar/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_attendance/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_attendance/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_contract/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_contract/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_evaluation/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_evaluation/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_expense/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_expense/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_holidays/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_holidays/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_payroll/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_payroll/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_recruitment/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_recruitment/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_timesheet/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_timesheet/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_timesheet_invoice/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/hr_timesheet_invoice/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/knowledge/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/knowledge/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_be/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_be/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_fr/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_fr/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_ma/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_ma/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/mail/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/mail/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/marketing_campaign/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/marketing_campaign/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/mass_mailing/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/mass_mailing/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/membership/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/membership/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/mrp_byproduct/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/mrp_byproduct/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/mrp_operations/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/mrp_operations/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/multi_company/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/multi_company/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/note/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/note/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/procurement/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/procurement/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/product/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/product/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/product_margin/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/product_margin/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/project_issue/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/project_issue/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/project_issue_sheet/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/project_issue_sheet/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/project_timesheet/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/project_timesheet/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/purchase/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/purchase/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/purchase_requisition/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/purchase_requisition/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/report_intrastat/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/report_intrastat/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/report_webkit/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/report_webkit/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/resource/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/resource/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/sale/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/sale/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/sale_crm/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/sale_crm/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/sale_journal/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/sale_journal/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/sale_margin/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/sale_margin/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/sale_mrp/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/sale_mrp/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/sale_service/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/sale_service/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/subscription/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/subscription/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/website_blog/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/website_blog/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/website_event_track/security/ir.model.access.csv" afterPath="$PROJECT_DIR$/odoo/addons/website_event_track/security/ir.model.access.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/project_issue/test/issue.eml" afterPath="$PROJECT_DIR$/odoo/addons/project_issue/test/issue.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.autosize/jquery.autosize.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.autosize/jquery.autosize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/cleditor/jquery.cleditor.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/cleditor/jquery.cleditor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/cleditor/jquery.cleditor.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/cleditor/jquery.cleditor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.placeholder/jquery.placeholder.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.placeholder/jquery.placeholder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.scrollTo/jquery.scrollTo-min.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.scrollTo/jquery.scrollTo-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.scrollTo/jquery.scrollTo.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/jquery.scrollTo/jquery.scrollTo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/jumbotron.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/jumbotron.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web_kanban_gauge/static/lib/justgage/justgage.js" afterPath="$PROJECT_DIR$/odoo/addons/web_kanban_gauge/static/lib/justgage/justgage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/keep_wifi_alive.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/keep_wifi_alive.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_hr/l10n_hr_wizard.xml" afterPath="$PROJECT_DIR$/odoo/addons/l10n_hr/l10n_hr_wizard.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_syscohada/l10n_syscohada_data.xml" afterPath="$PROJECT_DIR$/odoo/addons/l10n_syscohada/l10n_syscohada_data.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_uk/l10n_uk_wizard.xml" afterPath="$PROJECT_DIR$/odoo/addons/l10n_uk/l10n_uk_wizard.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/labels.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/labels.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/labels.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/labels.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/led_status.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/led_status.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/list-group.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/list-group.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/list-group.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/list-group.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/m2m_customers_tags.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/m2m_customers_tags.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/media.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/media.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/modals.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/modals.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/nav-divider.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/nav-divider.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/nav-vertical-align.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/nav-vertical-align.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/navbar.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/navbar.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/navs.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/navs.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/normalize.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/normalize.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/note/security/note_security.xml" afterPath="$PROJECT_DIR$/odoo/addons/note/security/note_security.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/o2m_purchase_order_lines.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/o2m_purchase_order_lines.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/odoo.py" afterPath="$PROJECT_DIR$/odoo/odoo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_before_init/etc/init.d/odoo" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_before_init/etc/init.d/odoo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/document/odt2txt.py" afterPath="$PROJECT_DIR$/odoo/addons/document/odt2txt.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/opacity.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/opacity.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/openerp-gevent" afterPath="$PROJECT_DIR$/odoo/openerp-gevent" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/openerp-server" afterPath="$PROJECT_DIR$/odoo/openerp-server" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/mail/static/scripts/openerp_mailgate.py" afterPath="$PROJECT_DIR$/odoo/addons/mail/static/scripts/openerp_mailgate.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_report_designer/openerp_sxw2rml/openerp_sxw2rml.py" afterPath="$PROJECT_DIR$/odoo/addons/base_report_designer/openerp_sxw2rml/openerp_sxw2rml.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/pager.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/pager.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/pagination.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/pagination.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/pagination.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/pagination.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/panels.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/panels.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/panels.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/panels.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/parser.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/parser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/popovers.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/popovers.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/posbox_create_image.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/posbox_create_image.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/posbox_download_images.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/posbox_download_images.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/posbox_update.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/posbox_update.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/plugins/preview/preview.html" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/plugins/preview/preview.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/print.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/print.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/progress-bar.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/progress-bar.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/progress-bars.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/progress-bars.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/purchase.order_functional_error_line_cant_adpat.csv" afterPath="$PROJECT_DIR$/odoo/addons/base_import/static/csv/purchase.order_functional_error_line_cant_adpat.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_after_init/etc/rc.local" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_after_init/etc/rc.local" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_before_init/etc/rc.local" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/overwrite_before_init/etc/rc.local" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/readme.md" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/skins/moono/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/select2/release.sh" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/select2/release.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_be_intrastat/data/report.intrastat.code.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_be_intrastat/data/report.intrastat.code.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_et/data/res.country.state.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_et/data/res.country.state.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_ro/res.country.state.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_ro/res.country.state.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/l10n_uk/data/res.country.state.csv" afterPath="$PROJECT_DIR$/odoo/addons/l10n_uk/data/res.country.state.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/reset-filter.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/reset-filter.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/resize.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/resize.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/responsive-embed.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/responsive-embed.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/responsive-utilities.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/responsive-utilities.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/responsive-visibility.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/responsive-visibility.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/hr_recruitment/test/resume.eml" afterPath="$PROJECT_DIR$/odoo/addons/hr_recruitment/test/resume.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/openerp/report/render/rml2txt/rml2txt.py" afterPath="$PROJECT_DIR$/odoo/openerp/report/render/rml2txt/rml2txt.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/debian/rules" afterPath="$PROJECT_DIR$/odoo/debian/rules" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/scaffolding.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/scaffolding.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/setup_ramdisks.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/setup_ramdisks.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/size.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/size.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/cla/stats.py" afterPath="$PROJECT_DIR$/odoo/doc/cla/stats.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/styles.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/styles.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/sugarpak.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/sugarpak.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/tab-focus.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/tab-focus.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/table-row.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/table-row.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/tables.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/tables.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/plugins/templates/dialogs/templates.css" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/ckeditor/plugins/templates/dialogs/templates.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/openerp/tools/test-config-values" afterPath="$PROJECT_DIR$/odoo/openerp/tools/test-config-values" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/document/test_cindex.py" afterPath="$PROJECT_DIR$/odoo/addons/document/test_cindex.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/text-emphasis.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/text-emphasis.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/text-overflow.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/text-overflow.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/theme.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/theme.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/thumbnails.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/thumbnails.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/time.js" afterPath="$PROJECT_DIR$/odoo/addons/web/static/lib/datejs/time.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/tooltip.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/tooltip.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/type.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/type.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/utilities.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/utilities.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/variables.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/variables.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/vendor-prefixes.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/mixins/vendor-prefixes.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/website/static/lib/vkbeautify/vkbeautify.0.99.00.beta.js" afterPath="$PROJECT_DIR$/odoo/addons/website/static/lib/vkbeautify/vkbeautify.0.99.00.beta.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/wells.less" afterPath="$PROJECT_DIR$/odoo/doc/_extensions/odoo/static/bootstrap-3.3.4/less/wells.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/openerp/tools/which.py" afterPath="$PROJECT_DIR$/odoo/openerp/tools/which.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/wireless_ap.sh" afterPath="$PROJECT_DIR$/odoo/addons/point_of_sale/tools/posbox/configuration/wireless_ap.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="odoo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,11 +329,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ll_love.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ll_love.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/odoo/myaddons/ll_love/ll_love.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31383577">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/odoo/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.68922305">
+              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -134,9 +398,9 @@
         <option value="$PROJECT_DIR$/odoo/addons/website_sale/__openerp__.py" />
         <option value="$PROJECT_DIR$/odoo/addons/website_sale_options/__openerp__.py" />
         <option value="$PROJECT_DIR$/odoo/myaddons/testaddon/__openerp__.py" />
-        <option value="$PROJECT_DIR$/odoo/.gitignore" />
         <option value="$PROJECT_DIR$/odoo/myaddons/ll_love/views/ll_love.xml" />
         <option value="$PROJECT_DIR$/odoo/myaddons/ll_love/ll_love.py" />
+        <option value="$PROJECT_DIR$/odoo/.gitignore" />
       </list>
     </option>
   </component>
@@ -224,139 +488,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myaddons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myaddons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="product_warranty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myaddons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ll_love" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myaddons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ll_love" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myaddons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="linklove_hr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="addons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="addons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="product" />
+              <option name="myItemId" value="debian" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -648,7 +780,19 @@
       <option name="project" value="LOCAL" />
       <updated>1474246715208</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改 产品 内部货号&amp;&amp;产品规格 字段 -&gt;required">
+      <created>1474248934747</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1474248934747</updated>
+    </task>
+    <task id="LOCAL-00009" summary="修改 产品 内部货号&amp;&amp;产品规格 字段 -&gt;required">
+      <created>1474249830502</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1474249830502</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -664,7 +808,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.49679488" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -675,7 +819,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27564102" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27510685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33152175" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -728,7 +872,8 @@
     <MESSAGE value="预算付款 添加 供应商 的 模糊搜索" />
     <MESSAGE value="修改hr模块 员工" />
     <MESSAGE value="修改hr模块 产生的替换view的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改hr模块 产生的替换view的bug" />
+    <MESSAGE value="修改 产品 内部货号&amp;&amp;产品规格 字段 -&gt;required" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改 产品 内部货号&amp;&amp;产品规格 字段 -&gt;required" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -985,14 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/odoo/debian/openerp-server.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/odoo/.idea/vcs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1005,14 +1142,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.824232">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/odoo/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22305764">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1127,8 +1256,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/odoo/myaddons/ll_love/ll_love.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31383577">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/odoo/debian/openerp-server.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/odoo/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68922305">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
           <folding />
         </state>
       </provider>
