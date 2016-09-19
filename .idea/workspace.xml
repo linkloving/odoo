@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f76c1341-8ea4-4166-bc7b-212dfd711f45" name="Default" comment="修改 产品 内部货号&amp;&amp;产品规格 字段 -&gt;required">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/odoo/debian/openerp-server.conf" afterPath="$PROJECT_DIR$/odoo/debian/openerp-server.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="f76c1341-8ea4-4166-bc7b-212dfd711f45" name="Default" comment="修改 产品 内部货号&amp;&amp;产品规格 字段 -&gt;required" />
     <ignored path="odoo.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -533,7 +530,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
