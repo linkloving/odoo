@@ -34,3 +34,5 @@ install/win32/meta.py
 /src/
 /data/
 openerp-server.conf
+/odoo/debian/openerp-server.conf
+/.idea/
