@@ -7,7 +7,7 @@
             <field name='inherit_id' ref='product.product_template_only_form_view' />
             <field name='arch' type='xml' >
                 <field name='list_price' position='after'>
-                    <field name='product_sepcs'/>
+                    <field name='product_sepcs' required="1"/>
                 </field>
                 <field name='email_template_id' position='replace'>
                   

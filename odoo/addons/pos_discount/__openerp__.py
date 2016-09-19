@@ -38,7 +38,7 @@ sale discount to a customer.
     'depends': ['point_of_sale'],
     'data': [
         'views/views.xml',
-        'views/hr_view.xml'
+        'views/templates.xml'
     ],
     'installable': True,
     'website': 'https://www.odoo.com/page/point-of-sale',
