@@ -14,10 +14,20 @@ class linkloving_mrp_bom(models.Model):
         for r in self:
             r.is_pcba = r.default_code.startswith('64')
 
-    @api.onchange('product_tmpl_id')
-    def _onchange_pcba(self):
-        print self.product_tmpl_id.default_code
-        self.is_pcba = self.product_tmpl_id.default_code.startswith('64')
+    def onchange_product_tmpl_id(self, cr, uid, ids, product_tmpl_id, product_qty=0, context=None):
+        """ Changes UoM and name if product_id changes.
+        @param product_id: Changed product_id
+        @return:  Dictionary of changed values
+        """
+        res = {}
+        if product_tmpl_id:
+            prod = self.pool.get('product.template').browse(cr, uid, product_tmpl_id, context=context)
+            res['value'] = {
+                'name': prod.name,
+                'product_uom': prod.uom_id.id,
+                'is_pcba': prod.default_code.startswith('64')
+            }
+        return res
 
 
 # 'product_tmpl_id': fields.many2one('product.template', 'Product', domain="[('type', '!=', 'service')]", required=True),
