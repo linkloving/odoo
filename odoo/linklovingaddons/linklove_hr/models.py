@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 
-# class linklove_hr(models.Model):
-#     _name = 'linklove_hr.linklove_hr'
-#     name = fields.Char()
+
+
+class linkloving_hr_expense_expense(models.Model):
+
+    _inherit = 'hr.expense.expense'
+
+    project_id = fields.Many2one('purchase.order', ondelete="restrict", string=_("Purchase Order"), )

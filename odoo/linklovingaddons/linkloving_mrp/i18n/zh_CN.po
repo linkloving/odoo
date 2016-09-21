@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-19 09:59+0000\n"
-"PO-Revision-Date: 2016-09-19 09:59+0000\n"
+"POT-Creation-Date: 2016-09-21 05:22+0000\n"
+"PO-Revision-Date: 2016-09-21 05:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,37 @@ msgid "Bill of Material"
 msgstr "物料清单"
 
 #. module: linkloving_mrp
+#: view:mrp.bom:linkloving_mrp.linkloving_mrp_bom_form_view
+msgid "Components"
+msgstr "部件"
+
+#. module: linkloving_mrp
 #: code:addons/linkloving_mrp/models.py:8
-#: field:mrp.bom,default_code:0
 #, python-format
 msgid "Internal Reference"
+msgstr "料号"
+
+#. module: linkloving_mrp
+#: code:addons/linkloving_mrp/models.py:40
+#, python-format
+msgid "Is Pcba"
+msgstr "是否为PCBA"
+
+#. module: linkloving_mrp
+#: field:mrp.bom,is_pcba:0
+#: field:mrp.bom.line,is_pcba:0
+msgid "Is pcba"
+msgstr "是否为PCBA"
+
+#. module: linkloving_mrp
+#: code:addons/linkloving_mrp/models.py:37
+#: field:mrp.bom.line,line_locate:0
+#, python-format
+msgid "Locate"
+msgstr "位置"
+
+#. module: linkloving_mrp
+#: field:mrp.bom,default_code:0
+msgid "料号"
 msgstr "料号"
 

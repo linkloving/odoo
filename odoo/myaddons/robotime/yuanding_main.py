@@ -15,7 +15,7 @@ class sale_order_line(osv.osv):
 class feiyType(models.Model):
     _name = 'hr.expense.expense.type'
 
-    name = fields.Char(string=u'费用类型', translate=True)
+    name = fields.Char(string=u'费用科目', translate=True)
 class purchase_order(osv.osv):
     _inherit = 'purchase.order'
     def _get_recieve_amount(self, cursor, user, ids, name, arg, context=None):
@@ -129,7 +129,7 @@ class hr_expense_expense(osv.osv):
    
     _inherit = 'hr.expense.expense'
     _columns = {
-        'order_type': fieldsold.many2one('hr.expense.expense.type', string=u'费用类型', required=True),
+        'order_type': fieldsold.many2one('hr.expense.expense.type', string=u'费用科目', required=True),
 	    'code': fieldsold.char(u'报销编号'),
 		}							   
     _defaults = {
