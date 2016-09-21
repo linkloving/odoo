@@ -15,6 +15,7 @@ class partner(models.Model):
     # 是否是国外的客户 默认国内
     is_abroad = fields.Boolean(string=u"country", default=False)
 
+    # 判断用户有没有输入internal_code 若没有 我们自动根据 国内/外 客户生成 internal_code
     @api.model
     def create(self, vals):
         if not vals.get('internal_code', False):
