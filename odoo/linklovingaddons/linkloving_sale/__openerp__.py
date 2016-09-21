@@ -10,8 +10,8 @@
         Long description of module's purpose
     """,
 
-    'author': "Your Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Linklove",
+    'website': "http://www.Linkloving.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
@@ -26,6 +26,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'view/sale_view.xml',
+        'sale_data_CN.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -5,7 +5,6 @@
 ##############################################################################
 from openerp import fields, models, api, _
 
-
 class partner(models.Model):
 
     """"""
@@ -38,7 +37,7 @@ class partner(models.Model):
 
 
 
-    _sql_constraints = {
-        ('internal_code_uniq', 'unique(internal_code)',
-            'Internal Code mast be unique!')
-    }
+    # _sql_constraints = {
+    #     ('internal_code_uniq', 'unique(internal_code)',
+    #         'Internal Code mast be unique!')
+    # }
