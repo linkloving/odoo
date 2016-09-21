@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="sequence_type_cn" model="ir.sequence.type">
+            <field name="name">Sequence_cn</field>
+            <field name="code">cn.partner.internal.code</field>
+        </record>
+
+        <record id="sequence_cn" model="ir.sequence">
+            <field name="name">internalcodeCN</field>
+            <field name="code">cn.partner.internal.code</field>
+            <field name="prefix">DC</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="sequence_type_en" model="ir.sequence.type">
+            <field name="name">Sequence_en</field>
+            <field name="code">en.partner.internal.code</field>
+        </record>
+
+        <record id="sequence_en" model="ir.sequence">
+            <field name="name">internalcodeEN</field>
+            <field name="code">en.partner.internal.code</field>
+            <field name="prefix">OC</field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</openerp>
