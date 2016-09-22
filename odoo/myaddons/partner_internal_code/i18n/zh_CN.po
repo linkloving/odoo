@@ -18,7 +18,7 @@ msgstr ""
 #. module: partner_internal_code
 #: field:res.partner,internal_code:0
 msgid "Internal Code"
-msgstr "供应商编号"
+msgstr "客户编号"
 
 #. module: partner_internal_code
 #: sql_constraint:res.partner:0
