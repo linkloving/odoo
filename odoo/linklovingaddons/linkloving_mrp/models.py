@@ -29,7 +29,6 @@ class linkloving_mrp_bom(models.Model):
             }
         return res
 
-
 # 'product_tmpl_id': fields.many2one('product.template', 'Product', domain="[('type', '!=', 'service')]", required=True),
 class linkloving_mrp_bom_line(models.Model):
     _inherit = 'mrp.bom.line'
@@ -41,4 +40,9 @@ class linkloving_mrp_bom_line(models.Model):
 
 
 
+class linkloving_product_product(models.Model):
+    _inherit = 'product.product'
 
+    _sql_constraints = [
+        ('default_code_uniq', 'unique (default_code)', 'The code of the account must be unique per company !')
+    ]
