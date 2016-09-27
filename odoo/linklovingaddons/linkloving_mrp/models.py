@@ -5,7 +5,7 @@ from openerp import models, fields, api, _
 class linkloving_mrp_bom(models.Model):
     _inherit = 'mrp.bom'
 
-    default_code = fields.Char(related='product_tmpl_id.default_code', string=_(u'Internal Reference'), store=True)
+    default_code = fields.Char(related='product_tmpl_id.default_code', string=_(u'Material Id'), store=True)
 
     is_pcba = fields.Boolean(compute='_is_pcba', )
 
