@@ -8,4 +8,5 @@ class linkloving_hr_expense_expense(models.Model):
 
     _inherit = 'hr.expense.expense'
 
-    project_id = fields.Many2one('purchase.order', ondelete="restrict", string=_("Purchase Order"), )
+    po_id = fields.Many2one('purchase.order', ondelete="restrict", string=_("Purchase Order"))
+    project_id=fields.Many2one('project.project',ondelete="restrict", string=_("Project"))

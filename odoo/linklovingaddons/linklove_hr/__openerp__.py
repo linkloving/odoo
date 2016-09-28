@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "linklove_hr",
+    'name': "Linkloving HR",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'sale','hr_expense'],
 
     # always loaded
     'data': [
