@@ -39,10 +39,9 @@ class linkloving_mrp_bom_line(models.Model):
     is_pcba = fields.Boolean(String=_(u'Is Pcba'))
 
 
-
 class linkloving_product_product(models.Model):
     _inherit = 'product.product'
 
     _sql_constraints = [
-        ('default_code_uniq', 'unique (default_code)', 'The code of the account must be unique per company !')
+        ('default_code_uniq', 'unique (default_code)', 'The default code must be unique!')
     ]

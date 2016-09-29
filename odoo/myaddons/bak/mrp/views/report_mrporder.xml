@@ -73,6 +73,12 @@
                                 <th><strong>Product</strong></th>
                                 <th><strong>product specifation</strong></th>
                                 <th class="text-right"><strong>Quantity</strong></th>
+
+                                <th class="text-right"><strong>配比</strong></th>
+                                <th class="text-right"><strong>领料数量</strong></th>
+                                <th class="text-right"><strong>退料数量</strong></th>
+                                <th class="text-right"><strong>报废数量</strong></th>
+
                                 <th class="text-center" groups="stock.group_locations">
                                     <strong>Source Location</strong>
                                 </th>

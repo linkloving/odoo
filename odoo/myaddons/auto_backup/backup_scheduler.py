@@ -45,7 +45,10 @@ def execute(connector, method, *args):
             raise e
     return res
 
-addons_path = (os.environ.get('HOME') or os.environ.get('HOMEPATH')) + '/DBbackups'
+try:
+    addons_path = (os.environ.get('HOME') or os.environ.get('HOMEPATH')) + '/DBbackups'
+except TypeError,e:
+    addons_path = '/opt/odoo/DBbackups'
 
 class db_backup(osv.osv):
     _name = 'db.backup'
@@ -190,3 +193,6 @@ class db_backup(osv.osv):
 db_backup()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+if __name__ == '__main__':
+    addons_path = (os.environ.get('HOME') or os.environ.get('HOMEPATH')) + '/DBbackups'
+    print addons_path
