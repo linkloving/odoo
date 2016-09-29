@@ -27,7 +27,3 @@ class partner(models.Model):
                     'ir.sequence'].get('cn.partner.internal.code') or '/'
         return super(partner, self).create(vals)
 
-    # _sql_constraints = {
-    #     ('internal_code_uniq', 'unique(internal_code)',
-    #         'Internal Code mast be unique!')
-    # }

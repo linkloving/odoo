@@ -66,5 +66,5 @@ msgstr "国外客户"
 #. module: partner_internal_code
 #: field:res.partner,internal_code:0
 msgid "Internal Code"
-msgstr "客户编号"
+msgstr "编号"
 

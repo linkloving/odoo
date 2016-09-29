@@ -99,7 +99,7 @@ msgstr "个人"
 #: model:ir.actions.act_window,name:linkloving_purchase.pre_payment_application
 #: model:ir.ui.menu,name:linkloving_purchase.menu_procurement_management_pre_payment
 msgid "Pre Payment Application"
-msgstr "Pre Payment Application"
+msgstr "预付款"
 
 #. module: linkloving_purchase
 #: code:addons/linkloving_purchase/models/qualifications_level.py:12
