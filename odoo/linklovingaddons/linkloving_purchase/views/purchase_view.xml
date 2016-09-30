@@ -12,6 +12,7 @@
                             groups="purchase.group_purchase_manager,purchase.group_purchase_user" type="object"/>
                 </xpath>
 
+
             </field>
         </record>
 
