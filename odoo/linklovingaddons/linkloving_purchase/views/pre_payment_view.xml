@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='wkf_send_rfq']" position="before">
+                    <button name="create_prepayment" states="approved" string="创建预付款发票" class="oe_highlight"
+                            groups="purchase.group_purchase_manager,purchase.group_purchase_user" type="object"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="purchase_pre_payment_form" model="ir.ui.view">
+            <field name="name">res.partner.level.form</field>
+            <field name="model">account.prepayment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="po_id" readonly="1"/>
+                            <field name="amount"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+
+                </form>
+
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

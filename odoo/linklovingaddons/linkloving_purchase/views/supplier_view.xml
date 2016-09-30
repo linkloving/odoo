@@ -65,7 +65,7 @@
                    <filter string="Customers" name="customer" domain="[('customer','=',1)]" help="Customer Partners"/>
                    <filter string="Suppliers" name="supplier" domain="[('supplier','=',1)]" help="Supplier Partners"/>
                    <separator/>
-                   <field name="category_id" string="Tag" filter_domain="[('category_id','ilike', self)]"/>
+                    <field name="category_id" filter_domain="[('category_id','ilike', self)]"/>
                    <field name="user_id"/>
                     <field name="customer_level"/>
                     <field name="supplier_level"/>

@@ -2,9 +2,7 @@
 from openerp import models, fields, api,_
 
 
-
-
-class ljwj_abnormal_shortage_reason(models.Model):
+class ResPartnerLevel(models.Model):
     """
     供应商资质等级
     """
