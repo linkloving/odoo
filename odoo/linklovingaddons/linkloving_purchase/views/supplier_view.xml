@@ -2,23 +2,6 @@
 <openerp>
     <data>
 
-        <record id="view_partner_level_form" model="ir.ui.view">
-            <field name="name">res.partner.level.form</field>
-            <field name="model">res.partner.level</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="level_type" invisible="1"/>
-                            <field name="description"/>
-                        </group>
-                    </sheet>
-
-                </form>
-
-            </field>
-        </record>
 
 
         <record id="view_partner_supplier_form" model="ir.ui.view">
@@ -35,17 +18,28 @@
             </field>
         </record>
 
-        <!--<record id="view_partner_vendor_tree" model="ir.ui.view">-->
-        <!--<field name="name">partner.vendor.tree</field>-->
-        <!--<field name="model">res.partner</field>-->
-        <!--<field name="inherit_id" ref="base.view_partner_tree"/>-->
+        <!--<record id="purchase_order_2_stock_picking" model="ir.ui.view">-->
+        <!--<field name="name">Purchase Picking Inherited</field>-->
+        <!--<field name="model">purchase.order</field>-->
+        <!--<field name="inherit_id" ref="purchase.purchase_order_form"/>-->
         <!--<field name="arch" type="xml">-->
-        <!--<field name="display_name" position="after">-->
-        <!--<field name="supplier" invisible="0"/>-->
-        <!--<field name="customer" invisible="0"/>-->
-        <!--<field name="customer_level" attrs="{'invisible':[('customer','!=',True)]}"  />-->
-        <!--<field name="supplier_level" attrs="{'invisible':[('supplier','!=',True)]}"/>-->
-        <!--</field>-->
+        <!--<xpath expr="//div[contains(@class, 'oe_title')]" position="before">-->
+        <!--<div class="oe_right oe_button_box" name="buttons">-->
+        <!--<button type="object"-->
+        <!--name="view_picking"-->
+        <!--class="oe_stat_button"-->
+        <!--icon="fa-truck"-->
+        <!--attrs="{'invisible': [('shipment_count', '=', 0)]}">-->
+        <!--<field name="shipment_count" widget="statinfo" string="In Shipments" help="Incoming Shipments"/>-->
+        <!--</button>-->
+        <!--<button type="object"  name="invoice_open"-->
+        <!--class="oe_stat_button"-->
+        <!--icon="fa-pencil-square-o"-->
+        <!--attrs="{'invisible': [('invoice_count', '=', 0)]}">-->
+        <!--<field name="invoice_count" widget="statinfo" string="Invoices"/>-->
+        <!--</button> -->
+        <!--</div>-->
+        <!--</xpath>-->
         <!--</field>-->
         <!--</record>-->
 

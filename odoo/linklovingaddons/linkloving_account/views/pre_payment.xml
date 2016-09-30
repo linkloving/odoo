@@ -1,0 +1,89 @@
+<openerp>
+    <data>
+        <record id="purchase_pre_payment_form_modal" model="ir.ui.view">
+            <field name="name">res.partner.level.form</field>
+            <field name="model">account.prepayment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="po_id" readonly="1"/>
+                            <field name="amount"/>
+                            <field name="description"/>
+                        </group>
+                        <footer class="oe_edit_only">
+                            <button name="confirm_prepayment" type="object"
+                                    string="Save" class="oe_highlight"/>
+                            <button special="cancel" string="Cancel" class="oe_link"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="purchase_pre_payment_form" model="ir.ui.view">
+            <field name="name">res.partner.level.form</field>
+            <field name="model">account.prepayment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="pay" string="Pay" type="object" states="unpaid"
+                                class="oe_highlight"/>
+                        <!--<button name="cancel" string="Cancel" type="object" states="unpaid"-->
+                        <!--/>-->
+                        <field name="state" widget="statusbar"
+                        />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="po_id" readonly="1"/>
+                            <field name="amount" readonly="1"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="purchase_pre_payment_tree" model="ir.ui.view">
+            <field name="name">res.partner.level.tree</field>
+            <field name="model">account.prepayment</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false">
+                    <field name="po_id" readonly="1"/>
+                    <field name="amount"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="description"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_invoice_prepayment" model="ir.actions.act_window">
+            <field name="name">Supplier Pre Payment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.prepayment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', 'not in', ['draft', 'cancel'])]</field>
+            <field name="context">{}</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode':'tree', 'view_id': ref('purchase_pre_payment_tree')}),
+            (0,0,{'view_mode':'form', 'view_id': ref('purchase_pre_payment_form')})]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a contact in your address book.
+                </p>
+                <p>
+                    No Invoice need to Prepayment!
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="action_invoice_prepayment" id="menu_action_invoice_prepayment"
+                  parent="account.menu_finance_payables"/>
+
+
+    </data>
+</openerp>

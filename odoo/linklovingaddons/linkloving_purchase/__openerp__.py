@@ -20,13 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','purchase'],
+    'depends': ['base', 'purchase', 'linkloving_account', 'partner_internal_code'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/supplier_view.xml',
-        'views/pre_payment_view.xml',
+        'views/purchase_view.xml',
         'templates.xml',
     ],
     # only loaded in demonstration mode
