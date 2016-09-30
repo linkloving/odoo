@@ -27,6 +27,8 @@
         # 'security/ir.model.access.csv',
         'templates.xml',
         'views/mrp_view.xml',
+        'views/report_mrpbomstructure.xml',
+
 
     ],
     # only loaded in demonstration mode

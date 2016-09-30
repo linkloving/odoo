@@ -47,7 +47,7 @@ def execute(connector, method, *args):
 
 try:
     addons_path = (os.environ.get('HOME') or os.environ.get('HOMEPATH')) + '/DBbackups'
-except TypeError,e:
+except TypeError, e:
     addons_path = '/opt/odoo/DBbackups'
 
 class db_backup(osv.osv):
