@@ -5,9 +5,15 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='check_total']" position="before">
+                <xpath expr="//field[@name='check_total']" position="replace">
+                    <field name="total"/>
+                    <field name="pre_amount_total"/>
+                    <field name="is_deduct"/>
                     <field name="deduct_amount"/>
                     <field name="deduct_reason"/>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="before">
+                    <field name="tr_po_number"/>
                 </xpath>
 
             </field>

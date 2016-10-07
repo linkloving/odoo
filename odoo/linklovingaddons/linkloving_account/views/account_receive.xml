@@ -1,0 +1,77 @@
+<openerp>
+    <data>
+        <record id="account_amount_receive_tree" model="ir.ui.view">
+            <field name="name">account.amount.receive.tree</field>
+            <field name="model">account.amount.receive</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="customer_id"/>
+                    <field name="amount"/>
+                    <field name="account"/>
+                    <field name="remark"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="account_amount_receive_form" model="ir.ui.view">
+            <field name="name">account.amount.receive.form</field>
+            <field name="model">account.amount.receive</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="confirm" string="Confirm" type="object"
+                                class="oe_highlight" state="draft"/>
+                        <button name="reject" string="Return" type="object"
+                                state="draft"/>
+                        <field name="state" widget="statusbar"
+                        />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="amount" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
+                            <field name="account" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="remark" required="1"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_invoice_account_receive" model="ir.actions.act_window">
+            <field name="name">Customer Payment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.amount.receive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add customer payment.
+                </p>
+                <p>
+                    No customer payment!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_finance_account_receive" action="action_invoice_account_receive" name="Customers Payment"
+                  parent="account.menu_finance_receivables"/>
+
+
+    </data>
+</openerp>
+
+
+
