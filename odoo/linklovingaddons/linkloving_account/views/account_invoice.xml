@@ -8,7 +8,7 @@
                 <xpath expr="//field[@name='check_total']" position="replace">
                     <field name="total"/>
                     <field name="pre_amount_total"/>
-                    <field name="is_deduct"/>
+                    <!--<field name="is_deduct"/>-->
                     <field name="deduct_amount"/>
                     <field name="deduct_reason"/>
                 </xpath>
