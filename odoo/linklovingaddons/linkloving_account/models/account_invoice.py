@@ -11,19 +11,14 @@ class AccountInvoice(models.Model):
     deduct_amount = fields.Float(string='扣款')
     deduct_reason = fields.Text(string='扣款原因')
     pre_amount_total = fields.Float(compute='get_prepayment_total', string='预付款金额')
-    total = fields.Float(compute='_compute_amount')
-    is_can_deduct = fields.Boolean(compute='can_deduct', store=False)
 
-    @api.one
-    @api.depends('pre_amount_total', 'amount_total')
-    def can_deduct(self):
-        if self.total >= self.pre_amount_total and not self.tr_po_number.is_prepayment_deduct:
-            self.is_can_deduct = True
-        else:
-            self.is_can_deduct = False
+    total = fields.Float(compute='_compute_amount')
+    need_deduct_prepayment = fields.Boolean()
+
+
 
     def get_prepayment_total(self):
-
+        self.pre_amount_total = 0.0
         if self.tr_po_number and self.tr_po_number.pre_payment_ids:
             for p in self.tr_po_number.pre_payment_ids:
                 self.pre_amount_total += p.amount
@@ -35,7 +30,7 @@ class AccountInvoice(models.Model):
         self.amount_tax = sum(line.amount for line in self.tax_line)
         self.total = self.amount_untaxed + self.amount_tax
         self.amount_total = self.amount_untaxed + self.amount_tax - self.deduct_amount
-        if self.is_can_deduct:
+        if self.need_deduct_prepayment:
             self.amount_total -= self.pre_amount_total
 
     @api.multi
@@ -212,5 +207,20 @@ class AccountInvoice(models.Model):
                 line_amount = self.currency_id.round(line_amount / len(partial_reconciliation_invoices))
                 partial_reconciliations_done.append(line.reconcile_partial_id.id)
             self.residual += line_amount
+        if not self.need_deduct_prepayment:
 
-        self.residual = max(self.residual, 0.0) - self.pre_amount_total - self.deduct_amount
+            self.residual = max(self.residual, 0.0) - self.deduct_amount
+        else:
+            self.residual = max(self.residual, 0.0) - self.pre_amount_total - self.deduct_amount
+
+    @api.model
+    def create(self, values):
+        po_id = self.env['stock.picking'].search([('name', '=', values['origin'])]).po_id
+
+        inv = super(AccountInvoice, self).create(values)
+        if not po_id.is_prepayment_deduct:
+            inv.need_deduct_prepayment = True
+        else:
+            inv.need_deduct_prepayment = False
+
+        return inv

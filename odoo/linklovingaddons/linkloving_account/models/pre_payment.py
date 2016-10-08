@@ -12,6 +12,7 @@ class AccountPrePayment(models.Model):
     _inherit = 'mail.thread'
     _order = 'create_date desc'
     name = fields.Char()
+    is_deduct = fields.Boolean()
     po_id = fields.Many2one('purchase.order', string='Purchase Order')
     so_id = fields.Many2one('sale.order', string='Sale Order')
     state = fields.Selection([

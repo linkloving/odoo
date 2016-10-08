@@ -11,6 +11,15 @@ class PurchaseOrder(models.Model):
     pre_payment_ids = fields.One2many('account.prepayment', 'po_id')
     prepayment_count = fields.Char(compute='get_pre_payment_ids')
     is_prepayment_deduct = fields.Boolean()
+    pre_payment_mount = fields.Float(compute='get_pre_payment_mount')
+
+    def get_pre_payment_mount(self):
+        self.pre_payment_mount = 0
+        for p in self.pre_payment_ids:
+            self.pre_payment_mount += p.amount
+
+
+
 
     @api.multi
     def get_pre_payment_ids(self):
@@ -68,4 +77,4 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
     po_id = fields.Many2one('purchase.order')
     pre_payment_ids = fields.One2many('account.prepayment', related='po_id.pre_payment_ids')
-    pre_payment_amount = amount = fields.Float(string='Pre Payment Amount')
+    pre_payment_amount = fields.Float(string='Pre Payment Amount')

@@ -6,11 +6,11 @@
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='check_total']" position="replace">
-                    <field name="total"/>
+                    <field name="total" string="总计"/>
                     <field name="pre_amount_total"/>
-                    <!--<field name="is_deduct"/>-->
-                    <field name="deduct_amount"/>
-                    <field name="deduct_reason"/>
+                    <field name="need_deduct_prepayment" readonly="1" string="是否需要扣除预付款"/>
+                    <field name="deduct_amount" attrs="{'readonly':[('state','=','paid')]}"/>
+                    <field name="deduct_reason" attrs="{'readonly':[('state','=','paid')]}"/>
                 </xpath>
                 <xpath expr="//field[@name='origin']" position="before">
                     <field name="tr_po_number"/>
