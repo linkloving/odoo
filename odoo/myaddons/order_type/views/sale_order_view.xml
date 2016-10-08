@@ -44,6 +44,16 @@
         <menuitem id="sale_order_type_menu" name="Sale Order Type" parent="base.menu_base_config"
             sequence="１" action="action_sale_order_type"/>
 
+		<record id="linkloving_view_sales_order_search" model="ir.ui.view">
+            <field name="name">sale.order.search.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='product_id']" position="after">
+                    <field name="pi_number"/>
+                </xpath>
+            </field>
+        </record>
 		<!--<record id="linkloving_action_sale_order" model="ir.actions.act_window">-->
 			<!--<field name="name">All Orders</field>-->
 			<!--<field name="res_model">sale.order</field>-->
