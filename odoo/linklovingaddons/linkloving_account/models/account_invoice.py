@@ -218,7 +218,7 @@ class AccountInvoice(models.Model):
         po_id = self.env['stock.picking'].search([('name', '=', values['origin'])]).po_id
 
         inv = super(AccountInvoice, self).create(values)
-        if not po_id.is_prepayment_deduct:
+        if po_id and not po_id.is_prepayment_deduct:
             inv.need_deduct_prepayment = True
         else:
             inv.need_deduct_prepayment = False

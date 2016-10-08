@@ -14,8 +14,10 @@ class AccountAmountReceived(models.Model):
     name = fields.Char()
     amount = fields.Float(string='金额')
     account = fields.Char(string='账号')
+    receive_date = fields.Date(string='收款日期')
     remark = fields.Text(string='备注')
     customer_id = fields.Many2one('res.partner', string='客户')
+    journal_id = fields.Many2one('account.journal', 'Salary Journal')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
