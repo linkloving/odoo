@@ -8,7 +8,52 @@
 				<field name="client_order_ref" position="after">
 					<field name="order_type"/>
 				</field>
+				<field name="partner_shipping_id" position="after">
+					<field name="pi_number"/>
+				</field>
 			</field>
 		</record>
+
+		<record id="linkloving_sale_order_type_form" model="ir.ui.view">
+			<field name="name">sale.order.type.form</field>
+			<field name="model">sale.order.type</field>
+			<!--<field name="inherit_id" ref="sale.view_order_form"/>-->
+			<field name="arch" type="xml">
+				<form string="Order Type">
+					<group>
+						<group>
+							<field name="name"/>
+						</group>
+						<group>
+							<field name="is_show_to_menu"/>
+						</group>
+					</group>
+
+				</form>
+			</field>
+		</record>
+
+		<record id="action_sale_order_type" model="ir.actions.act_window">
+            <field name="name">Sale Order Type</field>
+            <field name="res_model">sale.order.type</field>
+            <!--<field name="view_id" ref="view_view_tree"/>-->
+            <!--<field name="context">{'search_default_active': 1}</field>-->
+            <field name="help">Create an order type and show to the menu</field>
+        </record>
+
+        <menuitem id="sale_order_type_menu" name="Sale Order Type" parent="base.menu_base_config"
+            sequence="１" action="action_sale_order_type"/>
+
+		<!--<record id="linkloving_action_sale_order" model="ir.actions.act_window">-->
+			<!--<field name="name">All Orders</field>-->
+			<!--<field name="res_model">sale.order</field>-->
+			<!--<field name="view_type">form</field>-->
+			<!--<field name="view_mode">tree,form,kanban</field>-->
+			<!--<field name="view_id">sale.view_order_tree</field>-->
+			<!--<field name="help">Create an order</field>-->
+		<!--</record>-->
+
+		<!--<menuitem id="linkloving_sale_order_menu" name="All Orders"-->
+				  <!--parent="sale.menu_sale_order" action="linkloving_action_sale_order"/>-->
 	</data>
 </openerp>
