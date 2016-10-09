@@ -28,6 +28,7 @@ class ProductProductType(models.Model):
 
     menu_id = fields.Many2one('ir.ui.menu', readonly=True)
     action_id = fields.Many2one('ir.actions.act_window', readonly=True)
+    parent_menu_id = fields.Many2one('sale.order.type')
 
     @api.model
     def create(self, vals):
@@ -70,7 +71,10 @@ class ProductProductType(models.Model):
         if len(self.env['ir.ui.menu'].search([('name','=',name)]))>=1:
             raise except_orm(_('Error!'), _('此产品菜单已经创建'))
 
-        parent_id = self.env.ref('sale.menu_sale_order')
+        if order_type.parent_menu_id is None:
+            parent_id = self.env.ref('sale.menu_sale_order')
+        else:
+            parent_id = order_type.parent_menu_id.menu_id
         order_type.menu_id = self.env['ir.ui.menu'].create({
             'name': name,
             'parent_id': parent_id.id,
@@ -93,4 +97,6 @@ class sale_order(models.Model):
                                    string='Order Type', required=True)
 
     pi_number = fields.Char(string='PI Number')
+
+    delivery_date = fields.Date(string='交货日期')
 
