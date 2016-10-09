@@ -33,6 +33,7 @@
 This module creates types of products
     """,
     "data": [
+        "security/ir.model.access.csv",
         "yuanding_view.xml",
     ],
     "installable": True,
