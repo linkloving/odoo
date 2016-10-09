@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_linkloving_account_linkloving_account,linkloving_account.linkloving_account,model_linkloving_account_linkloving_account,,1,0,0,0
+access_linkloving_account_linkloving_account,linkloving_account.linkloving_account,model_account_prepayment,,1,1,1,10
