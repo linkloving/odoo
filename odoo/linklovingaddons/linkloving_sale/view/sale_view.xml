@@ -1,6 +1,21 @@
 <openerp>
     <data>
 
+
+        <record id="linkloving_sale_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('customer','=',True),('is_company','=',True)]</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                    <attribute name="domain">[('parent_id','=',partner_id)]</attribute>
+                </xpath>
+            </field>
+
+        </record>
         <record id="sale_action_partner_form" model="ir.actions.act_window">
             <field name="name">Customers</field>
             <field name="type">ir.actions.act_window</field>
@@ -30,7 +45,8 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form</field>
-            <field name="domain">[('customer','=','1'),('is_abroad','=',False)]</field> <!-- ('country_id','=',49), 这个是客户商地址（可能在国内）-->
+            <field name="domain">[('customer','=','1'),('is_abroad','=',False),('is_company','=',True)]
+            </field> <!-- ('country_id','=',49), 这个是客户商地址（可能在国内）-->
             <field name="context">{}</field>
             <field name="search_view_id" ref="base.view_res_partner_filter"/>
             <field name="help" type="html">
@@ -52,8 +68,8 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form</field>
-            <field name="domain">[('customer','=','1'),('is_abroad','=',True)]</field>
-            <field name="context">{}</field>
+            <field name="domain">[('customer','=','1'),('is_abroad','=',True),('is_company','=',True)]</field>
+            <field name="context">{'default_is_abroad':True}</field>
             <field name="search_view_id" ref="base.view_res_partner_filter"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
