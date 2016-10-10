@@ -28,6 +28,39 @@ class ProductProductType(models.Model):
 
     menu_id = fields.Many2one('ir.ui.menu', readonly=True)
     action_id = fields.Many2one('ir.actions.act_window', readonly=True)
+    parent_menu_id = fields.Many2one('sale.order.type')
+    display_name = fields.Char('Name', compute='_get_display_name')
+
+    def _get_display_name(self, cr, uid, ids, name=None, args=None, context=None):
+        if context is None:
+            context = {}
+        res = {}
+        for elmt in self.browse(cr, uid, ids, context=context):
+            res[elmt.id] = self._get_one_full_name(elmt)
+            elmt.display_name = res[elmt.id]
+        return res
+
+    def _get_one_full_name(self, elmt, level=6):
+        if level<=0:
+            return '...'
+        if elmt.parent_menu_id:
+            parent_path = self._get_one_full_name(elmt.parent_menu_id, level-1) + '/'
+        else:
+            parent_path = ''
+        return parent_path + elmt.name
+
+    def name_get(self, cr, uid, ids, context=None):
+        if not ids:
+            return []
+        res = []
+        for elmt in self.browse(cr, uid, ids, context=context):
+            name = elmt.parent_menu_id.menu_id.name
+            if name is not False:
+                name = name + '/' + elmt.name
+            else:
+                name = elmt.name
+            res.append((elmt.id, name))
+        return res
 
     @api.model
     def create(self, vals):
@@ -70,7 +103,10 @@ class ProductProductType(models.Model):
         if len(self.env['ir.ui.menu'].search([('name','=',name)]))>=1:
             raise except_orm(_('Error!'), _('此产品菜单已经创建'))
 
-        parent_id = self.env.ref('sale.menu_sale_order')
+        if order_type.parent_menu_id is None:
+            parent_id = self.env.ref('sale.menu_sale_order')
+        else:
+            parent_id = order_type.parent_menu_id.menu_id
         order_type.menu_id = self.env['ir.ui.menu'].create({
             'name': name,
             'parent_id': parent_id.id,
@@ -93,4 +129,6 @@ class sale_order(models.Model):
                                    string='Order Type', required=True)
 
     pi_number = fields.Char(string='PI Number')
+
+    delivery_date = fields.Date(string='交货日期')
 
