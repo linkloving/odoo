@@ -13,6 +13,90 @@
                 <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
                     <attribute name="domain">[('parent_id','=',partner_id)]</attribute>
                 </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                    <field name="tax_id" widget="many2many_tags"
+                           domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]" string="税金"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']" position="replace">
+                    <field name="order_line" context="{'default_tax_id':tax_id}">
+                        <form string="Sales Order Lines">
+                            <header groups="base.group_user">
+                                <button name="%(sale.action_view_sale_order_line_make_invoice)d" states="confirmed"
+                                        string="Invoice" type="action" icon="terp-document-new"/>
+                                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"
+                                       statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                            </header>
+                            <group>
+                                <group>
+                                    <field name="product_id"
+                                           context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                                           groups="base.group_user"
+                                           on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"/>
+                                    <label for="product_uom_qty"/>
+                                    <div>
+                                        <field
+                                                context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'uom_qty_change':True, 'company_id': parent.company_id}"
+                                                name="product_uom_qty" class="oe_inline"
+                                                on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, False, False, parent.date_order, False, parent.fiscal_position, True, context)"/>
+                                        <field name="product_uom" groups="product.group_uom"
+                                               class="oe_inline oe_no_button"
+                                               context="{'company_id': parent.company_id}"
+                                               on_change="onchange_product_uom(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, False, False, parent.date_order, parent.fiscal_position, context)"/>
+                                    </div>
+                                    <label for="product_uos_qty" groups="product.group_uos"/>
+                                    <div groups="product.group_uos">
+                                        <field name="product_uos_qty" class="oe_inline"/>
+                                        <field name="product_uos" options='{"no_open": True}' class="oe_inline"/>
+                                    </div>
+                                    <field name="price_unit"/>
+                                    <label for="discount" groups="sale.group_discount_per_so_line"/>
+                                    <div name="discount" groups="sale.group_discount_per_so_line">
+                                        <field name="discount" class="oe_inline"/>
+                                        %%
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="tax_id" widget="many2many_tags"
+                                           domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"
+                                           readonly="1"/>
+                                    <field name="th_weight"/>
+                                    <!-- we should put a config wizard for these two fields -->
+                                    <field name="address_allotment_id"/>
+                                </group>
+                            </group>
+                            <label for="name"/>
+                            <field name="name"/>
+                            <div groups="base.group_no_one">
+                                <label for="invoice_lines"/>
+                                <field name="invoice_lines"/>
+                            </div>
+                        </form>
+                        <tree string="Sales Order Lines" editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="state" invisible="1"/>
+                            <field name="th_weight" invisible="1"/>
+                            <field name="product_id"
+                                   context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                                   groups="base.group_user"
+                                   on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty"
+                                   context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                                   on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, False, parent.fiscal_position, True, context)"/>
+                            <field name="product_uom"
+                                   context="{'company_id': parent.company_id}"
+                                   on_change="onchange_product_uom(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, parent.fiscal_position, context)"
+                                   groups="product.group_uom" options='{"no_open": True}'/>
+                            <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                            <field name="product_uos" string="UoS" groups="product.group_uos" invisible="1"/>
+                            <field name="price_unit"/>
+                            <field name="tax_id" widget="many2many_tags"
+                                   domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
+                            <field name="discount" groups="sale.group_discount_per_so_line"/>
+                            <field name="price_subtotal"/>
+                        </tree>
+                    </field>
+                </xpath>
             </field>
 
         </record>
@@ -47,7 +131,7 @@
             <field name="view_mode">tree,kanban,form</field>
             <field name="domain">[('customer','=','1'),('is_abroad','=',False),('is_company','=',True)]
             </field> <!-- ('country_id','=',49), 这个是客户商地址（可能在国内）-->
-            <field name="context">{}</field>
+            <field name="context">{'default_is_company':True}</field>
             <field name="search_view_id" ref="base.view_res_partner_filter"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
@@ -69,7 +153,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="domain">[('customer','=','1'),('is_abroad','=',True),('is_company','=',True)]</field>
-            <field name="context">{'default_is_abroad':True}</field>
+            <field name="context">{'default_is_abroad':True,'default_is_company':True}</field>
             <field name="search_view_id" ref="base.view_res_partner_filter"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
