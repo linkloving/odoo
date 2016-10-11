@@ -8,7 +8,7 @@ class AccountAmountReceived(models.Model):
     """
 
     """
-    _name = 'account.amount.receive'
+    _name = 'account.receive'
     _inherit = ['mail.thread']
     _order = 'create_date desc'
     name = fields.Char()
@@ -17,13 +17,14 @@ class AccountAmountReceived(models.Model):
     receive_date = fields.Date(string='收款日期')
     remark = fields.Text(string='备注')
     customer_id = fields.Many2one('res.partner', string='客户')
+    receive_id = fields.Many2one('res.users')
     journal_id = fields.Many2one('account.journal', 'Salary Journal')
     state = fields.Selection([
-        ('draft', 'Draft'),
-        ('posted', 'Posted'),
-        ('confirm', 'Confirm Account'),
-        ('done', 'Done'),
-        ('cancel', 'Cancelled')
+        ('draft', '草稿'),
+        ('posted', '提交'),
+        ('confirm', '确认'),
+        ('done', '完成'),
+        ('cancel', '取消')
     ], 'State', readonly=True, default='draft')
 
     @api.constrains('amount')

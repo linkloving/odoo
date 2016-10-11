@@ -2,7 +2,7 @@
     <data>
         <record id="account_amount_receive_tree" model="ir.ui.view">
             <field name="name">account.amount.receive.tree</field>
-            <field name="model">account.amount.receive</field>
+            <field name="model">account.receive</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="customer_id"/>
@@ -19,14 +19,14 @@
 
         <record id="account_amount_receive_form" model="ir.ui.view">
             <field name="name">account.amount.receive.form</field>
-            <field name="model">account.amount.receive</field>
+            <field name="model">account.receive</field>
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="confirm" string="Confirm" type="object"
-                                class="oe_highlight" state="draft"/>
-                        <button name="reject" string="Return" type="object"
-                                state="draft"/>
+                        <button name="confirm" string="确认" type="object"
+                                class="oe_highlight" states="draft"/>
+                        <!--<button name="reject" string="Return" type="object"-->
+                        <!--state="draft"/>-->
                         <field name="state" widget="statusbar"
                         />
                     </header>
@@ -52,9 +52,9 @@
 
 
         <record id="action_invoice_account_receive" model="ir.actions.act_window">
-            <field name="name">Customer Payment</field>
+            <field name="name">收款</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">account.amount.receive</field>
+            <field name="res_model">account.receive</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
@@ -69,7 +69,7 @@
             </field>
         </record>
 
-        <menuitem id="menu_finance_account_receive" action="action_invoice_account_receive" name="Customers Payment"
+        <menuitem id="menu_finance_account_receive" action="action_invoice_account_receive"
                   parent="account.menu_finance_receivables"/>
 
 

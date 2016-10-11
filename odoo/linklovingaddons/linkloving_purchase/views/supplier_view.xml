@@ -42,7 +42,7 @@
                                 class="oe_stat_button"
                                 icon="fa-dollar"
                                 attrs="{'invisible': [('prepayment_count', '=', 0)]}">
-                            <field name="prepayment_count" widget="statinfo" string="Prepayments"/>
+                            <field name="prepayment_count" widget="statinfo" string="预付款"/>
                         </button>
                     </div>
                 </xpath>
@@ -102,20 +102,20 @@
         </record>
 
          <record model="ir.actions.act_window" id="pre_payment_application">
-            <field name="name">Pre Payment Application</field>
-            <field name="res_model">purchase.order</field>
+             <field name="name">采购预付款</field>
+             <field name="res_model">account.payment</field>
             <field name="view_mode">tree,form</field>
-             <field name="domain">[('state','=','approved')]</field>
+             <field name="context">{'default_pay_type':'1'}</field>
+             <field name="domain">[('pay_type','=','1')]</field>
         </record>
 
 
 
-
         <menuitem
-          id="menu_procurement_management_pre_payment"
-          action="pre_payment_application"
-          name="Pre Payment Application"
-          parent="purchase.menu_procurement_management_invoice"
+                id="menu_procurement_management_pre_payment"
+                action="pre_payment_application"
+                name="采购预付款"
+                parent="purchase.menu_procurement_management_invoice"
         />
 
 

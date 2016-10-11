@@ -8,7 +8,7 @@ class PurchaseOrder(models.Model):
     采购单
     """
     _inherit = 'purchase.order'
-    pre_payment_ids = fields.One2many('account.prepayment', 'po_id')
+    pre_payment_ids = fields.One2many('account.payment', 'po_id')
     prepayment_count = fields.Char(compute='get_pre_payment_ids')
     is_prepayment_deduct = fields.Boolean()
     pre_payment_mount = fields.Float(compute='get_pre_payment_mount')
@@ -33,7 +33,7 @@ class PurchaseOrder(models.Model):
             'name': 'Create Pre Payment',
             'view_type': 'form',
             'view_mode': 'form',
-            'res_model': 'account.prepayment',
+            'res_model': 'account.payment',
             'view_id': self.env.ref('linkloving_account.purchase_pre_payment_form_modal').id,
             'context': {'default_po_id': self.id},
             'target': 'new',
@@ -76,5 +76,5 @@ class PurchaseOrder(models.Model):
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
     po_id = fields.Many2one('purchase.order')
-    pre_payment_ids = fields.One2many('account.prepayment', related='po_id.pre_payment_ids')
+    pre_payment_ids = fields.One2many('account.payment', related='po_id.pre_payment_ids')
     pre_payment_amount = fields.Float(string='Pre Payment Amount')

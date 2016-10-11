@@ -25,7 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/pre_payment.xml',
+        'views/payment_view.xml',
         'views/account_invoice.xml',
         'views/account_receive.xml',
         'templates.xml',

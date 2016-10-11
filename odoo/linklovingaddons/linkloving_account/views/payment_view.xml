@@ -2,14 +2,19 @@
     <data>
         <record id="purchase_pre_payment_form_modal" model="ir.ui.view">
             <field name="name">res.partner.level.form</field>
-            <field name="model">account.prepayment</field>
+            <field name="model">account.payment</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="state" widget="statusbar"
+                        />
+                    </header>
                     <sheet>
                         <group>
-                            <field name="po_id" readonly="1"/>
-                            <field name="amount"/>
-                            <field name="description"/>
+                            <field name="po_id" string="PO" readonly="1"/>
+                            <field name="partner_id" string="供应商" readonly="1"/>
+                            <field name="amount" string="金额"/>
+                            <field name="description" string="描述"/>
                         </group>
                         <footer class="oe_edit_only">
                             <button name="confirm_prepayment" type="object"
@@ -17,25 +22,28 @@
                             <button special="cancel" string="Cancel" class="oe_link"/>
                         </footer>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
         <record id="purchase_pre_payment_form" model="ir.ui.view">
             <field name="name">res.partner.level.form</field>
-            <field name="model">account.prepayment</field>
+            <field name="model">account.payment</field>
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="pay" string="Pay" type="object" states="unpaid"
+                        <button name="pay" string="确认付款" type="object" states="unpaid"
                                 class="oe_highlight"/>
-                        <!--<button name="cancel" string="Cancel" type="object" states="unpaid"-->
-                        <!--/>-->
                         <field name="state" widget="statusbar"
                         />
                     </header>
                     <sheet>
                         <group>
-                            <field name="po_id" readonly="1"/>
+                            <field name="po_id"/>
+                            <field name="partner_id" string="供应商" readonly="1"/>
                             <field name="amount" readonly="1"/>
                             <field name="description"/>
                         </group>
@@ -50,14 +58,16 @@
 
         <record id="purchase_pre_payment_tree" model="ir.ui.view">
             <field name="name">res.partner.level.tree</field>
-            <field name="model">account.prepayment</field>
+            <field name="model">account.payment</field>
             <field name="arch" type="xml">
                 <tree create="false" edit="false">
                     <field name="po_id" readonly="1"/>
                     <field name="amount"/>
+                    <field name="partner_id"/>
                     <field name="create_uid"/>
                     <field name="create_date"/>
                     <field name="description"/>
+                    <field name="state"/>
 
                 </tree>
             </field>
@@ -67,7 +77,7 @@
         <record id="action_invoice_prepayment" model="ir.actions.act_window">
             <field name="name">Supplier Pre Payment</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">account.prepayment</field>
+            <field name="res_model">account.payment</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', 'not in', ['draft', 'cancel'])]</field>

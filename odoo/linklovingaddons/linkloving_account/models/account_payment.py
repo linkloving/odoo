@@ -4,25 +4,31 @@ from openerp.exceptions import ValidationError
 from openerp.osv import osv
 
 
-class AccountPrePayment(models.Model):
+class AccountPayment(models.Model):
     """
     设置预付款
     """
-    _name = 'account.prepayment'
+    _name = 'account.payment'
     _inherit = 'mail.thread'
     _order = 'create_date desc'
-    name = fields.Char()
+    pay_type = fields.Selection([
+        ('1', '预付款'),
+        ('2', '正常款'),
+    ], default='1')
     is_deduct = fields.Boolean()
     po_id = fields.Many2one('purchase.order', string='Purchase Order')
     so_id = fields.Many2one('sale.order', string='Sale Order')
+    partner_id = fields.Many2one(related='po_id.partner_id')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('unpaid', 'Unpaid'),
         ('paid', 'Paid'),
         ('cancel', 'Cancel')
-    ], default='unpaid')
-    description = fields.Text(string='Description')
+    ], default='draft')
+    description = fields.Text(string='备注')
+
     amount = fields.Float(string='Amount')
+
 
     @api.constrains('amount')
     def _check_amount(self):
@@ -46,6 +52,10 @@ class AccountPrePayment(models.Model):
         return {'type': 'ir.actions.act_window_close'}
 
     @api.multi
+    def post(self):
+        self.state = 'unpaid'
+
+    @api.multi
     def pay(self):
         self.state = 'paid'
 
@@ -58,4 +68,4 @@ class AccountPrePayment(models.Model):
         for payment in self:
             if payment.state not in ('draft'):
                 raise osv.except_osv(u'错误!', u'不能删除非草稿状态的！！！')
-        return super(AccountPrePayment, self).unlink()
+        return super(AccountPayment, self).unlink()
