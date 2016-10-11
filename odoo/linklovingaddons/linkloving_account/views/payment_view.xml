@@ -43,7 +43,7 @@
                         <group>
                             <field name="po_id"/>
                             <field name="partner_id" string="供应商" readonly="1"/>
-                            <field name="amount" readonly="1"/>
+                            <field name="amount" readonly="0"/>
                             <field name="description"/>
                         </group>
                     </sheet>
