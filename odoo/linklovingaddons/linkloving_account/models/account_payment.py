@@ -24,7 +24,7 @@ class AccountPayment(models.Model):
         ('unpaid', 'Unpaid'),
         ('paid', 'Paid'),
         ('cancel', 'Cancel')
-    ], default='draft')
+    ], default='unpaid')
     description = fields.Text(string='备注')
 
     amount = fields.Float(string='Amount')
