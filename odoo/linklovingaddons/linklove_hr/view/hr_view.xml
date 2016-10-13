@@ -36,5 +36,29 @@
 			</field>
 		</record>
 
+        <record id="linkloving_view_expenses_tree" model="ir.ui.view">
+            <field name="model">hr.expense.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_expenses_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="code"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_expense_filter" model="ir.ui.view">
+            <field name="name">hr.expense.expense.filter</field>
+            <field name="model">hr.expense.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_filter"/>
+            <field name="arch" type="xml">
+                <!--<xpath expr="//field[@name='date']" position="after">-->
+                <field name="date" position="after">
+                     <field name="code"/>
+                </field>
+                <!--</xpath>-->
+            </field>
+
+        </record>
+
     </data>
 </openerp>
