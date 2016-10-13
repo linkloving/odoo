@@ -6,8 +6,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="state" widget="statusbar"
-                        />
+                        <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                         <group>
@@ -44,7 +43,7 @@
                         <group>
                             <field name="po_id"/>
                             <field name="partner_id" string="供应商" readonly="1"/>
-                            <field name="amount" readonly="1"/>
+                            <field name="amount" readonly="0"/>
                             <field name="description"/>
                         </group>
                     </sheet>
@@ -60,7 +59,7 @@
             <field name="name">res.partner.level.tree</field>
             <field name="model">account.payment</field>
             <field name="arch" type="xml">
-                <tree create="false" edit="false">
+                <tree>
                     <field name="po_id" readonly="1"/>
                     <field name="amount"/>
                     <field name="partner_id"/>
