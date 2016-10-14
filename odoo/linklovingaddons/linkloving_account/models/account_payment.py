@@ -9,7 +9,6 @@ class AccountPayment(models.Model):
     设置预付款
     """
     _name = 'account.payment'
-    _inherit = 'mail.thread'
     _order = 'create_date desc'
     _rec_name = 'amount'
     pay_type = fields.Selection([
@@ -22,12 +21,11 @@ class AccountPayment(models.Model):
     so_id = fields.Many2one('sale.order', string='Sale Order')
     partner_id = fields.Many2one(related='po_id.partner_id')
     state = fields.Selection([
-        ('draft', 'Draft'),
-        ('unpaid', 'Unpaid'),
-        ('paid', '确认'),
-        ('done', '预付申请'),
-        ('cancel', 'Cancel')
-    ], default='unpaid')
+        ('draft', u'草稿'),
+        ('paid', u'确认'),
+        ('done', u'预付申请'),
+        ('cancel', u'取消')
+    ], default='draft')
     description = fields.Text(string='备注')
     amount = fields.Float(string='Amount')
 
@@ -62,9 +60,6 @@ class AccountPayment(models.Model):
     def confirm_prepayment(self):
         return {'type': 'ir.actions.act_window_close'}
 
-    @api.multi
-    def post(self):
-        self.state = 'unpaid'
 
     @api.multi
     def pay(self):

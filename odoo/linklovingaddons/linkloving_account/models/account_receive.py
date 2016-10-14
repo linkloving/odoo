@@ -15,16 +15,22 @@ class AccountAmountReceived(models.Model):
     amount = fields.Float(string='金额')
     deduct_amount = fields.Float(string='被抵扣')
     account = fields.Char(string='账号')
-    receive_date = fields.Date(string='收款日期')
+    receive_date = fields.Date(string='收款日期', default=fields.date.today())
     remark = fields.Text(string='备注')
     customer_id = fields.Many2one('res.partner', string='客户')
     receive_id = fields.Many2one('res.users')
     journal_id = fields.Many2one('account.journal', 'Salary Journal')
+
+    receive_type = fields.Selection([
+        ('pre', '预收款'),
+        ('normal', '正常')
+    ], default='normal', string='收款类型')
     state = fields.Selection([
         ('draft', '草稿'),
         ('posted', '提交'),
+        ('confirm', '销售确认'),
+        ('deduct', '预付款抵扣'),
         ('done', '完成'),
-        ('pay_done', '完成登账'),
         ('cancel', '取消')
     ], 'State', readonly=True, default='draft')
 
@@ -49,7 +55,7 @@ class AccountAmountReceived(models.Model):
             'partner_id': self.customer_id.id,
             'payment_id': self.id
         })
-        self.state = 'done'
+        self.state = 'confirm'
 
     @api.multi
     def reject(self):
@@ -72,7 +78,7 @@ class AccountAmountReceived(models.Model):
     @api.multi
     def invoice_pay_customer(self):
         return {
-            'name': _("Pay Invoice"),
+            'name': _("登记收款"),
             'view_mode': 'form',
             'view_id': self.env.ref('account_voucher.view_vendor_receipt_dialog_form').id,
             'view_type': 'form',
@@ -87,6 +93,7 @@ class AccountAmountReceived(models.Model):
                 'default_reference': self.customer_id.name,
                 'close_after_process': True,
                 'default_type': 'receipt',
-                'type': 'receipt'
+                'type': 'receipt',
+                'account_receive_id': self.id
             }
         }

@@ -30,8 +30,8 @@ class AccountInvoice(models.Model):
         self.amount_tax = sum(line.amount for line in self.tax_line)
         self.total = self.amount_untaxed + self.amount_tax
         self.amount_total = self.amount_untaxed + self.amount_tax - self.deduct_amount
-        if self.need_deduct_prepayment:
-            self.amount_total -= self.pre_amount_total
+        # if self.need_deduct_prepayment:
+        #     self.amount_total -= self.pre_amount_total
 
     @api.multi
     def action_move_create(self):

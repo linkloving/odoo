@@ -12,8 +12,6 @@ class StockInvoiceShippingWizard(models.TransientModel):
             context = {}
         active_id = context.get('active_id')
         picking = self.pool['stock.picking'].browse(cr, uid, active_id, context=context)
-        print 'picking.po_id.pre_payment_mount', picking.po_id.pre_payment_mount
-        print picking
 
         invoice_ids = self.create_invoice(cr, uid, ids, context=context)
         if not invoice_ids:
