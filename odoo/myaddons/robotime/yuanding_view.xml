@@ -122,25 +122,25 @@
             <field name='model'>stock.picking</field>
             <field name='inherit_id' ref='stock.view_picking_form' />
             <field name='arch' type='xml' >
-                <button name="action_confirm" position='before'>
-                    <button name="submit" string="提交审核" attrs="{'invisible': [('validate_state', 'not in', ['draft'])]}" class="oe_highlight"/>
-                    <button name="agree" string="同意" attrs="{'invisible': [('validate_state', 'in', ['draft', '1th'])]}" class="oe_highlight" context="{'approve': True}" />
-                    <button name="reject" string='拒绝' attrs="{'invisible': [('validate_state', 'in', ['draft', '1th'])]}" context="{'reject': True}" />
-                </button>
+                <!--<button name="action_confirm" position='before'>-->
+                <!--<button name="submit" string="提交审核" attrs="{'invisible': [('validate_state', 'not in', ['draft'])]}" class="oe_highlight" type="workflow"/>-->
+                <!--<button name="agree" string="同意" attrs="{'invisible': [('validate_state', 'in', ['draft', '1th'])]}" class="oe_highlight" context="{'approve': True}" type="workflow"/>-->
+                <!--<button name="reject" string='拒绝' attrs="{'invisible': [('validate_state', 'in', ['draft', '1th'])]}" context="{'reject': True}"  />-->
+                <!--</button>-->
                 <xpath expr="//button[@name='do_enter_transfer_details']" position='attributes'>
                     <attribute name="attrs">{'invisible': [('state', 'not in', ['assigned','partially_available'])]}</attribute>
                     <attribute name='states' ></attribute> 
                 </xpath>
-                <field name='state' position='after'>
-                    <field name="validate_state" widget="statusbar" readonly="1" attrs="{'invisible': ['|', ('validate_state', '==', '1th')]}" />
-                </field>                
-                <field name='state' position='attributes'>
-                    <attribute name='attrs'>{'invisible': ['|', ('state', '!=', 'draft'), '|',('validate_state', '!=', '1th')]}</attribute>
-                </field> 
-                <button name='action_confirm' position='attributes'>
-                    <attribute name='states' />
-                    <attribute name='attrs'>{'invisible': ['|', ('state', '!=', 'draft'), '|',('validate_state', '!=', '1th')]}</attribute>
-                </button>
+                <!--<field name='state' position='after'>-->
+                <!--<field name="validate_state" widget="statusbar" readonly="1" attrs="{'invisible': ['|', ('validate_state', '==', '1th')]}" />-->
+                <!--</field>-->
+                <!--<field name='state' position='attributes'>-->
+                <!--<attribute name='attrs'>{'invisible': ['|', ('state', '!=', 'draft'), '|',('validate_state', '!=', '1th')]}</attribute>-->
+                <!--</field> -->
+                <!--<button name='action_confirm' position='attributes'>-->
+                <!--<attribute name='states' />-->
+                <!--<attribute name='attrs'>{'invisible': ['|', ('state', '!=', 'draft'), '|',('validate_state', '!=', '1th')]}</attribute>-->
+                <!--</button>-->
             </field>
         </record>
 

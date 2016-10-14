@@ -5,8 +5,6 @@ from openerp.osv import fields as fieldsold
 from openerp.tools.translate import _
 from openerp.tools import float_compare
 
-class stock_picking(osv.Model):
-    _inherit = 'stock.picking'
 class sale_order_line(osv.osv):
     _inherit = 'sale.order.line'
     _columns = {        
@@ -115,16 +113,7 @@ class purchase_order_line(osv.osv):
         'product_id': fieldsold.many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True,required=True,
                                            states={'draft': [('readonly', False)]})
                }
-class stock_picking(osv.Model):
-    _inherit = 'stock.picking'
 
-    _columns = {
-        'validate_state': fieldsold.selection([
-            ('draft', '未提交审核'),
-            ('submited',u'已提交审核'),
-            ('1th',u'质检审核通过'),
-            ], 'Status', readonly=True, copy=False, track_visibility='onchange',select=True), 
-    }    
 class hr_expense_expense(osv.osv):
    
     _inherit = 'hr.expense.expense'
