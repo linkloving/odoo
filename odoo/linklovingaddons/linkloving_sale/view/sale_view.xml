@@ -76,7 +76,7 @@
                             <field name="state" invisible="1"/>
                             <field name="th_weight" invisible="1"/>
                             <field name="product_id"
-                                   context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                                   context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id,'price_unit':price_unit}"
                                    groups="base.group_user"
                                    on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"/>
                             <field name="name"/>

@@ -16,8 +16,10 @@
                             <field name="description" string="描述"/>
                         </group>
                         <footer class="oe_edit_only">
-                            <button name="confirm_prepayment" type="object"
+                            <button name="确认" type="object"
                                     string="Save" class="oe_highlight"/>
+                            <button name="create_voucher" string="确认付款" type="object" states="paid"
+                                    class="oe_highlight" groups="purchase.group_purchase_user"/>
                             <button special="cancel" string="Cancel" class="oe_link"/>
                         </footer>
                     </sheet>
@@ -34,8 +36,10 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="pay" string="确认付款" type="object" states="unpaid"
-                                class="oe_highlight"/>
+                        <button name="pay" string="确认" type="object" states="unpaid"
+                                class="oe_highlight" groups="purchase.group_purchase_user"/>
+                        <button name="create_voucher" string="确认付款" type="object" states="paid"
+                                class="oe_highlight" groups="purchase.group_purchase_user"/>
                         <field name="state" widget="statusbar"
                         />
                     </header>

@@ -23,21 +23,29 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="confirm" string="确认" type="object"
+                        <button name="post" string="提交" type="object"
                                 class="oe_highlight" states="draft"/>
-                        <!--<button name="reject" string="Return" type="object"-->
-                        <!--state="draft"/>-->
-                        <field name="state" widget="statusbar"
-                        />
+                        <button name="reject" string="退回" type="object"
+                                states="draft" groups="base.group_sale_salesman"/>
+                        <button name="confirm" string="确认" type="object"
+                                states="posted" groups="base.group_sale_salesman"/>
+                        <button name="invoice_pay_customer" type="object" string="登记收款"
+                                states="done" groups="base.group_user"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,posted,done"/>
                     </header>
                     <sheet>
                         <group>
-                            <field name="customer_id"/>
+                            <field name="customer_id"
+                                   attrs="{'required': [('state', '=', 'posted')],'readonly': [('state', '=', 'done')]}"
+                                   domain="[('customer', '=', True),('is_company', '=', True)]"/>
                             <field name="amount" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
-                            <field name="receive_date"/>
-                            <field name="account" attrs="{'readonly':[('state','!=','draft')]}"/>
-                            <field name="journal_id" string="账户"/>
-                            <field name="remark" required="1"/>
+                            <field name="receive_date" required="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                            <field name="account"
+                                   attrs="{'readonly':[('state','!=','draft')],'readonly': [('state', '=', 'done')]}"/>
+                            <field name="journal_id" string="收入账户" required="1"
+                                   attrs="{'readonly': [('state', '=', 'done')]}"/>
+                            <field name="remark" required="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">

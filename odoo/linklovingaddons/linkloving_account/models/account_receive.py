@@ -13,6 +13,7 @@ class AccountAmountReceived(models.Model):
     _order = 'create_date desc'
     name = fields.Char()
     amount = fields.Float(string='金额')
+    deduct_amount = fields.Float(string='被抵扣')
     account = fields.Char(string='账号')
     receive_date = fields.Date(string='收款日期')
     remark = fields.Text(string='备注')
@@ -22,10 +23,15 @@ class AccountAmountReceived(models.Model):
     state = fields.Selection([
         ('draft', '草稿'),
         ('posted', '提交'),
-        ('confirm', '确认'),
         ('done', '完成'),
+        ('pay_done', '完成登账'),
         ('cancel', '取消')
     ], 'State', readonly=True, default='draft')
+
+    _sql_constraints = {
+        ('name_uniq', 'unique(name)',
+         'Name mast be unique!')
+    }
 
     @api.constrains('amount')
     def _check_amount(self):
@@ -34,8 +40,16 @@ class AccountAmountReceived(models.Model):
                 raise ValidationError("金额必须大于0")
 
     @api.multi
-    def confirm(self):
+    def post(self):
         self.state = 'posted'
+
+    @api.multi
+    def confirm(self):
+        self.env['account.pool'].create({
+            'partner_id': self.customer_id.id,
+            'payment_id': self.id
+        })
+        self.state = 'done'
 
     @api.multi
     def reject(self):
@@ -47,3 +61,32 @@ class AccountAmountReceived(models.Model):
             if budget.state not in ('draft'):
                 raise osv.except_osv(u'错误!', u'不能删除非草稿状态的！！！')
         return super(AccountAmountReceived, self).unlink()
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('name', False):
+            vals['name'] = self.env[
+                               'ir.sequence'].get('account.receive') or '/'
+        return super(AccountAmountReceived, self).create(vals)
+
+    @api.multi
+    def invoice_pay_customer(self):
+        return {
+            'name': _("Pay Invoice"),
+            'view_mode': 'form',
+            'view_id': self.env.ref('account_voucher.view_vendor_receipt_dialog_form').id,
+            'view_type': 'form',
+            'res_model': 'account.voucher',
+            'type': 'ir.actions.act_window',
+            'nodestroy': True,
+            'target': 'new',
+            'domain': '[]',
+            'context': {
+                'default_partner_id': self.customer_id.id,
+                'default_amount': self.amount,
+                'default_reference': self.customer_id.name,
+                'close_after_process': True,
+                'default_type': 'receipt',
+                'type': 'receipt'
+            }
+        }

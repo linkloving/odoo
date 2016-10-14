@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="sequence_type_account_payment" model="ir.sequence.type">
+            <field name="name">Account Payment</field>
+            <field name="code">account.payment</field>
+        </record>
+
+        <record id="sequence_account_payment" model="ir.sequence">
+            <field name="name">Account Payment</field>
+            <field name="code">account.payment</field>
+            <field name="prefix">ABC</field>
+            <field name="number_next">1000</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="sequence_type_account_receive" model="ir.sequence.type">
+            <field name="name">Account Receive</field>
+            <field name="code">account.receive</field>
+        </record>
+
+        <record id="sequence_account_receive" model="ir.sequence">
+            <field name="name">Account Receive</field>
+            <field name="code">account.receive</field>
+            <field name="prefix">ACC</field>
+            <field name="number_next">1000</field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</openerp>

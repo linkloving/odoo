@@ -179,7 +179,8 @@ class AccountInvoice(models.Model):
             # account move reference when creating the same invoice after a cancelled one:
             move.post()
         self._log_event()
-        self.tr_po_number.is_prepayment_deduct = True
+        if self.tr_po_number:
+            self.tr_po_number.is_prepayment_deduct = True
         return True
 
     def _compute_residual(self):

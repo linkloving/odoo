@@ -78,3 +78,4 @@ class StockPicking(models.Model):
     po_id = fields.Many2one('purchase.order')
     pre_payment_ids = fields.One2many('account.payment', related='po_id.pre_payment_ids')
     pre_payment_amount = fields.Float(string='Pre Payment Amount')
+
