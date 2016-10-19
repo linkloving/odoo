@@ -7,6 +7,15 @@ from openerp.osv import osv
 class AccountVoucher(models.Model):
     _inherit = 'account.voucher'
 
+    @api.multi
+    def button_proforma_voucher(self):
+        account_receive_id = self._context.get('account_receive_id')
+        if account_receive_id:
+            account_receive = self.env['account.receive'].browse(account_receive_id)
+            account_receive.state = 'done'
+        self.signal_workflow('proforma_voucher')
+        return {'type': 'ir.actions.act_window_close'}
+
     @api.model
     def create(self, vals):
         voucher = super(AccountVoucher, self).create(vals)

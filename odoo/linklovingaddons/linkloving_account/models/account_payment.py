@@ -22,8 +22,8 @@ class AccountPayment(models.Model):
     partner_id = fields.Many2one(related='po_id.partner_id')
     state = fields.Selection([
         ('draft', u'草稿'),
-        ('paid', u'确认'),
-        ('done', u'预付申请'),
+        ('apply', u'预付申请'),
+        ('done', u'完成'),
         ('cancel', u'取消')
     ], default='draft')
     description = fields.Text(string='备注')
@@ -61,8 +61,12 @@ class AccountPayment(models.Model):
 
 
     @api.multi
-    def pay(self):
-        self.state = 'paid'
+    def apply(self):
+        self.state = 'apply'
+
+    @api.multi
+    def set_to_apply(self):
+        self.state = 'apply'
 
     @api.multi
     def cancel(self):
