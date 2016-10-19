@@ -8,31 +8,42 @@ class AccountPool(models.Model):
     _inherit = 'mail.thread'
     partner_id = fields.Many2one('res.partner')
     inv_id = fields.Many2one('account.invoice')
-    payment_id = fields.Many2one('account.receive')
-    # period_id= fields.Many2one('account.period', 'Period', required=True, readonly=True)
+    voucher_id = fields.Many2one('account.voucher')
+    period_id = fields.Many2one('account.period', 'Period', required=True, compute='get_period_id', store=True)
     sub_in = fields.Float(compute='_get_sub_in')
-    # sub_out = fields.Float(compute='_get_sub_out')
+    sub_out = fields.Float(compute='_get_sub_out')
+    remain_amount = fields.Float(compute='_get_remain_amount')
     state = fields.Selection([
         ('draft', '草稿'),
         ('posted', '提交'),
     ], 'State', readonly=True, default='draft')
 
     @api.one
-    @api.depends('payment_id')
-    def _get_sub_in(self):
-        amount = 0
-        if self.payment_id:
-            amount = --self.payment_id.amount
-        self.sub_in = amount
+    @api.depends('inv_id', 'voucher_id')
+    def get_period_id(self):
+        if self.voucher_id:
+            self.period_id = self.voucher_id.period_id
+        else:
+            print '-----------'
+            print self.inv_id.period_id
+            self.period_id = self.inv_id.period_id
 
-        # @api.one
-        # @api.depends('invoice_line.price_subtotal', 'tax_line.amount')
-        # def _compute_amount(self):
-        #     self.amount_total_in = sum(line.price_subtotal for line in self.invoice_line)
-        #     self.amount_total_out = sum(line.amount for line in self.tax_line)
-        #     self.amount_total = self.amount_total_in + self.amount_total_out
-        #
-        # @api.one
-        # @api.depends('inv_id')
-        # def _get_sub_in(self):
-        #     self.sub_out = -self.inv_id.amount_total
+    @api.one
+    @api.depends('inv_id')
+    def _get_sub_in(self):
+        self.sub_in = self.inv_id.amount_total
+
+    @api.one
+    @api.depends('voucher_id')
+    def _get_sub_out(self):
+        self.sub_out = self.voucher_id.amount
+
+    @api.one
+    @api.depends('sub_in', 'sub_out')
+    def _get_remain_amount(self):
+        self.remain_amount = self.sub_out - self.sub_in
+
+    @api.model
+    def create(self, vals):
+        print 'dddddddddddd'
+        return super(AccountPool, self).create(vals)

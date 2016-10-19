@@ -11,7 +11,6 @@ class AccountInvoice(models.Model):
     deduct_amount = fields.Float(string='扣款')
     deduct_reason = fields.Text(string='扣款原因')
     pre_amount_total = fields.Float(compute='get_prepayment_total', string='预付款金额')
-
     total = fields.Float(compute='_compute_amount')
     need_deduct_prepayment = fields.Boolean()
 
@@ -214,11 +213,25 @@ class AccountInvoice(models.Model):
         else:
             self.residual = max(self.residual, 0.0) - self.pre_amount_total - self.deduct_amount
 
+    @api.multi
+    def invoice_validate(self):
+
+        create_data = {
+            'partner_id': self.partner_id.id,
+            'inv_id': self.id
+        }
+        self.env['account.pool'].create(create_data)
+        # FIXME:
+        if any([line.invoice_line_tax_id.amount for line in self.invoice_line]):
+            self.env['account.invoice.pool'].create(create_data)
+
+        return self.write({'state': 'open'})
     @api.model
     def create(self, values):
         po_id = self.env['stock.picking'].search([('name', '=', values['origin'])]).po_id
 
         inv = super(AccountInvoice, self).create(values)
+
         if po_id and not po_id.is_prepayment_deduct:
             inv.need_deduct_prepayment = True
         else:

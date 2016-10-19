@@ -34,7 +34,6 @@ class AccountPayment(models.Model):
          'Name mast be unique!')
     }
 
-
     @api.constrains('amount')
     def _check_amount(self):
         for record in self:
@@ -102,10 +101,10 @@ class AccountPayment(models.Model):
                                               'amount': line.amount,
                                               'account_id': line.partner_id.property_account_payable.id,
                                               'type': 'payment'
-                                              }, context=self._context)
+                                              })
             voucher_ids.append(voucher_id.id)
 
-            self.write({'state': 'done'}, context=self._context)
+            self.write({'state': 'done'})
         return {
             'name': '供应商付款',
             'domain': [('id', 'in', voucher_ids)],

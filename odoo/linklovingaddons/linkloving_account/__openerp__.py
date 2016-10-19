@@ -30,6 +30,8 @@
         'views/account_invoice.xml',
         'views/account_ir_sequence.xml',
         'views/account_receive.xml',
+        'views/invoice_pool.xml',
+        'views/partner.xml',
         'templates.xml',
     ],
     # only loaded in demonstration mode

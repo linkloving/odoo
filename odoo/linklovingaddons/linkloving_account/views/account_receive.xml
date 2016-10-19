@@ -6,7 +6,7 @@
             <field name="model">account.receive</field>
             <field name="arch" type="xml">
                 <tree colors="black:state=='draft';blue:state=='confirm';red:state=='deduct',gray:state in ('cancel','done')">
-                    <field name="customer_id"/>
+                    <field name="partner_id" string="合作伙伴"/>
                     <field name="amount"/>
                     <field name="account"/>
                     <field name="remark"/>
@@ -40,7 +40,7 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="customer_id"
+                            <field name="partner_id"
                                    attrs="{'required': [('state', '=', 'posted')],'readonly': [('state', '=', 'done')]}"
                                    domain="[('customer', '=', True),('is_company', '=', True)]"/>
                             <field name="amount" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
@@ -70,7 +70,7 @@
             <field name="res_model">account.receive</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
+            <field name="domain">[('receive_type','!=','invoice')]</field>
             <field name="context">{}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -84,6 +84,131 @@
 
         <menuitem id="menu_finance_account_receive" action="action_invoice_account_receive"
                   parent="account.menu_finance_receivables"/>
+
+
+        <record id="account_customer_receive_invoice_form" model="ir.ui.view">
+            <field name="name">account.amount.receive.form</field>
+            <field name="model">account.receive</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="confirm_invoice_receive" string="确认" type="object"
+                                states="draft"/>
+
+                        <button name="cancel" type="object" string="取消"
+                                attrs="{'invisible': [('state', '!=', 'done')]}" groups="base.group_user"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"
+                                   attrs="{'required': [('state', '=', 'posted')],'readonly': [('state', '=', 'done')]}"
+                                   domain="[('customer', '=', True),('is_company', '=', True)]"/>
+                            <field name="amount" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
+                            <field name="receive_type" readonly="1"/>
+
+                            <field name="remark" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="account_supplier_receive_invoice_form" model="ir.ui.view">
+            <field name="name">account.amount.receive.form</field>
+            <field name="model">account.receive</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="confirm_invoice_receive" string="确认" type="object"
+                                states="draft" groups="account.group_account_invoice"/>
+
+                        <button name="cancel" type="object" string="取消"
+                                attrs="{'invisible': [('state', '!=', 'done')]}"
+                                groups="account.group_account_invoice"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"
+                                   attrs="{'required': [('state', '=', 'posted')],'readonly': [('state', '=', 'done')]}"
+                                   domain="[('supplier', '=', True),('is_company', '=', True)]" string="供应商"/>
+                            <field name="amount" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
+                            <field name="receive_type" readonly="1"/>
+
+                            <field name="remark" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+        <record id="customer_invoice_management" model="ir.actions.act_window">
+            <field name="name">客户发票管理</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.receive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('receive_type','=','invoice'),('is_customer','=',True)]</field>
+            <field name="context">{'default_receive_type':'invoice'}</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode':'tree', 'view_id': ref('account_amount_receive_tree')}),
+            (0,0,{'view_mode':'form', 'view_id': ref('account_customer_receive_invoice_form')})]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add customer payment.
+                </p>
+                <p>
+                    No customer payment!
+                </p>
+            </field>
+        </record>
+
+        <record id="supplier_invoice_management" model="ir.actions.act_window">
+            <field name="name">供应商发票管理</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.receive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('receive_type','=','invoice'),('is_customer','=',False)]</field>
+            <field name="context">{'default_receive_type':'invoice'}</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode':'tree', 'view_id': ref('account_amount_receive_tree')}),
+            (0,0,{'view_mode':'form', 'view_id': ref('account_supplier_receive_invoice_form')})]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add customer payment.
+                </p>
+                <p>
+                    No customer payment!
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem
+                id="menu_customer_invoice_management"
+                action="customer_invoice_management"
+                name="客户发票管理"
+                parent="account.menu_finance_receivables"
+        />
+        <menuitem
+                id="menu_supplier_invoice_management"
+                action="supplier_invoice_management"
+                name="供应商发票管理"
+                parent="account.menu_finance_receivables"
+        />
 
 
     </data>

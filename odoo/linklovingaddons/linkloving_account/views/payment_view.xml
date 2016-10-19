@@ -37,10 +37,10 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="pay" string="确认" type="object" states="unpaid"
+                        <button name="pay" string="确认" type="object" states="draft"
                                 class="oe_highlight" groups="purchase.group_purchase_user"/>
                         <button name="create_voucher" string="确认付款" type="object" states="paid"
-                                class="oe_highlight" groups="purchase.group_purchase_user"/>
+                                class="oe_highlight" groups="account.group_account_invoice"/>
                         <field name="state" widget="statusbar"
                         />
                     </header>

@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="account_amount_receive_tree" model="ir.ui.view">
-            <field name="name">account.amount.receive.tree</field>
-            <field name="model">account.receive</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="customer_id"/>
-                    <field name="amount"/>
-                    <field name="account"/>
-                    <field name="remark"/>
-                    <field name="create_uid"/>
-                    <field name="receive_date"/>
-                    <field name="journal_id" string="账户" options='{ "no_create": True}' readonly="1"/>
-                </tree>
-            </field>
-        </record>
+
 
         <record id="account_pool_search_view" model="ir.ui.view">
             <field name="name">account.pool</field>
@@ -23,6 +9,7 @@
             <field name="arch" type="xml">
                 <search string="Search Vouchers">
                     <field name="partner_id" string="客户名称" filter_domain="[('partner_id.name','ilike',self)]"/>
+                    <field name="period_id"/>
                 </search>
             </field>
         </record>
@@ -36,8 +23,9 @@
                     <sheet>
                         <group>
                             <field name="partner_id"/>
-                            <field name="payment_id"/>
-                            <field name="inv_id"/>
+                            <field name="voucher_id" attrs="{'invisible':[('voucher_id','=',False)]}"/>
+                            <field name="inv_id" attrs="{'invisible':[('inv_id','=',False)]}" string="对账单号"/>
+                            <field name="period_id"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
@@ -49,16 +37,31 @@
         </record>
 
         <record id="account_receive_account_pool_tree" model="ir.ui.view">
-            <field name="name">account.amount.receive.tree</field>
+            <field name="name">account.amount.pool.tree</field>
             <field name="model">account.pool</field>
             <field name="arch" type="xml">
                 <tree create="false" delete="false">
                     <field name="partner_id" string="客户"/>
-                    <field name="payment_id" string="收款单号"/>
-                    <field name="sub_in" sum="已付" string="已付"/>
+                    <field name="voucher_id" string="收款单号"/>
+                    <field name="period_id"/>
+                    <field name="inv_id" string="对账单号"/>
+                    <field name="sub_in" sum="应付" string="应付"/>
+                    <field name="sub_out" sum="已付" string="已付"/>
+                    <field name="remain_amount" sum="结余" string="结余"/>
+
                     <field name="create_date"/>
                 </tree>
             </field>
+        </record>
+
+        <record id="action_view_account_pool" model="ir.actions.act_window">
+            <field name="name">客户付款</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.pool</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('partner_id','=',active_id)]</field>
+            <field name="context">{}</field>
         </record>
     </data>
 </openerp>

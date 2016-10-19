@@ -13,23 +13,23 @@ class AccountAmountReceived(models.Model):
     _order = 'create_date desc'
     name = fields.Char()
     amount = fields.Float(string='金额')
-    deduct_amount = fields.Float(string='被抵扣')
     account = fields.Char(string='账号')
     receive_date = fields.Date(string='收款日期', default=fields.date.today())
     remark = fields.Text(string='备注')
-    customer_id = fields.Many2one('res.partner', string='客户')
+    partner_id = fields.Many2one('res.partner', string='客户')
+    is_customer = fields.Boolean(related='partner_id.customer', store=True)
     receive_id = fields.Many2one('res.users')
     journal_id = fields.Many2one('account.journal', 'Salary Journal')
-
+    invoice_id = fields.Many2one('account.invoice')
     receive_type = fields.Selection([
         ('pre', '预收款'),
-        ('normal', '正常')
+        ('normal', '收款'),
+        ('invoice', '发票')
     ], default='normal', string='收款类型')
     state = fields.Selection([
         ('draft', '草稿'),
         ('posted', '提交'),
         ('confirm', '销售确认'),
-        ('deduct', '预付款抵扣'),
         ('done', '完成'),
         ('cancel', '取消')
     ], 'State', readonly=True, default='draft')
@@ -50,16 +50,25 @@ class AccountAmountReceived(models.Model):
         self.state = 'posted'
 
     @api.multi
+    def confirm_invoice_receive(self):
+        if self.receive_type == 'invoice':
+            self.env['account.invoice.pool'].create({
+                'receive_id': self.id,
+                'partner_id': self.partner_id.id
+            })
+        self.state = 'done'
+
+    @api.multi
     def confirm(self):
-        self.env['account.pool'].create({
-            'partner_id': self.customer_id.id,
-            'payment_id': self.id
-        })
         self.state = 'confirm'
 
     @api.multi
     def reject(self):
         self.state = 'draft'
+
+    @api.multi
+    def cancel(self):
+        self.state = 'cancel'
 
     @api.multi
     def unlink(self):
@@ -88,9 +97,9 @@ class AccountAmountReceived(models.Model):
             'target': 'new',
             'domain': '[]',
             'context': {
-                'default_partner_id': self.customer_id.id,
+                'default_partner_id': self.partner_id.id,
                 'default_amount': self.amount,
-                'default_reference': self.customer_id.name,
+                'default_reference': self.partner_id.name,
                 'close_after_process': True,
                 'default_type': 'receipt',
                 'type': 'receipt',
