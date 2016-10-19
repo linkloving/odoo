@@ -130,7 +130,10 @@
                                 states="draft" groups="account.group_account_invoice"/>
 
                         <button name="cancel" type="object" string="取消"
-                                attrs="{'invisible': [('state', '!=', 'done')]}"
+                                attrs="{'invisible': [('state', '=', 'done')]}"
+                                groups="account.group_account_invoice"/>
+                        <button name="set_to_draft" type="object" string="设为草稿"
+                                attrs="{'invisible': [('state', '=', 'cancel')]}"
                                 groups="account.group_account_invoice"/>
 
                         <field name="state" widget="statusbar" statusbar_visible="draft,done"/>

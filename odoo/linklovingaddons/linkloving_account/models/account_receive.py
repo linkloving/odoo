@@ -45,9 +45,7 @@ class AccountAmountReceived(models.Model):
             if record.amount <= 0:
                 raise ValidationError("金额必须大于0")
 
-    @api.multi
-    def post(self):
-        self.state = 'posted'
+
 
     @api.multi
     def confirm_invoice_receive(self):
@@ -69,6 +67,10 @@ class AccountAmountReceived(models.Model):
     @api.multi
     def cancel(self):
         self.state = 'cancel'
+
+    @api.multi
+    def set_to_draft(self):
+        self.state = 'draft'
 
     @api.multi
     def unlink(self):

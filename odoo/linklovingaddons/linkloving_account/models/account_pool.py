@@ -24,14 +24,15 @@ class AccountPool(models.Model):
         if self.voucher_id:
             self.period_id = self.voucher_id.period_id
         else:
-            print '-----------'
-            print self.inv_id.period_id
             self.period_id = self.inv_id.period_id
 
     @api.one
     @api.depends('inv_id')
     def _get_sub_in(self):
-        self.sub_in = self.inv_id.amount_total
+        amount = 0.0
+        if self.inv_id.state not in ['draft', 'cancel']:
+            amount = self.inv_id.amount_total
+        self.sub_in = amount
 
     @api.one
     @api.depends('voucher_id')
@@ -45,5 +46,4 @@ class AccountPool(models.Model):
 
     @api.model
     def create(self, vals):
-        print 'dddddddddddd'
         return super(AccountPool, self).create(vals)
