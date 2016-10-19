@@ -9,7 +9,7 @@ class AccountPool(models.Model):
     partner_id = fields.Many2one('res.partner')
     inv_id = fields.Many2one('account.invoice')
     voucher_id = fields.Many2one('account.voucher')
-    period_id = fields.Many2one('account.period', 'Period', required=True, compute='get_period_id', store=True)
+    period_id = fields.Many2one('account.period', 'Period', compute='get_period_id', store=True)
     sub_in = fields.Float(compute='_get_sub_in')
     sub_out = fields.Float(compute='_get_sub_out')
     remain_amount = fields.Float(compute='_get_remain_amount')
