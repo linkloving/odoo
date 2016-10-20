@@ -142,7 +142,7 @@
                         <group>
                             <field name="partner_id"
                                    attrs="{'required': [('state', '=', 'posted')],'readonly': [('state', '=', 'done')]}"
-                                   domain="[('supplier', '=', True),('is_company', '=', True)]" string="供应商"/>
+                                   domain="[('customer', '=', True),('is_company', '=', True)]" string="客户"/>
                             <field name="amount" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
                             <field name="receive_type" readonly="1"/>
 
