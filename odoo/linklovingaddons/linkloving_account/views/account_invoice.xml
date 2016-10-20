@@ -16,6 +16,30 @@
                 <xpath expr="//field[@name='origin']" position="before">
                     <field name="tr_po_number"/>
                 </xpath>
+                <xpath expr="//button[@name='invoice_open']" position='after'>
+                    <button name="invoice_confirm_receive" states="invoice" string="确认接收发票" class="oe_highlight"
+                            groups="account.group_account_invoice" type="object"/>
+                </xpath>
+
+
+            </field>
+        </record>
+
+
+        <record id="account_invoice_form_ll" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_open']" position='after'>
+                    <button name="invoice_confirm" states="invoice" string="确认开出发票" class="oe_highlight"
+                            groups="account.group_account_invoice" type="object"/>
+                    <button name="cancel_invoice" states="done" string="取消发票" type="object"
+                            groups="account.group_account_invoice"/>
+                </xpath>
+
+                <xpath expr="//button[@name='invoice_pay_customer']" position='replace'>
+                </xpath>
 
 
             </field>

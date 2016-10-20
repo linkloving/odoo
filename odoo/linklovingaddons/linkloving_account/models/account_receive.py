@@ -61,6 +61,10 @@ class AccountAmountReceived(models.Model):
         self.state = 'confirm'
 
     @api.multi
+    def post(self):
+        self.state = 'posted'
+
+    @api.multi
     def reject(self):
         self.state = 'draft'
 

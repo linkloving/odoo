@@ -14,6 +14,23 @@ class AccountInvoice(models.Model):
     total = fields.Float(compute='_compute_amount')
     need_deduct_prepayment = fields.Boolean()
 
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('proforma', 'Pro-forma'),
+        ('proforma2', 'Pro-forma'),
+        ('invoice', 'Invoice'),
+        ('open', 'Open'),
+        ('paid', 'Paid'),
+        ('done', 'Done'),
+        ('cancel', 'Cancelled'),
+    ], string='Status', index=True, readonly=True, default='draft',
+        track_visibility='onchange', copy=False,
+        help=" * The 'Draft' status is used when a user is encoding a new and unconfirmed Invoice.\n"
+             " * The 'Pro-forma' when invoice is in Pro-forma status,invoice does not have an invoice number.\n"
+             " * The 'Open' status is used when user create invoice,a invoice number is generated.Its in open status till user does not pay invoice.\n"
+             " * The 'Paid' status is set automatically when the invoice is paid. Its related journal entries may or may not be reconciled.\n"
+             " * The 'Cancelled' status is used when user cancel invoice.")
+
 
 
     def get_prepayment_total(self):
@@ -223,9 +240,25 @@ class AccountInvoice(models.Model):
         self.env['account.pool'].create(create_data)
         # FIXME:
         if any([line.invoice_line_tax_id.amount for line in self.invoice_line]):
-            self.env['account.invoice.pool'].create(create_data)
+            return self.write({'state': 'invoice'})
+        if self.partner_id.customer:
+            return self.write({'state': 'done'})
+        else:
+            return self.write({'state': 'open'})
 
-        return self.write({'state': 'open'})
+    @api.multi
+    def invoice_confirm(self):
+        self.state = 'done'
+
+    @api.multi
+    def invoice_confirm_receive(self):
+        self.state = 'open'
+
+    @api.multi
+    def cancel_invoice(self):
+        self.state = 'cancel'
+
+
     @api.model
     def create(self, values):
         po_id = self.env['stock.picking'].search([('name', '=', values['origin'])]).po_id
