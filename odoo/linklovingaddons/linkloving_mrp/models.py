@@ -45,3 +45,11 @@ class linkloving_product_product(models.Model):
     _sql_constraints = [
         ('default_code_uniq', 'unique (default_code)', 'The default code must be unique!')
     ]
+
+# class linkloving_product_template(models.Model):
+#     _inherit = 'product.template'
+#
+#     _sql_constraints = [
+#         ('default_code_template_uniq', 'unique (default_code)', 'The default code must be unique!')
+#     ]
+

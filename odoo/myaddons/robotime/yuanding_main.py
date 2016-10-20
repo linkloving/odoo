@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from openerp import api
 from openerp.osv import osv
 from openerp import models, fields
 from openerp.osv import fields as fieldsold
@@ -136,6 +137,7 @@ class hr_expense_expense(osv.osv):
 #投料不允许负库存        
 class stock_move_consume(osv.osv_memory):
     _inherit = "stock.move.consume"
+
     def do_move_consume(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
@@ -202,3 +204,40 @@ class account_move(osv.osv):
                    ('paid', tuple(valid_moves),))
         self.invalidate_cache(cr, uid, ['state', ], valid_moves, context=context)
         return True
+
+class linkloving_mrp_production(models.Model):
+    _inherit = 'mrp.production'
+    @api.one
+    def one_key_move_consume(self):
+
+        for r in self.move_lines:
+            move_obj = self.env['stock.move']
+            uom_obj = self.env['product.uom']
+            production_obj = self.env['mrp.production']
+            move_ids = r
+            # move = move_obj.browse(move_ids[0])
+            production_id = move_obj.raw_material_production_id.id
+            production = production_obj.browse(production_id)
+            precision = self.env['decimal.precision'].precision_get( 'Product Unit of Measure')
+
+            # stock_move_consume =
+            qty = uom_obj._compute_qty(r.product_uom.id, r.product_uom_qty, r.product_id.uom_id.id)
+            if qty > r.product_id.qty_available:
+                raise osv.except_osv(_(u'错误!'), _(u'需要移动数量大于库存数量,产品: \'%s\'.') % r.product_id.name)
+            remaining_qty = r.product_qty - qty
+            # check for product quantity is less than previously planned
+            if float_compare(remaining_qty, 0, precision_digits=precision) >= 0:
+                move_obj.action_consume( qty, r.location_id.id,
+                                        restrict_lot_id=r.restrict_lot_id.id)
+            else:
+                consumed_qty = min(move_obj.product_qty, qty)
+                move_obj.action_consume( consumed_qty, r.location_id.id,
+                                                    restrict_lot_id=r.restrict_lot_id.id)
+                # consumed more in wizard than previously planned
+                extra_more_qty = qty - consumed_qty
+                # create new line for a remaining qty of the product
+                extra_move_id = production_obj._make_consume_line_from_data( production, r.product_id,
+                                                                            r.product_id.uom_id.id, extra_more_qty,
+                                                                            False, 0)
+                move_obj.write( [extra_move_id], {'restrict_lot_id': r.restrict_lot_id.id})
+                move_obj.action_done( [extra_move_id])
