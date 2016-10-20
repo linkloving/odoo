@@ -7,6 +7,9 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+                        <button name="apply" string="确认" type="object" states="draft"
+                                class="oe_highlight" groups="purchase.group_purchase_user"/>
+
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
