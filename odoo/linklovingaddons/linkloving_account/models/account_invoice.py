@@ -225,11 +225,11 @@ class AccountInvoice(models.Model):
                 line_amount = self.currency_id.round(line_amount / len(partial_reconciliation_invoices))
                 partial_reconciliations_done.append(line.reconcile_partial_id.id)
             self.residual += line_amount
-        if not self.need_deduct_prepayment:
-
-            self.residual = max(self.residual, 0.0) - self.deduct_amount
-        else:
-            self.residual = max(self.residual, 0.0) - self.pre_amount_total - self.deduct_amount
+            # if not self.need_deduct_prepayment:
+            #
+            #     self.residual = max(self.residual, 0.0) - self.deduct_amount
+            # else:
+            #     self.residual = max(self.residual, 0.0) - self.pre_amount_total - self.deduct_amount
 
     @api.multi
     def invoice_validate(self):
