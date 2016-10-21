@@ -1,0 +1,48 @@
+<openerp>
+    <data>
+        <!-- Update Preferences form !-->
+        <record id="linkloving_view_users_form_simple_modif_mail" model="ir.ui.view">
+            <field name="name">res.users.preferences.form.mail</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="email" position="after">
+                        <field name="send_mail_server_id" options="{'no_create':True,'no_open':True}"/>
+                        <!--<field name="rec_mail_server_id"/>-->
+                        <field name="mail_auth_password"/>
+                </field>
+            </data>
+            </field>
+        </record>
+
+
+        <!-- Update company form!-->
+        <record id="linkloving_view_company_form" model="ir.ui.view">
+            <field name="name">res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                    <field name="email" position="after">
+                        <field name="send_mail_server_id" options="{'no_create':True,'no_open':True}"/>
+                        <!--<field name="rec_mail_server_id"/>-->
+                        <field name="mail_auth_password"/>
+
+                    </field>
+            </field>
+        </record>
+        <!--<record id="linkloving_view_users_form_mail" model="ir.ui.view">-->
+            <!--<field name="name">res.users.form.mail</field>-->
+            <!--<field name="model">res.users</field>-->
+            <!--<field name="inherit_id" ref="mail.view_users_form_mail"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<data>-->
+                    <!--<field name="signature" position="before">-->
+                        <!--<field name="mail_auth_password"/>-->
+                    <!--</field>-->
+
+                <!--</data>-->
+            <!--</field>-->
+        <!--</record>-->
+    </data>
+</openerp>

@@ -29,6 +29,28 @@
 						</group>
 						<group>
 							<field name="is_show_to_menu"/>
+							<div class="oe_centeralign oe_websiteonly">
+                				<a href="javascript:upload();" class="oe_button oe_big oe_tacky">Start your <span class="oe_emph">free</span> online store</a>
+								<script type="text/javascript">
+									function upload(){
+
+									<!--var iWidth=720;                          //弹出窗口的宽度;-->
+									<!--var iHeight=600;-->
+		 							<!--var iTop = (window.screen.availHeight - 30 - iHeight) / 2;-->
+        							 <!--//获得窗口的水平位置-->
+									<!--var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;-->
+		 							<!--var win = window.open("http://112.80.45.130:8180/robotime_server_pdm/service/admin/index",  'newwindow', 'height=250, width=500, top='+iTop+',left='+iLeft+', toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no');-->
+									<!---->
+									str = window.showModalDialog("http://112.80.45.130:8180/robotime_server_pdm/service/ftp/upload","dialogWidth=200px;dialogHeight=100px");
+          							alert(str);
+									}
+
+									function DoAfterXXX(obj){
+									alert(obj);
+									}
+
+								</script>
+            				</div>
 						</group>
 					</group>
 

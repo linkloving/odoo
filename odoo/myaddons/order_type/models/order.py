@@ -103,7 +103,7 @@ class ProductProductType(models.Model):
         if len(self.env['ir.ui.menu'].search([('name','=',name)]))>=1:
             raise except_orm(_('Error!'), _('此产品菜单已经创建'))
 
-        if order_type.parent_menu_id is None:
+        if not order_type.parent_menu_id:
             parent_id = self.env.ref('sale.menu_sale_order')
         else:
             parent_id = order_type.parent_menu_id.menu_id
