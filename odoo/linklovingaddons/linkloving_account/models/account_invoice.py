@@ -13,6 +13,7 @@ class AccountInvoice(models.Model):
     pre_amount_total = fields.Float(compute='get_prepayment_total', string='预付款金额')
     total = fields.Float(compute='_compute_amount')
     need_deduct_prepayment = fields.Boolean()
+    invoice_no = fields.Char(string='发票号码')
 
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -248,16 +249,47 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def invoice_confirm(self):
-        self.state = 'done'
+        return {
+            'name': _("填写发票号码"),
+            'view_mode': 'form',
+            'view_id': self.env.ref('linkloving_account.account_invoice_no_form').id,
+            'view_type': 'form',
+            'res_model': 'account.invoice',
+            'res_id': self.id,
+            'type': 'ir.actions.act_window',
+            'nodestroy': True,
+            'target': 'new',
+            'domain': '[]',
+            'context': {
+                'done': True,
+            }
+        }
 
     @api.multi
     def invoice_confirm_receive(self):
-        self.state = 'open'
+        return {
+            'name': _("填写发票号码"),
+            'view_mode': 'form',
+            'view_id': self.env.ref('linkloving_account.account_invoice_no_form').id,
+            'view_type': 'form',
+            'res_model': 'account.invoice',
+            'res_id': self.id,
+            'type': 'ir.actions.act_window',
+            'nodestroy': True,
+            'target': 'new',
+            'domain': '[]',
+        }
 
     @api.multi
     def cancel_invoice(self):
         self.state = 'cancel'
 
+    @api.multi
+    def confirm_invoice_no(self):
+        self.state = 'open'
+        if self._context.get('done'):
+            self.state = 'done'
+        return {'type': 'ir.actions.act_window_close'}
 
     @api.model
     def create(self, values):

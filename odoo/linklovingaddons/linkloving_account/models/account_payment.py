@@ -4,6 +4,7 @@ from openerp.exceptions import ValidationError
 from openerp.osv import osv
 import datetime
 
+
 class AccountPayment(models.Model):
     """
     设置预付款
@@ -59,7 +60,6 @@ class AccountPayment(models.Model):
     def confirm_prepayment(self):
         return {'type': 'ir.actions.act_window_close'}
 
-
     @api.multi
     def apply(self):
         self.state = 'apply'
@@ -80,41 +80,27 @@ class AccountPayment(models.Model):
         return super(AccountPayment, self).unlink()
 
     @api.multi
-    def create_voucher(self):
-        # todo: 上月预算到当月5号之后作废，不能生成付款
-        DATE_FORMAT = "%Y-%m-%d"
-        start_date_obj = (datetime.datetime.today().replace(day=1) - datetime.timedelta(1)).replace(day=1)
-        start_date = datetime.datetime.strftime(start_date_obj, DATE_FORMAT)
-        print start_date
-
-        now_date = datetime.datetime.strftime(datetime.date.today(), DATE_FORMAT)
-        print now_date
-
-        day5_obj = (datetime.datetime.today().replace(day=25) - datetime.timedelta(1)).replace(day=25)
-        day5 = datetime.datetime.strftime(day5_obj, DATE_FORMAT)
-        print day5
-        voucher_pool = self.env['account.voucher']
-
-        voucher_ids = []
-
-        for line in self:
-            # if line.create_date<start_date or now_date> day5:
-            #    raise osv.except_osv(u'错误!',u'预算已经过期(上月预算次月25号后不能再生成付款)')
-            voucher_id = voucher_pool.create({'partner_id': line.partner_id.id,
-                                              'po': line.po_id.id,
-                                              'amount': line.amount,
-                                              'account_id': line.partner_id.property_account_payable.id,
-                                              'type': 'payment'
-                                              })
-            voucher_ids.append(voucher_id.id)
-
-            self.write({'state': 'done'})
+    def invoice_pay_supplier(self):
         return {
             'name': '供应商付款',
-            'domain': [('id', 'in', voucher_ids)],
+            'view_mode': 'form',
+            'view_id': self.env.ref('account_voucher.view_vendor_receipt_dialog_form').id,
             'view_type': 'form',
-            'view_mode': 'tree,form',
             'res_model': 'account.voucher',
             'type': 'ir.actions.act_window',
-            'context': self._context,
+            'nodestroy': True,
+            'target': 'new',
+            'domain': '[]',
+            'context': {
+                # 'payment_expected_currency': inv.currency_id.id,
+                'default_partner_id': self.partner_id.id,
+                'default_amount': self.amount,
+                # 'default_reference': inv.name,
+                'close_after_process': True,
+                # 'invoice_type': inv.type,
+                # 'invoice_id': inv.id,
+                'default_type': 'payment',
+                'type': 'payment',
+                'account_payment_id': self.id,
+            }
         }

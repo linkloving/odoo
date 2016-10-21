@@ -9,7 +9,12 @@ class AccountVoucher(models.Model):
 
     @api.multi
     def button_proforma_voucher(self):
-        account_receive_id = self._context.get('account_receive_id')
+        context = self._context
+        account_receive_id = context.get('account_receive_id')
+        account_payment_id = context.get('account_payment_id')
+        if account_payment_id:
+            account_payment = self.env['account.payment'].browse(account_payment_id)
+            account_payment.state = 'done'
         if account_receive_id:
             account_receive = self.env['account.receive'].browse(account_receive_id)
             account_receive.state = 'done'

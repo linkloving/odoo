@@ -41,7 +41,7 @@
                 <form>
                     <header>
 
-                        <button name="create_voucher" string="确认付款" type="object" states="apply"
+                        <button name="invoice_pay_supplier" string="确认付款" type="object" states="apply"
                                 class="oe_highlight" groups="account.group_account_invoice"/>
                         <button name="set_to_apply" string="确认" type="object"
                                 class="oe_highlight" groups="purchase.group_purchase_user"/>

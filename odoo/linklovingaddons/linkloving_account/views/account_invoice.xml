@@ -15,6 +15,7 @@
                 </xpath>
                 <xpath expr="//field[@name='origin']" position="before">
                     <field name="tr_po_number"/>
+                    <field name="invoice_no" attrs="{'invisible':[('invoice_no','=',False)]}"/>
                 </xpath>
                 <xpath expr="//button[@name='invoice_open']" position='after'>
                     <button name="invoice_confirm_receive" states="invoice" string="确认接收发票" class="oe_highlight"
@@ -22,6 +23,26 @@
                 </xpath>
 
 
+            </field>
+        </record>
+
+        <record id="account_invoice_no_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="invoice_no"/>
+                        </group>
+                        <footer class="oe_edit_only">
+
+                            <button name="confirm_invoice_no" string="确认" type="object"
+                                    class="oe_highlight" groups="purchase.group_purchase_user"/>
+                            <button special="cancel" string="Cancel" class="oe_link"/>
+                        </footer>
+                    </sheet>
+                </form>
             </field>
         </record>
 
@@ -36,6 +57,9 @@
                             groups="account.group_account_invoice" type="object"/>
                     <button name="cancel_invoice" states="done" string="取消发票" type="object"
                             groups="account.group_account_invoice"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="invoice_no" attrs="{'invisible':[('invoice_no','=',False)]}"/>
                 </xpath>
 
                 <xpath expr="//button[@name='invoice_pay_customer']" position='replace'>
