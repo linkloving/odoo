@@ -170,7 +170,7 @@
              </field>
         </record>
 
-        <menuitem id='tr_payment_budget_menu' name='付款预算' parent='purchase.menu_procurement_management' action='tr_payment_budget_action' sequence='12'/>
+        <!--<menuitem id='tr_payment_budget_menu' name='付款预算' parent='purchase.menu_procurement_management' action='tr_payment_budget_action' sequence='12'/>-->
 
         <menuitem id='tr_action_report_sale_order_menu' parent='base.menu_sales' action='tr_print_report_action' sequence='7' name='销售合同汇总表' />
         
