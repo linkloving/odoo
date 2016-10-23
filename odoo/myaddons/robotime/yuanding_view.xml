@@ -67,56 +67,56 @@
                       <attribute name='invisible'>1</attribute>
                 </field>
             </field>
-        </record>        
-        <record id="stock_picking" model="workflow">
-            <field name="name">出入库审批流</field>
-            <field name="osv">stock.picking</field>
-            <field name="on_create">True</field>
         </record>
-        <record id="act_stock_picking_draft" model="workflow.activity">
-            <field name="wkf_id" ref="stock_picking"/>
-            <field name="name">草稿</field>
-            <field name="flow_start">True</field>
-            <field name='action'>write({'validate_state': 'draft'})</field>
-            <field name='kind'>function</field>
-        </record>
-        <record id="act_stock_picking_submited" model="workflow.activity">
-            <field name="wkf_id" ref="stock_picking"/>
-            <field name="name">已提交审核</field>
-            <field name="action">write({'validate_state':'submited'})</field>
-            <field name="kind">function</field>
-        </record>
-        <record id="act_stock_picking_1st" model="workflow.activity">
-            <field name="wkf_id" ref="stock_picking"/>
-            <field name="name">质检审核通过</field>
-            <field name="action">write({'validate_state':'1th'})</field>
-            <field name="kind">function</field>
-        </record>
-        <record id="tr_stock_picking_submit" model="workflow.transition">
-            <field name="act_from" ref="act_stock_picking_draft"/>
-            <field name="act_to" ref="act_stock_picking_submited"/>
-            <field name="signal">submit</field>
-            <field name="condition">True</field>
-        </record>
-        <record id="tr_stock_picking_1st" model="workflow.transition">
-            <field name="act_from" ref="act_stock_picking_submited"/>
-            <field name="act_to" ref="act_stock_picking_1st"/>
-            <field name="signal">agree</field>
-            <field name="condition">(validate_state=='submited' and picking_type_id.code=='incoming')</field>
-        </record>
+        <!--<record id="stock_picking" model="workflow">-->
+        <!--<field name="name">出入库审批流</field>-->
+        <!--<field name="osv">stock.picking</field>-->
+        <!--<field name="on_create">True</field>-->
+        <!--</record>-->
+        <!--<record id="act_stock_picking_draft" model="workflow.activity">-->
+        <!--<field name="wkf_id" ref="stock_picking"/>-->
+        <!--<field name="name">草稿</field>-->
+        <!--<field name="flow_start">True</field>-->
+        <!--<field name='action'>write({'validate_state': 'draft'})</field>-->
+        <!--<field name='kind'>function</field>-->
+        <!--</record>-->
+        <!--<record id="act_stock_picking_submited" model="workflow.activity">-->
+        <!--<field name="wkf_id" ref="stock_picking"/>-->
+        <!--<field name="name">已提交审核</field>-->
+        <!--<field name="action">write({'validate_state':'submited'})</field>-->
+        <!--<field name="kind">function</field>-->
+        <!--</record>-->
+        <!--<record id="act_stock_picking_1st" model="workflow.activity">-->
+        <!--<field name="wkf_id" ref="stock_picking"/>-->
+        <!--<field name="name">质检审核通过</field>-->
+        <!--<field name="action">write({'validate_state':'1th'})</field>-->
+        <!--<field name="kind">function</field>-->
+        <!--</record>-->
+        <!--<record id="tr_stock_picking_submit" model="workflow.transition">-->
+        <!--<field name="act_from" ref="act_stock_picking_draft"/>-->
+        <!--<field name="act_to" ref="act_stock_picking_submited"/>-->
+        <!--<field name="signal">submit</field>-->
+        <!--<field name="condition">True</field>-->
+        <!--</record>-->
+        <!--<record id="tr_stock_picking_1st" model="workflow.transition">-->
+        <!--<field name="act_from" ref="act_stock_picking_submited"/>-->
+        <!--<field name="act_to" ref="act_stock_picking_1st"/>-->
+        <!--<field name="signal">agree</field>-->
+        <!--<field name="condition">(validate_state=='submited' and picking_type_id.code=='incoming')</field>-->
+        <!--</record>-->
 
-        <record id="reject_tr_stock_picking_submit" model="workflow.transition">
-            <field name="act_to" ref="act_stock_picking_draft"/>
-            <field name="act_from" ref="act_stock_picking_submited"/>
-            <field name="signal">reject</field>
-            <field name="condition">(validate_state=='submited' and picking_type_id.code=='incoming')</field>
-        </record>
-        <record id="reject_tr_stock_picking_1st" model="workflow.transition">
-            <field name="act_to" ref="act_stock_picking_submited"/>
-            <field name="act_from" ref="act_stock_picking_1st"/>
-            <field name="signal">reject</field>
-            <field name="condition">(validate_state=='1th' and picking_type_id.code=='incoming')</field>
-        </record>
+        <!--<record id="reject_tr_stock_picking_submit" model="workflow.transition">-->
+        <!--<field name="act_to" ref="act_stock_picking_draft"/>-->
+        <!--<field name="act_from" ref="act_stock_picking_submited"/>-->
+        <!--<field name="signal">reject</field>-->
+        <!--<field name="condition">(validate_state=='submited' and picking_type_id.code=='incoming')</field>-->
+        <!--</record>-->
+        <!--<record id="reject_tr_stock_picking_1st" model="workflow.transition">-->
+        <!--<field name="act_to" ref="act_stock_picking_submited"/>-->
+        <!--<field name="act_from" ref="act_stock_picking_1st"/>-->
+        <!--<field name="signal">reject</field>-->
+        <!--<field name="condition">(validate_state=='1th' and picking_type_id.code=='incoming')</field>-->
+        <!--</record>-->
         <record id='tr_view_picking_form' model='ir.ui.view'>
             <field name='name'>tr.stock.picking.form</field>
             <field name='model'>stock.picking</field>

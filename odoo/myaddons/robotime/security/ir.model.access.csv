@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_model_hr_expense_expense_type,access_model_hr_expense_expense_type,model_hr_expense_expense_type,,1,1,1,1
+access_model_hr_expense_expense,access_model_hr_expense_expense,hr_expense.model_hr_expense_expense,,1,1,1,1
