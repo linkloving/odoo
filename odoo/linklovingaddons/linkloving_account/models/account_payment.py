@@ -23,7 +23,7 @@ class AccountPayment(models.Model):
     partner_id = fields.Many2one(related='po_id.partner_id')
     state = fields.Selection([
         ('draft', u'草稿'),
-        ('apply', u'预付申请'),
+        ('apply', u'付款申请'),
         ('done', u'完成'),
         ('cancel', u'取消')
     ], default='draft')

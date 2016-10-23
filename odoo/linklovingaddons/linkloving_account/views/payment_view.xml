@@ -83,7 +83,7 @@
 
 
         <record id="action_invoice_prepayment" model="ir.actions.act_window">
-            <field name="name">供应商预付款</field>
+            <field name="name">供应商付款</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">account.payment</field>
             <field name="view_type">form</field>

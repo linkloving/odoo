@@ -10,9 +10,7 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
     deduct_amount = fields.Float(string='扣款')
     deduct_reason = fields.Text(string='扣款原因')
-    pre_amount_total = fields.Float(compute='get_prepayment_total', string='预付款金额')
     total = fields.Float(compute='_compute_amount')
-    need_deduct_prepayment = fields.Boolean()
     invoice_no = fields.Char(string='发票号码')
 
     state = fields.Selection([
@@ -32,16 +30,14 @@ class AccountInvoice(models.Model):
              " * The 'Paid' status is set automatically when the invoice is paid. Its related journal entries may or may not be reconciled.\n"
              " * The 'Cancelled' status is used when user cancel invoice.")
 
-
-
-    def get_prepayment_total(self):
-        self.pre_amount_total = 0.0
-        if self.tr_po_number and self.tr_po_number.pre_payment_ids:
-            for p in self.tr_po_number.pre_payment_ids:
-                self.pre_amount_total += p.amount
+    # def get_prepayment_total(self):
+    #     self.pre_amount_total = 0.0
+    #     if self.tr_po_number and self.tr_po_number.pre_payment_ids:
+    #         for p in self.tr_po_number.pre_payment_ids:
+    #             self.pre_amount_total += p.amount
 
     @api.one
-    @api.depends('invoice_line.price_subtotal', 'tax_line.amount', 'deduct_amount', 'pre_amount_total')
+    @api.depends('invoice_line.price_subtotal', 'tax_line.amount', 'deduct_amount')
     def _compute_amount(self):
         self.amount_untaxed = sum(line.price_subtotal for line in self.invoice_line)
         self.amount_tax = sum(line.amount for line in self.tax_line)
@@ -196,40 +192,8 @@ class AccountInvoice(models.Model):
             # account move reference when creating the same invoice after a cancelled one:
             move.post()
         self._log_event()
-        if self.tr_po_number:
-            self.tr_po_number.is_prepayment_deduct = True
         return True
 
-    def _compute_residual(self):
-        self.residual = 0.0
-        # Each partial reconciliation is considered only once for each invoice it appears into,
-        # and its residual amount is divided by this number of invoices
-        partial_reconciliations_done = []
-        for line in self.sudo().move_id.line_id:
-            if line.account_id.type not in ('receivable', 'payable'):
-                continue
-            if line.reconcile_partial_id and line.reconcile_partial_id.id in partial_reconciliations_done:
-                continue
-            # Get the correct line residual amount
-            if line.currency_id == self.currency_id:
-                line_amount = line.amount_residual_currency if line.currency_id else line.amount_residual
-            else:
-                from_currency = line.company_id.currency_id.with_context(date=line.date)
-                line_amount = from_currency.compute(line.amount_residual, self.currency_id)
-            # For partially reconciled lines, split the residual amount
-            if line.reconcile_partial_id:
-                partial_reconciliation_invoices = set()
-                for pline in line.reconcile_partial_id.line_partial_ids:
-                    if pline.invoice and self.type == pline.invoice.type:
-                        partial_reconciliation_invoices.update([pline.invoice.id])
-                line_amount = self.currency_id.round(line_amount / len(partial_reconciliation_invoices))
-                partial_reconciliations_done.append(line.reconcile_partial_id.id)
-            self.residual += line_amount
-            # if not self.need_deduct_prepayment:
-            #
-            #     self.residual = max(self.residual, 0.0) - self.deduct_amount
-            # else:
-            #     self.residual = max(self.residual, 0.0) - self.pre_amount_total - self.deduct_amount
 
     @api.multi
     def invoice_validate(self):
@@ -242,10 +206,8 @@ class AccountInvoice(models.Model):
         # FIXME:
         if any([line.invoice_line_tax_id.amount for line in self.invoice_line]):
             return self.write({'state': 'invoice'})
-        if self.partner_id.customer:
-            return self.write({'state': 'done'})
         else:
-            return self.write({'state': 'open'})
+            return self.write({'state': 'done'})
 
     @api.multi
     def invoice_confirm(self):
@@ -259,10 +221,7 @@ class AccountInvoice(models.Model):
             'type': 'ir.actions.act_window',
             'nodestroy': True,
             'target': 'new',
-            'domain': '[]',
-            'context': {
-                'done': True,
-            }
+            'domain': '[]'
         }
 
     @api.multi
@@ -286,20 +245,6 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def confirm_invoice_no(self):
-        self.state = 'open'
-        if self._context.get('done'):
-            self.state = 'done'
+        self.state = 'done'
         return {'type': 'ir.actions.act_window_close'}
 
-    @api.model
-    def create(self, values):
-        po_id = self.env['stock.picking'].search([('name', '=', values['origin'])]).po_id
-
-        inv = super(AccountInvoice, self).create(values)
-
-        if po_id and not po_id.is_prepayment_deduct:
-            inv.need_deduct_prepayment = True
-        else:
-            inv.need_deduct_prepayment = False
-
-        return inv

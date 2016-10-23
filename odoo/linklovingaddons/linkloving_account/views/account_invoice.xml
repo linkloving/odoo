@@ -6,12 +6,16 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='check_total']" position="replace">
-                    <field name="total" string="总计"/>
-                    <field name="pre_amount_total"/>
-                    <field name="need_deduct_prepayment" readonly="1" string="是否需要扣除预付款"/>
-                    <field name="deduct_amount" attrs="{'readonly':[('state','=','paid')]}"/>
-                    <field name="deduct_reason" attrs="{'readonly':[('state','=','paid')]}"/>
+                <!--<xpath expr="//field[@name='check_total']" position="replace">-->
+                <!--<field name="total" string="总计"/>-->
+                <!--<field name="deduct_amount" attrs="{'readonly':[('state','=','paid')]}"/>-->
+                <!--<field name="deduct_reason" attrs="{'readonly':[('state','=','paid')]}"/>-->
+                <!--</xpath>-->
+                <xpath expr="//button[@name='invoice_open']" position="replace">
+                    <button name="invoice_open" states="draft,proforma2" string="Validate"
+                            confirm="Are you sure you want to do this?" class="oe_highlight"
+                            groups="purchase.group_purchase_user"/>
+
                 </xpath>
                 <xpath expr="//field[@name='origin']" position="before">
                     <field name="tr_po_number"/>
