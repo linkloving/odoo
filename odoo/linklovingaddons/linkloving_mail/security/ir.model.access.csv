@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_linkloving_mail_linkloving_mail,linkloving_mail.linkloving_mail,model_linkloving_mail_linkloving_mail,,1,0,0,0
+access_ir_mail_server,linkloving_mail.linkloving_mail,base.model_ir_mail_server,,1,1,1,1
+access_linkloving_mail_res_users,linkloving_mail.res_users,model_res_users,,1,1,1,1

@@ -24,7 +24,7 @@
 
     # always loaded
     'data': [
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'linkloving_mail_res_user_view.xml',
 
     ],
