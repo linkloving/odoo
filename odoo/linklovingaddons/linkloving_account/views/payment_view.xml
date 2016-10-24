@@ -9,14 +9,22 @@
                     <header>
                         <button name="apply" string="确认" type="object" states="draft"
                                 class="oe_highlight" groups="purchase.group_purchase_user"/>
+                        <button name="invoice_pay_supplier" string="确认付款" type="object" states="apply"
+                                class="oe_highlight" groups="account.group_account_invoice"/>
+                        <button name="reject" string="退回" type="object" states="apply"
+                                class="oe_highlight" groups="account.group_account_invoice"/>
+                        <button name="set_to_apply" string="确认" type="object"
+                                class="oe_highlight" groups="base.group_erp_manager"/>
 
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                         <group>
-                            <field name="po_id" string="PO"/>
-                            <field name="partner_id" string="供应商"/>
-                            <field name="amount" string="金额"/>
+                            <field name="po_id" string="PO" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="partner_id" string="供应商" domain="[('supplier','=',True)]" required="1"
+                                   attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="amount" string="金额" required="1"
+                                   attrs="{'readonly':[('state','!=','draft')]}"/>
                             <field name="description" string="描述"/>
                         </group>
                         <!--<footer class="oe_edit_only">-->

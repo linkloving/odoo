@@ -20,7 +20,7 @@ class AccountPayment(models.Model):
     is_deduct = fields.Boolean()
     po_id = fields.Many2one('purchase.order', string='Purchase Order')
     so_id = fields.Many2one('sale.order', string='Sale Order')
-    partner_id = fields.Many2one(related='po_id.partner_id')
+    partner_id = fields.Many2one('res.partner')
     state = fields.Selection([
         ('draft', u'草稿'),
         ('apply', u'付款申请'),
@@ -35,19 +35,23 @@ class AccountPayment(models.Model):
          'Name mast be unique!')
     }
 
-    @api.constrains('amount')
-    def _check_amount(self):
-        for record in self:
-            if record.amount <= 0:
-                raise ValidationError("预付款金额必须大于0")
-            if record.amount > record.po_id.amount_total:
-                raise ValidationError("预付款总额大于PO金额")
-            if record.po_id.pre_payment_ids:
-                pre_payment_total = 0
-                for p in record.po_id.pre_payment_ids:
-                    pre_payment_total += p.amount
-                if record.po_id.amount_total < pre_payment_total:
-                    raise ValidationError("预付款总额大于PO金额")
+    @api.onchange('po_id')
+    def _onchange_po_id(self):
+        self.partner_id = self.po_id.partner_id.id
+
+    # @api.constrains('amount')
+    # def _check_amount(self):
+    #     for record in self:
+    #         if record.amount <= 0:
+    #             raise ValidationError("预付款金额必须大于0")
+    #         if record.amount > record.po_id.amount_total:
+    #             raise ValidationError("预付款总额大于PO金额")
+    #         if record.po_id.pre_payment_ids:
+    #             pre_payment_total = 0
+    #             for p in record.po_id.pre_payment_ids:
+    #                 pre_payment_total += p.amount
+    #             if record.po_id.amount_total < pre_payment_total:
+    #                 raise ValidationError("预付款总额大于PO金额")
 
     @api.model
     def create(self, vals):
@@ -67,6 +71,12 @@ class AccountPayment(models.Model):
     @api.multi
     def set_to_apply(self):
         self.state = 'apply'
+
+    @api.multi
+    def reject(self):
+        self.state = 'draft'
+
+
 
     @api.multi
     def cancel(self):

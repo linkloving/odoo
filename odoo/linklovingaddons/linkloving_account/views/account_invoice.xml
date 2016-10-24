@@ -66,6 +66,12 @@
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="invoice_no" attrs="{'invisible':[('invoice_no','=',False)]}"/>
                 </xpath>
+                <xpath expr="//button[@name='invoice_open']" position="replace">
+                    <button name="invoice_open" states="draft,proforma2" string="提交"
+                            confirm="确定提交对账单?" class="oe_highlight"
+                            groups="purchase.group_purchase_user"/>
+
+                </xpath>
 
 
                 <xpath expr="//button[@name='invoice_pay_customer']" position='replace'>
