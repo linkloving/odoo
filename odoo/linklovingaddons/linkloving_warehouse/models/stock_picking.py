@@ -29,5 +29,7 @@ from openerp import _, api, exceptions, fields, models
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
+    _order = 'create_date'
+
     prepayment_amount = fields.Float()
     po_id = fields.Many2one('purchase.order')

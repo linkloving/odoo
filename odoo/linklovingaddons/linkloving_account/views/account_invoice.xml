@@ -6,14 +6,15 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
-                <!--<xpath expr="//field[@name='check_total']" position="replace">-->
+                <xpath expr="//field[@name='check_total']" position="replace">
                 <!--<field name="total" string="总计"/>-->
                 <!--<field name="deduct_amount" attrs="{'readonly':[('state','=','paid')]}"/>-->
                 <!--<field name="deduct_reason" attrs="{'readonly':[('state','=','paid')]}"/>-->
-                <!--</xpath>-->
+                    <field name="check_total" readonly="1"/>
+                </xpath>
                 <xpath expr="//button[@name='invoice_open']" position="replace">
-                    <button name="invoice_open" states="draft,proforma2" string="Validate"
-                            confirm="Are you sure you want to do this?" class="oe_highlight"
+                    <button name="invoice_open" states="draft,proforma2" string="提交"
+                            confirm="确定提交对账单?" class="oe_highlight"
                             groups="purchase.group_purchase_user"/>
 
                 </xpath>
@@ -65,6 +66,7 @@
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="invoice_no" attrs="{'invisible':[('invoice_no','=',False)]}"/>
                 </xpath>
+
 
                 <xpath expr="//button[@name='invoice_pay_customer']" position='replace'>
                 </xpath>

@@ -88,7 +88,7 @@
             </field>
         </record>
 
-         <record model="ir.actions.act_window" id="pre_payment_application">
+        <record model="ir.actions.act_window" id="payment_application">
              <field name="name">付款申请</field>
              <field name="res_model">account.payment</field>
             <field name="view_mode">tree,form</field>
@@ -99,8 +99,8 @@
 
 
         <menuitem
-                id="menu_procurement_management_pre_payment"
-                action="pre_payment_application"
+                id="menu_procurement_management_payment"
+                action="payment_application"
                 name="付款申请"
                 parent="purchase.menu_procurement_management_invoice"
         />

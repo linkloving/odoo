@@ -13,7 +13,7 @@ class AccountAmountReceived(models.Model):
     _order = 'create_date desc'
     name = fields.Char()
     amount = fields.Float(string='金额')
-    account = fields.Char(string='账号')
+    bank_ids = fields.One2many(related='partner_id.bank_ids', string='客户账号')
     receive_date = fields.Date(string='收款日期', default=fields.date.today())
     remark = fields.Text(string='备注')
     partner_id = fields.Many2one('res.partner', string='客户')
@@ -107,6 +107,7 @@ class AccountAmountReceived(models.Model):
                 'default_amount': self.amount,
                 'default_reference': self.partner_id.name,
                 'close_after_process': True,
+                'default_journal_id': self.journal_id.id,
                 'default_type': 'receipt',
                 'type': 'receipt',
                 'account_receive_id': self.id

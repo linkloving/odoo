@@ -53,3 +53,6 @@ class linkloving_product_product(models.Model):
 #         ('default_code_template_uniq', 'unique (default_code)', 'The default code must be unique!')
 #     ]
 
+class MrpProduction(models.Model):
+    _inherit = 'mrp.production'
+    _order = 'create_date'

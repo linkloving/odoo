@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="purchase_pre_payment_form_modal" model="ir.ui.view">
+        <record id="purchase_pre_payment_form" model="ir.ui.view">
             <field name="name">res.partner.level.form</field>
             <field name="model">account.payment</field>
             <field name="arch" type="xml">
@@ -14,47 +14,18 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="po_id" string="PO" readonly="1"/>
-                            <field name="partner_id" string="供应商" readonly="1"/>
+                            <field name="po_id" string="PO"/>
+                            <field name="partner_id" string="供应商"/>
                             <field name="amount" string="金额"/>
                             <field name="description" string="描述"/>
                         </group>
-                        <footer class="oe_edit_only">
-                            <button name="confirm_prepayment" type="object"
-                                    string="确认" class="oe_highlight"/>
-                            <button name="create_voucher" string="确认付款" type="object" states="paid"
-                                    class="oe_highlight" groups="purchase.group_purchase_user"/>
-                            <button special="cancel" string="Cancel" class="oe_link"/>
-                        </footer>
-                    </sheet>
-                    <!--<div class="oe_chatter">-->
-                    <!--<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
-                    <!--<field name="message_ids" widget="mail_thread"/>-->
-                    <!--</div>-->
-                </form>
-            </field>
-        </record>
-        <record id="purchase_pre_payment_form" model="ir.ui.view">
-            <field name="name">res.partner.level.form</field>
-            <field name="model">account.payment</field>
-            <field name="arch" type="xml">
-                <form>
-                    <header>
-
-                        <button name="invoice_pay_supplier" string="确认付款" type="object" states="apply"
-                                class="oe_highlight" groups="account.group_account_invoice"/>
-                        <button name="set_to_apply" string="确认" type="object"
-                                class="oe_highlight" groups="base.group_erp_manager"/>
-                        <field name="state" widget="statusbar"
-                        />
-                    </header>
-                    <sheet>
-                        <group>
-                            <field name="po_id"/>
-                            <field name="partner_id" string="供应商" readonly="1"/>
-                            <field name="amount" readonly="0"/>
-                            <field name="description"/>
-                        </group>
+                        <!--<footer class="oe_edit_only">-->
+                        <!--<button name="confirm_prepayment" type="object"-->
+                        <!--string="确认" class="oe_highlight"/>-->
+                        <!--<button name="create_voucher" string="确认付款" type="object" states="paid"-->
+                        <!--class="oe_highlight" groups="purchase.group_purchase_user"/>-->
+                        <!--<button special="cancel" string="Cancel" class="oe_link"/>-->
+                        <!--</footer>-->
                     </sheet>
                     <!--<div class="oe_chatter">-->
                     <!--<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
@@ -83,7 +54,7 @@
 
 
         <record id="action_invoice_prepayment" model="ir.actions.act_window">
-            <field name="name">供应商付款</field>
+            <field name="name">付款</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">account.payment</field>
             <field name="view_type">form</field>

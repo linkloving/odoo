@@ -195,5 +195,23 @@
         <menuitem action="product_template_action"
                   id="product.menu_product_template_action"
                   parent="base.menu_product" sequence="1"/>
+
+        <record id="customer_invoice_checking" model="ir.actions.act_window">
+            <field name="name">对账单</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode':'tree', 'view_id': ref('account.invoice_tree')}),
+            (0,0,{'view_mode':'form', 'view_id': ref('account.invoice_form')})]"/>
+            <field name="domain">[('type','=','out_invoice')]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="customer_invoice_checking" id="menu_customer_invoice_checking" parent="base.menu_invoiced"
+                  name="对账单"/>
+
+
     </data>
 </openerp>

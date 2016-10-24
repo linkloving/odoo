@@ -8,7 +8,7 @@
                 <tree colors="black:state=='draft';blue:state=='confirm';red:state=='deduct',gray:state in ('cancel','done')">
                     <field name="partner_id" string="合作伙伴"/>
                     <field name="amount"/>
-                    <field name="account"/>
+                    <field name="bank_ids"/>
                     <field name="remark"/>
                     <field name="create_uid"/>
                     <field name="receive_date"/>
@@ -44,10 +44,11 @@
                                    attrs="{'required': [('state', '=', 'posted')],'readonly': [('state', '=', 'done')]}"
                                    domain="[('customer', '=', True),('is_company', '=', True)]"/>
                             <field name="amount" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
-                            <field name="receive_type"/>
+                            <field name="receive_type" invisible="1"/>
                             <field name="receive_date" required="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
-                            <field name="account"
-                                   attrs="{'readonly':[('state','!=','draft')],'readonly': [('state', '=', 'done')]}"/>
+                            <field name="bank_ids"
+                                   attrs="{'readonly':[('state','!=','draft')],'readonly': [('state', '=', 'done')]}"
+                                   context="{'default_partner_id':partner_id}"/>
                             <field name="journal_id" string="收入账户" required="1"
                                    attrs="{'readonly': [('state', '=', 'done')]}"/>
                             <field name="remark" required="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
