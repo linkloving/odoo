@@ -24,9 +24,9 @@
 
     # always loaded
     'data': [
-
-        'security/hideme.xml',
         'security/groups.xml',
+        'security/hideme.xml',
+
         'templates.xml',
     ],
     # only loaded in demonstration mode
