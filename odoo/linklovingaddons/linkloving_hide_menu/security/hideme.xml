@@ -45,6 +45,11 @@
         <record id="account_analytic_analysis.menu_action_account_analytic_overdue" model="ir.ui.menu">
             <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
         </record>
+        menu_purchase_line_order_draft
+
+        <record id="purchase.menu_purchase_line_order_draft" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
 
     </data>
 
