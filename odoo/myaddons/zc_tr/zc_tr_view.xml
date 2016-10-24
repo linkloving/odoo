@@ -172,7 +172,7 @@
 
         <!--<menuitem id='tr_payment_budget_menu' name='付款预算' parent='purchase.menu_procurement_management' action='tr_payment_budget_action' sequence='12'/>-->
 
-        <menuitem id='tr_action_report_sale_order_menu' parent='base.menu_sales' action='tr_print_report_action' sequence='7' name='销售合同汇总表' />
+        <!--<menuitem id='tr_action_report_sale_order_menu' parent='base.menu_sales' action='tr_print_report_action' sequence='7' name='销售合同汇总表' />-->
         
         <menuitem id='tr_financial_menu' parent='account.menu_finance' sequence='3' name='打印报表' groups='account.group_account_user' />
         <menuitem id='tr_action_report_financial_menu' parent='tr_financial_menu' action='tr_print_report_financial_action' string='打印财务用订单执行汇总' sequence='12' />
@@ -182,8 +182,8 @@
         <menuitem id='tr_print_report_financial_purchase_menu' parent='tr_financial_menu' action='tr_print_report_financial_purchase' string='打印财务采购合同表' sequence='12' />
 
         <menuitem id='tr_print_material_balance_menu' parent='tr_financial_menu' action='tr_print_material_balance_action' string='打印材料结存' sequence='12' />
-        <menuitem id='tr_action_report_purchase_menu' parent='purchase.menu_procurement_management' 
-            action='tr_print_report_purchase_action' sequence='15' />
+        <!--<menuitem id='tr_action_report_purchase_menu' parent='purchase.menu_procurement_management' -->
+        <!--action='tr_print_report_purchase_action' sequence='15' />-->
     </data>
 
 
