@@ -55,4 +55,4 @@ class linkloving_product_product(models.Model):
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
-    _order = 'create_date'
+    _order = 'create_date desc'
