@@ -82,8 +82,12 @@
             </field>
         </record>
 
-        <menuitem action="action_invoice_prepayment" id="menu_action_invoice_prepayment"
-                  parent="account.menu_finance_payables"/>
+        <menuitem id="menu_action_invoice_prepayment" name="资金管理"
+                  parent="account.menu_finance" sequence="0"/>
+
+        <menuitem id="menu_action_invoice_prepayment1" name="付款"
+                  action="action_invoice_prepayment"
+                  parent="menu_action_invoice_prepayment" sequence="0"/>
 
 
     </data>

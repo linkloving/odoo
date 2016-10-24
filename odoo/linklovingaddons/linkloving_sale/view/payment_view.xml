@@ -13,8 +13,8 @@
 
         <menuitem action="customer_payment_action"
                   id="menu_customer_payment"
-                  name="客户付款"
-                  parent='base.menu_sales'/>
+                  name="收款查询"
+                  parent='base.menu_invoiced'/>
 
     </data>
 </openerp>

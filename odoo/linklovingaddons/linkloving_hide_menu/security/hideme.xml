@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+        <record id="account_analytic_analysis.menu_action_account_analytic_overdue_all" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+        <record id="base.menu_aftersale" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+        <record id="crm.menu_crm_case_phone" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+        <record id="account.menu_action_invoice_tree3" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+        <record id="account_voucher.menu_action_sale_receipt" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+        <record id="account.menu_action_invoice_tree4" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+        <record id="account_voucher.menu_action_purchase_receipt" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+        <record id="zc_tr.tr_action_report_sale_order_menu" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+
+        <record id="account.menu_finance_bank_and_cash" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+
+        <record id="account_analytic_analysis.menu_action_hr_tree_invoiced_all" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+        <record id="account_analytic_analysis.menu_action_account_analytic_overdue" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hideme')])]"/>
+        </record>
+
+    </data>
+
+</openerp>

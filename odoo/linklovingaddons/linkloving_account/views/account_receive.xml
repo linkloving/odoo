@@ -83,8 +83,9 @@
             </field>
         </record>
 
-        <menuitem id="menu_finance_account_receive" action="action_invoice_account_receive"
-                  parent="account.menu_finance_receivables"/>
+
+        <menuitem id="menu_finance_account_receive" action="action_invoice_account_receive" name="收款"
+                  parent="menu_action_invoice_prepayment"/>
 
 
         <!--<record id="account_customer_receive_invoice_form" model="ir.ui.view">-->

@@ -80,5 +80,15 @@
 
             </field>
         </record>
+
+        <menuitem action="account_voucher.action_vendor_receipt" icon="STOCK_JUSTIFY_FILL" sequence="12"
+                  name="客户收款明细"
+                  id="account_voucher.menu_action_vendor_receipt" parent="account.menu_finance_receivables"/>
+
+        <menuitem name="供应商对账" action="account.action_invoice_tree2" id="account.menu_action_invoice_tree2"
+                  parent="account.menu_finance_payables"/>
+
+        <menuitem action="account_voucher.action_vendor_payment" name="供应商对账明细" icon="STOCK_JUSTIFY_FILL" sequence="12"
+                  id="account_voucher.menu_action_vendor_payment" parent="account.menu_finance_payables"/>
     </data>
 </openerp>
