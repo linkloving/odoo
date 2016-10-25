@@ -15,7 +15,7 @@
                 <xpath expr="//button[@name='invoice_open']" position="replace">
                     <button name="invoice_open" states="draft,proforma2" string="提交"
                             confirm="确定提交对账单?" class="oe_highlight"
-                            groups="purchase.group_purchase_user"/>
+                            groups="purchase.group_purchase_user,base.group_sale_salesman,base.group_sale_manager"/>
 
                 </xpath>
                 <xpath expr="//field[@name='origin']" position="before">
@@ -69,7 +69,7 @@
                 <xpath expr="//button[@name='invoice_open']" position="replace">
                     <button name="invoice_open" states="draft,proforma2" string="提交"
                             confirm="确定提交对账单?" class="oe_highlight"
-                            groups="purchase.group_purchase_user"/>
+                            groups="purchase.group_purchase_user,base.group_sale_salesman,base.group_sale_manager"/>
 
                 </xpath>
 
