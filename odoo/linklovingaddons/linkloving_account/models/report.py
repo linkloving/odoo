@@ -17,6 +17,6 @@ class PaymentInvoicePool(models.AbstractModel):
             'doc_ids': self._ids,
             'doc_model': report.model,
             'docs': self,
-            'pool_ids': pool_ids
+            'pool_ids': '11'
         }
         return report_obj.render('linkloving_account.report_payment_invoice', docargs)
