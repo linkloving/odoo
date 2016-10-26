@@ -23,10 +23,9 @@
                 <xpath expr="//field[@name='order_line']/tree" position="attributes">
                      <attribute name="editable">True</attribute>
             	</xpath>
-                <!--<xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='price_subtotal ']"-->
-                <!--position="after">-->
-                <!--<field name="product_sepcs" string="产品规格" />-->
-                <!--</xpath>-->
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position='after'>
+                    <field name="product_sepcs" string="产品规格"/>
+                </xpath>
 			</field>
 		</record>  
         <record id="view_sales_order_tree_ext" model="ir.ui.view">
@@ -50,10 +49,12 @@
             <field name="arch" type="xml">
                 <field name='picking_type_id' position='after'>
                     <field name='receive_amount'/>  
-                </field>  
-                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position='before'>
+                </field>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position='after'>
                     <field name="product_sepcs" string="产品规格" />
-                </xpath>  
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position='replace'>
+                </xpath>
            </field>
         </record> 
         <record id="tr_purchase_order_tree" model="ir.ui.view">
