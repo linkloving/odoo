@@ -11,6 +11,10 @@ class PaymentInvoicePool(models.AbstractModel):
         print '333333333333333333333333333333333333'
         report_obj = self.env['report']
         report = report_obj._get_report_from_name('linkloving_account.report_payment_invoice')
+        for report in self:
+            partner_id = report.partner_id.id
+            pool_ids = self.env['account.pool'].search([('partner_id', '=', partner_id)])
+            report.update('pool_ids', pool_ids)
         docargs = {
             'doc_ids': self._ids,
             'doc_model': report.model,

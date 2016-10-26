@@ -24,21 +24,26 @@
                                 付款申请
                             </h1>
                         </div>
+
                         <div class="oe_right oe_button_box" name="buttons">
                             <button type="action" name="%(action_view_account_pool2)d" class="oe_stat_button"
-                                    icon="fa-dollar" string="付款管理" context="{'partner_id':partner_id}">
+                                    icon="fa-dollar" string="对账明细" context="{'partner_id':partner_id}">
 
                             </button>
 
                         </div>
                         <group>
+                            <group>
 
-                            <field name="po_id" string="PO" attrs="{'readonly':[('state','!=','draft')]}"/>
+
+                                <field name="po_id" string="PO" attrs="{'readonly':[('state','!=','draft')]}"/>
                             <field name="partner_id" string="供应商" domain="[('supplier','=',True)]" required="1"
                                    attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="bank_id" domain="[('partner_id', '=', partner_id)]" required="1"/>
                             <field name="amount" string="金额" required="1"
                                    attrs="{'readonly':[('state','!=','draft')]}"/>
                             <field name="description" string="描述"/>
+                            </group>
                         </group>
                         <!--<footer class="oe_edit_only">-->
                         <!--<button name="confirm_prepayment" type="object"-->
