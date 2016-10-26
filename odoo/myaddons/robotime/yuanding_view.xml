@@ -53,9 +53,18 @@
                 <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position='after'>
                     <field name="product_sepcs" string="产品规格" />
                 </xpath>
-                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position='replace'>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position='attributes'>
+                    <attribute name="invisible">True</attribute>
+
                 </xpath>
-           </field>
+
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='account_analytic_id']" position='attributes'>
+                    <attribute name="invisible">True</attribute>
+
+                </xpath>
+
+            </field>
         </record> 
         <record id="tr_purchase_order_tree" model="ir.ui.view">
             <field name="name">tr_purchase.order.tree</field>
