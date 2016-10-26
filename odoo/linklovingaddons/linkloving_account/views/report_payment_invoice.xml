@@ -7,6 +7,7 @@
                     <t t-call="report.internal_layout">
                         <div class="page">
                             <div class="oe_structure"/>
+                            <span t-field="o.amount"></span>
                             <!--<h2>Production Order N° : <span t-field="o.name"/></h2>-->
 
                             <!--<div class="row mt32 mb32">-->
@@ -138,6 +139,7 @@
                             <!--</t>-->
                             <!--</tbody>-->
                             <!--</table>-->
+
                             <div class="oe_structure"/>
                         </div>
                     </t>
