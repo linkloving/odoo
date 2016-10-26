@@ -49,7 +49,7 @@
         
         <record id="trans_review_engineer" model="workflow.transition">
             <field name="act_from" ref="act_review"/>
-            <field name="act_to" ref="sale.act_router"/>
+            <field name="act_to" ref="act_engineer"/>
             <field name="signal">review_approved</field>
         </record>       
         
