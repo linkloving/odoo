@@ -8,15 +8,14 @@ class PaymentInvoicePool(models.AbstractModel):
 
     @api.multi
     def render_html(self, data=None):
-        print '333333333333333333333333333333333333'
         report_obj = self.env['report']
         report = report_obj._get_report_from_name('linkloving_account.report_payment_invoice')
-        partner_id = report.partner_id.id
+        partner_id = self.partner_id.id
         pool_ids = self.env['account.pool'].search([('partner_id', '=', partner_id)])
         docargs = {
             'doc_ids': self._ids,
             'doc_model': report.model,
             'docs': self,
-            'pool_ids': '11'
+            'pool_ids': pool_ids
         }
         return report_obj.render('linkloving_account.report_payment_invoice', docargs)
