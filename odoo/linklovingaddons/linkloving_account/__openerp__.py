@@ -31,6 +31,8 @@
         'views/account_ir_sequence.xml',
         'views/account_receive.xml',
         'views/partner.xml',
+        'views/report_payment_invoice.xml',
+        'report.xml',
         'templates.xml',
     ],
     # only loaded in demonstration mode
