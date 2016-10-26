@@ -143,6 +143,9 @@
                         </div>
                     </t>
                 </t>
+                <t t-foreach="pool_ids" t-as="p">
+                    <h t-field="id"/>
+                </t>
             </t>
         </template>
     </data>
