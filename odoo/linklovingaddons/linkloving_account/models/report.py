@@ -14,7 +14,7 @@ class PaymentInvoicePool(models.AbstractModel):
         for report in self:
             partner_id = report.partner_id.id
             pool_ids = self.env['account.pool'].search([('partner_id', '=', partner_id)])
-            report.update('pool_ids', pool_ids)
+            report.update({'pool_ids', pool_ids})
         docargs = {
             'doc_ids': self._ids,
             'doc_model': report.model,
