@@ -19,7 +19,20 @@
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                付款申请
+                            </h1>
+                        </div>
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button type="action" name="%(action_view_account_pool2)d" class="oe_stat_button"
+                                    icon="fa-dollar" string="付款管理" context="{'partner_id':partner_id}">
+
+                            </button>
+
+                        </div>
                         <group>
+
                             <field name="po_id" string="PO" attrs="{'readonly':[('state','!=','draft')]}"/>
                             <field name="partner_id" string="供应商" domain="[('supplier','=',True)]" required="1"
                                    attrs="{'readonly':[('state','!=','draft')]}"/>
