@@ -22,6 +22,7 @@ class AccountPayment(models.Model):
     so_id = fields.Many2one('sale.order', string='Sale Order')
     partner_id = fields.Many2one('res.partner')
     bank_id = fields.Many2one('res.partner.bank')
+    tax_id = fields.Many2one('account.tax', string='税种')
     state = fields.Selection([
         ('draft', u'草稿'),
         ('apply', u'付款申请'),

@@ -42,6 +42,8 @@
                                 <field name="bank_id" domain="[('partner_id', '=', partner_id)]" required="1"/>
                             <field name="amount" string="金额" required="1"
                                    attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="tax_id"
+                                       domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
                             <field name="description" string="描述"/>
                             </group>
                         </group>
