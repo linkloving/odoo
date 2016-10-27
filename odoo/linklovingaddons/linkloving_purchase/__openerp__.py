@@ -28,10 +28,12 @@
         'views/supplier_view.xml',
         'views/purchase_view.xml',
         'views/partner_view.xml',
+        'supplier_info_data.xml',
         'templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo.xml',
+
     ],
 }

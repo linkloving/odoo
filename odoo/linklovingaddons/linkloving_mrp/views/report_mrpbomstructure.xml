@@ -135,13 +135,13 @@
                     <table class="table table-condensed" t-if="o.move_lines or o.move_lines2">
                         <thead>
                             <tr>
-                                <th><strong>Product</strong></th>
-                                <th><strong>product specifation</strong></th>
-                                <th class="text-right"><strong>Quantity</strong></th>
-                                <th><strong>在手数量</strong></th>
-                                <th><strong>领料数量</strong></th>
-                                <th><strong>退料数量</strong></th>
-                                <th><strong>报废数量</strong></th>
+                                <th style='width:30%'><strong>Product</strong></th>
+                                <th style='width:15%'><strong>product specifation</strong></th>
+                                <th style='width:15%' class="text-right"><strong>Quantity</strong></th>
+                                <th style='width:10%'><strong>在手数量</strong></th>
+                                <th style='width:10%'><strong>领料数量</strong></th>
+                                <th style='width:10%'><strong>退料数量</strong></th>
+                                <th style='width:10%'><strong>报废数量</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -166,6 +166,10 @@
                                         <span t-field="line.product_uom.name" groups="product.group_uom"/>
 
                                     </td>
+                                    <td style='width:10%'></td>
+                                    <td style='width:10%'></td>
+                                    <td style='width:10%'></td>
+                                    <td style='width:10%'></td>
                                 </tr>
                             </t>
                             <t t-if="o.move_lines2">
