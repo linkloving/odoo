@@ -79,3 +79,33 @@ class StockPicking(models.Model):
     pre_payment_ids = fields.One2many('account.payment', related='po_id.pre_payment_ids')
     pre_payment_amount = fields.Float(string='Pre Payment Amount')
 
+class linkloving_procurement_order(models.Model):
+    _inherit = 'procurement.order'
+
+    def _get_product_supplier(self, cr, uid, procurement, context=None):
+        supplierinfo = self.pool['product.supplierinfo']
+        company_supplier = supplierinfo.search(cr, uid,
+                                               [('product_tmpl_id', '=', procurement.product_id.product_tmpl_id.id),
+                                                ('company_id', '=', procurement.company_id.id)], limit=1,
+                                               context=context)
+        if company_supplier:
+            return supplierinfo.browse(cr, uid, company_supplier[0], context=context).name
+        elif procurement.product_id.seller_id:
+            return procurement.product_id.seller_id
+        else:
+            return self.pool['ir.model.data'].get_object(
+                cr, uid, 'linkloving_purchase', 'res_partner_exception_supplier', context=context)
+
+    # @api.model
+    # def _get_product_supplier(self, procurement,):
+    #     supplierinfo = self.env['product.supplierinfo']
+    #     company_supplier = supplierinfo.search(
+    #                                            [('product_tmpl_id', '=', procurement.product_id.product_tmpl_id.id),
+    #                                             ('company_id', '=', procurement.company_id.id)], limit=1,
+    #                                            )
+    #     if company_supplier:
+    #         return supplierinfo.browse(company_supplier[0].id,).name
+    #     elif procurement.product_id.seller_id:
+    #         return procurement.product_id.seller_id
+    #     else:
+    #         return self.env.ref('linkloving_purchase.res_partner_exception_supplier')

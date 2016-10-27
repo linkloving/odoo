@@ -1,0 +1,8 @@
+<openerp>
+    <data>
+
+        <record id="res_partner_exception_supplier" model="res.partner">
+            <field name="name">ExceptionSupplier</field>
+        </record>
+    </data>
+</openerp>

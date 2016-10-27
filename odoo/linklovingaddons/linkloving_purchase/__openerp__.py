@@ -33,5 +33,6 @@
     # only loaded in demonstration mode
     'demo': [
         'demo.xml',
+        'supplier_info_data.xml',
     ],
 }
