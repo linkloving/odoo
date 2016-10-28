@@ -77,6 +77,10 @@ class LinklovingPurchaseOrderLine(models.Model):
 
     @api.multi
     def action_open_product_detail(self):
+        print self.env.ref('product.product_template_only_form_view').id,
+        template_id = self.env['purchase.order.line'].browse(self._context.get('active_id')).product_id.product_tmpl_id
+        print template_id
+        print 'ddddddddddddddddddddd'
         return {
             'type': 'ir.actions.act_window',
             'name': 'Modify Product',
@@ -84,7 +88,7 @@ class LinklovingPurchaseOrderLine(models.Model):
             'view_mode': 'form',
             'res_model': 'product.template',
             'view_id': self.env.ref('product.product_template_only_form_view').id,
-            'res_id' : 1,
+            'res_id': self.product_id.product_tmpl_id.id,
             'target': 'new',
         }
 class StockPicking(models.Model):
