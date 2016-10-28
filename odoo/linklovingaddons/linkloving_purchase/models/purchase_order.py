@@ -72,7 +72,21 @@ class PurchaseOrder(models.Model):
             result['res_id'] = pre_payment_ids and pre_payment_ids[0] or False
         return result
 
+class LinklovingPurchaseOrderLine(models.Model):
+    _inherit = 'purchase.order.line'
 
+    @api.multi
+    def action_open_product_detail(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Modify Product',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'product.template',
+            'view_id': self.env.ref('product.product_template_only_form_view').id,
+            'res_id' : 1,
+            'target': 'new',
+        }
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
     po_id = fields.Many2one('purchase.order')
