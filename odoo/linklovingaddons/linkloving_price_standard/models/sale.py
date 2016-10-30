@@ -10,6 +10,8 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
+
+
     def product_id_change(self, cr, uid, ids, pricelist, product, qty=0,
                           uom=False, qty_uos=0, uos=False, name='', partner_id=False,
                           lang=False, update_tax=True, date_order=False, packaging=False, fiscal_position=False,
@@ -36,7 +38,10 @@ class SaleOrderLine(models.Model):
 
         product_uom_obj = self.pool.get('product.uom')
         partner_obj = self.pool.get('res.partner')
+        tax_obj=self.pool.get('account.tax')
+        price_discount_obj=self.pool.get('product.price.discount')
         product_obj = self.pool.get('product.product')
+        tax_id=tax_obj.browse(cr, uid, tax_id[0])
         partner = partner_obj.browse(cr, uid, partner_id)
         lang = partner.lang
         context_partner = context.copy()
@@ -130,18 +135,50 @@ class SaleOrderLine(models.Model):
                 date=date_order,
             )
             # allen modify
-            print partner_id
-            price= product_obj.price1
+
+            discount_id=price_discount_obj.search(cr, uid, [('partner_id', '=', partner_id)])
+            if not discount_id:
+                discount_id=price_discount_obj.write(cr,uid,{
+                    'partner_id':partner_id,
+                    'price':1.00,
+                    'price_tax':1.00
+                })
+
+            discount=price_discount_obj.browse(cr, uid, discount_id[0]).price
+            discount_tax = price_discount_obj.browse(cr, uid, discount_id[0]).price_tax
+            if partner.level==1:
+                if not tax_id.amount:
+                    price=product_obj.price1*discount
+                else:
+                    price=product_obj.price1_tax*discount_tax
+            elif partner.level == 2:
+                if not tax_id.amount:
+                    price = product_obj.price2*discount
+                else:
+                    price = product_obj.price2_tax*discount_tax
+            elif partner.level == 3:
+                if not tax_id.amount:
+                    price = product_obj.price3*discount
+                else:
+                    price = product_obj.price3_tax*discount_tax
+            else:
+                pass
             # price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist],
             #                                                      product, qty or 1.0, partner_id, ctx)[pricelist]
             if price is False:
-                warn_msg = _("Cannot find a pricelist line matching this product and quantity.\n"
-                             "You have to change either the product, the quantity or the pricelist.")
+                price=0.00
+                # warn_msg = _("Cannot find a pricelist line matching this product and quantity.\n"
+                #              "You have to change either the product, the quantity or the pricelist.")
+                #
+                # warning_msgs += _("No valid pricelist line found ! :") + warn_msg + "\n\n"
 
-                warning_msgs += _("No valid pricelist line found ! :") + warn_msg + "\n\n"
             else:
-                price = self.pool['account.tax']._fix_tax_included_price(cr, uid, price, taxes,
-                                                                         context['default_tax_id'])
+                # price = self.pool['account.tax']._fix_tax_included_price(cr, uid, price, taxes,
+                #
+                #                                                     context['default_tax_id'])
+
+                if tax_id.amount:
+                    price = price * float(discount_tax)
                 if not result.get('price_unit'):
                     result.update({'price_unit': price})
                 if context.get('uom_qty_change', False):
@@ -157,4 +194,46 @@ class SaleOrderLine(models.Model):
             }
         return {'value': result, 'domain': domain, 'warning': warning}
 
+    @api.multi
+    def write(self, vals):
+        print vals
+        price_unit=vals.get('price_unit')
+        if price_unit:
+            partner_id=self.order_id.partner_id
+            if partner_id.level == 1:
+                if not self.tax_id.amount:
+                    price = self.product_id.price1
+                else:
+                    price = self.product_id.price1_tax
+            elif partner_id.level == 2:
+                if not self.tax_id.amount:
+                    price = self.product_id.price2
+                else:
+                    price = self.product_id.price2_tax
+            elif partner_id.level == 3:
+                if not self.tax_id.amount:
+                    price = self.product_id.price3
+                else:
+                    price = self.product_id.price3_tax
+            if price_unit<>price:
+                discount=price_unit/price
+            discount_obj=self.env['product.price.discount'].search([('partner_id','=',partner_id.id)])
+
+            discount_obj.price=discount
+
+
+
+        return super(SaleOrderLine, self).write(vals)
+
+
+
+
+
+
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+    @api.onchange('tax_id')
+    def _onchange_tax_id(self):
+        for line in self.order_line:
+            line.price=100
 

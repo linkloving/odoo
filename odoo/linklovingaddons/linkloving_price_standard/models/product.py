@@ -15,4 +15,12 @@ class ProductProduct(models.Model):
     price2_tax = fields.Float(string='2级含税价')
     price3_tax = fields.Float(string='3级含税价')
 
+class ProductPriceDiscount(models.Model):
+    """
+       添加多级报价
+    """
+    _name = 'product.price.discount'
+    partner_id=fields.Many2one('res.partner')
+    price=fields.Float()
+    price_tax=fields.Float()
 
