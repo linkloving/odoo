@@ -20,11 +20,11 @@ class SaleOrderLine(models.Model):
 
         _, _, tax_id = tax_id[0]
         if len(tax_id) > 1:
-            raise osv.except_osv(_('123444!'),
+            raise osv.except_orm(_('123444!'),
                                  _('请先定义税金.'))
 
         if not tax_id:
-            raise osv.except_osv(_('没有定于税金!'),
+            raise osv.except_orm(_('没有定于税金!'),
                                  _('请先定义税金.'))
 
         lang = lang or context.get('lang', False)
@@ -190,7 +190,6 @@ class SaleOrderLine(models.Model):
 
     @api.multi
     def write(self, vals):
-        print vals
 
         price_unit = vals.get('price_unit')
         if price_unit:
@@ -225,11 +224,11 @@ class SaleOrderLine(models.Model):
         order_id = self.env['sale.order'].browse(vals.get('order_id'))
         print vals
         _, _, tax_id = vals.get('tax_id')[0]
-        tax_id=self.env['account.tax'].browse(tax_id[0])
+        tax_id = self.env['account.tax'].browse(tax_id[0])
 
         price_unit = vals.get('price_unit')
         product_id = self.env['product.product'].browse(vals.get('product_id'))
-
+        price = 0.0
         if price_unit:
             partner_id = order_id.partner_id
             discount_obj = self.env['product.price.discount'].search([('partner_id', '=', partner_id.id)])
@@ -248,7 +247,7 @@ class SaleOrderLine(models.Model):
                     price = product_id.price3
                 else:
                     price = product_id.price3_tax
-            if price and  not tax_id.amount and price_unit <> price:
+            if price and not tax_id.amount and price_unit <> price:
                 discount = price_unit / price
                 discount_obj.price = discount
             elif price and tax_id.amount and price_unit <> price:
@@ -263,5 +262,25 @@ class SaleOrder(models.Model):
 
     @api.onchange('tax_id')
     def _onchange_tax_id(self):
-        for line in self.order_line:
-            line.price = 100
+        discount_id = self.env['product.price.discount'].search([('partner_id','=',self.partner_id.id)],limit=1)
+        if discount_id:
+            discount=discount_id.price
+            discount_tax=discount_id.price_tax
+        if self.order_line:
+
+            for line in self.order_line:
+                if self.partner_id.level == 1:
+                    if self.tax_id.amount:
+                        line.price_unit = line.product_id.price1_tax*discount_tax
+                    else:
+                        line.price_unit = line.product_id.price1*discount
+                elif self.partner_id.level == 2:
+                    if self.tax_id.amount:
+                        line.price_unit = line.product_id.price2_tax*discount_tax
+                    else:
+                        line.price_unit = line.product_id.price2*discount
+                elif self.partner_id.level == 3:
+                    if self.tax_id.amount:
+                        line.price_unit = line.product_id.price2_tax*discount_tax
+                    else:
+                        line.price_unit = line.product_id.price2*discount
