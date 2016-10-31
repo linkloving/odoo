@@ -133,10 +133,11 @@ class SaleOrderLine(models.Model):
             )
             # allen modify
 
-            discount_id = price_discount_obj.search(cr, uid, [('partner_id', '=', partner_id)])
+            discount_id = price_discount_obj.search(cr, uid, [('partner_id', '=', partner_id),('product_id', '=', product_obj.id)])
             if not discount_id:
                 discount_id = price_discount_obj.create(cr, uid, {
                     'partner_id': partner_id,
+                    'product_id':product_obj.id
                 })
             price = 0.0
             discount = price_discount_obj.browse(cr, uid, discount_id).price
@@ -192,9 +193,10 @@ class SaleOrderLine(models.Model):
     def write(self, vals):
 
         price_unit = vals.get('price_unit')
+        product_id=vals.get('product.id') or self.product_id.id
         if price_unit:
             partner_id = self.order_id.partner_id
-            discount_obj = self.env['product.price.discount'].search([('partner_id', '=', partner_id.id)])
+            discount_obj = self.env['product.price.discount'].search([('partner_id', '=', partner_id.id), ('product_id', '=', product_id)])
             if partner_id.level == 1:
                 if not self.tax_id.amount:
                     price = self.product_id.price1
@@ -231,7 +233,7 @@ class SaleOrderLine(models.Model):
         price = 0.0
         if price_unit:
             partner_id = order_id.partner_id
-            discount_obj = self.env['product.price.discount'].search([('partner_id', '=', partner_id.id)])
+            discount_obj = self.env['product.price.discount'].search([('partner_id', '=', partner_id.id), ('product_id', '=', product_id.id)])
             if partner_id.level == 1:
                 if not tax_id.amount:
                     price = product_id.price1
@@ -262,25 +264,27 @@ class SaleOrder(models.Model):
 
     @api.onchange('tax_id')
     def _onchange_tax_id(self):
-        discount_id = self.env['product.price.discount'].search([('partner_id','=',self.partner_id.id)],limit=1)
-        if discount_id:
-            discount=discount_id.price
-            discount_tax=discount_id.price_tax
+
         if self.order_line:
 
             for line in self.order_line:
+                discount_id = self.env['product.price.discount'].search(
+                    [('partner_id', '=', self.partner_id.id), ('product_id', '=', line.product_id.id)], limit=1)
+                if discount_id:
+                    discount = discount_id.price
+                    discount_tax = discount_id.price_tax
                 if self.partner_id.level == 1:
                     if self.tax_id.amount:
-                        line.price_unit = line.product_id.price1_tax*discount_tax
+                        line.price_unit = line.product_id.price1_tax * discount_tax
                     else:
-                        line.price_unit = line.product_id.price1*discount
+                        line.price_unit = line.product_id.price1 * discount
                 elif self.partner_id.level == 2:
                     if self.tax_id.amount:
-                        line.price_unit = line.product_id.price2_tax*discount_tax
+                        line.price_unit = line.product_id.price2_tax * discount_tax
                     else:
-                        line.price_unit = line.product_id.price2*discount
+                        line.price_unit = line.product_id.price2 * discount
                 elif self.partner_id.level == 3:
                     if self.tax_id.amount:
-                        line.price_unit = line.product_id.price2_tax*discount_tax
+                        line.price_unit = line.product_id.price2_tax * discount_tax
                     else:
-                        line.price_unit = line.product_id.price2*discount
+                        line.price_unit = line.product_id.price2 * discount
