@@ -194,6 +194,7 @@ class SaleOrderLine(models.Model):
 
         for line in self:
             price_unit = vals.get('price_unit')
+            price=0.0
 
             if price_unit:
                 product_id = vals.get('product_id') or line.product_id.id
