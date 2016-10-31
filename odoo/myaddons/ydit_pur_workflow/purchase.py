@@ -454,7 +454,7 @@ class purchase_order_line(osv.osv):
     def write(self, cr, uid, ids, vals, context=None):
         if not ids:
             return True
-        id = ids[0]
+        id = ids
         po_line = self.browse(cr,uid,id,context=context)
         #check under the 'changing' status
         if po_line.state == 'changing':
