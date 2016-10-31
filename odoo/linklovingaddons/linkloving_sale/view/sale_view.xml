@@ -15,7 +15,13 @@
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="after">
                     <field name="tax_id" widget="many2many_tags"
-                           domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]" string="税金"/>
+                           domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]" string="税金" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                </xpath>
+                 <xpath expr="//group[@name='sale_total']" position="before">
+                     <group>
+                         <field name="product_count" readonly="1" string="总数量"/>
+                     </group>
+
                 </xpath>
                 <xpath expr="//field[@name='order_line']" position="replace">
                     <field name="order_line" context="{'default_tax_id':tax_id}">
