@@ -21,6 +21,6 @@ class ProductPriceDiscount(models.Model):
     """
     _name = 'product.price.discount'
     partner_id=fields.Many2one('res.partner')
-    price=fields.Float()
-    price_tax=fields.Float()
+    price=fields.Float(default=1.00)
+    price_tax=fields.Float(default=1.00)
 
