@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_linkloving_price_standard_linkloving_price_standard,linkloving_price_standard.linkloving_price_standard,model_linkloving_price_standard_linkloving_price_standard,,1,0,0,0
+access_linkloving_model_product_price_discount,linkloving_price_standard.linkloving_price_standard,model_product_price_discount,,1,1,1,1

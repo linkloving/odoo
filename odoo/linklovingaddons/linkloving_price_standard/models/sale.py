@@ -18,9 +18,9 @@ class SaleOrderLine(models.Model):
         tax_id = context.get('default_tax_id')
         print tax_id
 
-        _, _, tax_id = tax_id[0]
+        a, b, tax_id = tax_id[0]
         if len(tax_id) > 1:
-            raise osv.except_orm(_('123444!'),
+            raise osv.except_orm(_('只能定义一种税金!'),
                                  _('请先定义税金.'))
 
         if not tax_id:
@@ -270,6 +270,8 @@ class SaleOrderLine(models.Model):
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
+
+
 
     @api.onchange('tax_id')
     def _onchange_tax_id(self):
