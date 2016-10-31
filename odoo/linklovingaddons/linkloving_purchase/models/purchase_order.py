@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
-from openerp import models, fields, api, _
+import logging
+import threading
+
+from openerp import models, fields, api, _, SUPERUSER_ID
+from openerp import tools
 from openerp.osv import osv
 
+_logger = logging.getLogger(__name__)
 
 class PurchaseOrder(models.Model):
     """
@@ -78,17 +83,15 @@ class LinklovingPurchaseOrderLine(models.Model):
     @api.multi
     def action_open_product_detail(self):
         print self.env.ref('product.product_template_only_form_view').id,
-        template_id = self.env['purchase.order.line'].browse(self._context.get('active_id')).product_id.product_tmpl_id
-        print template_id
-        print 'ddddddddddddddddddddd'
         return {
             'type': 'ir.actions.act_window',
             'name': 'Modify Product',
             'view_type': 'form',
             'view_mode': 'form',
             'res_model': 'product.template',
-            'view_id': self.env.ref('product.product_template_only_form_view').id,
+            'view_id': self.env.ref('linkloving_purchase.linkloving_product_product_form_view').id,
             'res_id': self.product_id.product_tmpl_id.id,
+            'context': {'is_show':True},
             'target': 'new',
         }
 class StockPicking(models.Model):
@@ -127,3 +130,58 @@ class linkloving_procurement_order(models.Model):
     #         return procurement.product_id.seller_id
     #     else:
     #         return self.env.ref('linkloving_purchase.res_partner_exception_supplier')
+class linkloving_product_product(models.Model):
+    _inherit = 'product.template'
+
+    def do_process(self, cr, uid, ids, context=None):
+        purchase_order_line_obj = self.pool['purchase.order.line']
+        order_line = purchase_order_line_obj.browse(cr, uid,context['active_id'])
+        if order_line.product_id.seller_ids:
+            order = order_line.order_id
+            order.order_line -= order_line
+            # order.order_line.remove(order_line)
+        return {'type': 'ir.actions.act_window_close'}
+
+class procurement_compute_all(osv.osv_memory):
+    _inherit = 'procurement.order.compute.all'
+
+    def _procure_calculation_all(self, cr, uid, ids, context=None):
+        return super(procurement_compute_all, self)._procure_calculation_all(cr, uid, ids, context)
+
+        # return {
+        #     'type': 'ir.actions.act_window',
+        #     'name': 'Modify Product',
+        #     'view_type': 'form',
+        #     'view_mode': 'form',
+        #     'res_model': 'product.template',
+        #     'view_id': self.env.ref('linkloving_purchase.modify_product_supplier').id,
+        #     'res_id': self.product_id.product_tmpl_id.id,
+        #     'target': 'new',
+        # }
+    
+    def procure_calculation(self, cr, uid, ids, context=None):
+        """
+        @param self: The object pointer.
+        @param cr: A database cursor
+        @param uid: ID of the user currently logged in
+        @param ids: List of IDs selected
+        @param context: A standard dictionary
+        """
+        self.get_scheduler_is_running()
+        return super(procurement_compute_all, self).procure_calculation(cr, uid, ids, context)
+
+    def get_scheduler_is_running(self):
+
+        new_cr = self.pool.cursor()
+        scheduler_cron_id = self.pool['ir.model.data'].get_object_reference(new_cr, SUPERUSER_ID, 'procurement',
+                                                                            'ir_cron_scheduler_action')[1]
+        # Avoid to run the scheduler multiple times in the same time
+        try:
+            with tools.mute_logger('openerp.sql_db'):
+                new_cr.execute("SELECT id FROM ir_cron WHERE id = %s FOR UPDATE NOWAIT", (scheduler_cron_id,))
+        except Exception:
+            _logger.info('Attempt to run procurement scheduler aborted, as already running')
+            new_cr.rollback()
+            new_cr.close()
+            raise osv.except_osv('Error!', 'Attempt to run procurement scheduler aborted, as already running')
+            return {}
