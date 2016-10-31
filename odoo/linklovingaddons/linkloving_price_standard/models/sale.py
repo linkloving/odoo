@@ -192,32 +192,35 @@ class SaleOrderLine(models.Model):
     @api.multi
     def write(self, vals):
 
-        price_unit = vals.get('price_unit')
-        product_id=vals.get('product.id') or self.product_id.id
-        if price_unit:
-            partner_id = self.order_id.partner_id
-            discount_obj = self.env['product.price.discount'].search([('partner_id', '=', partner_id.id), ('product_id', '=', product_id)])
-            if partner_id.level == 1:
-                if not self.tax_id.amount:
-                    price = self.product_id.price1
-                else:
-                    price = self.product_id.price1_tax
-            elif partner_id.level == 2:
-                if not self.tax_id.amount:
-                    price = self.product_id.price2
-                else:
-                    price = self.product_id.price2_tax
-            elif partner_id.level == 3:
-                if not self.tax_id.amount:
-                    price = self.product_id.price3
-                else:
-                    price = self.product_id.price3_tax
-            if price and not self.tax_id.amount and price_unit <> price:
-                discount = price_unit / price
-                discount_obj.price = discount
-            elif price and self.tax_id.amount and price_unit <> price:
-                discount_tax = price_unit / price
-                discount_obj.price_tax = discount_tax
+        for line in self:
+            price_unit = vals.get('price_unit')
+
+            if price_unit:
+                product_id = vals.get('product_id') or line.product_id.id
+                partner_id = line.order_id.partner_id
+                discount_obj = line.env['product.price.discount'].search(
+                    [('partner_id', '=', partner_id.id), ('product_id', '=', product_id)])
+                if partner_id.level == 1:
+                    if not line.tax_id.amount:
+                        price = line.product_id.price1
+                    else:
+                        price = line.product_id.price1_tax
+                elif partner_id.level == 2:
+                    if not line.tax_id.amount:
+                        price = line.product_id.price2
+                    else:
+                        price = line.product_id.price2_tax
+                elif partner_id.level == 3:
+                    if not line.tax_id.amount:
+                        price = line.product_id.price3
+                    else:
+                        price = line.product_id.price3_tax
+                if price and not line.tax_id.amount and price_unit <> price:
+                    discount = price_unit / price
+                    discount_obj.price = discount
+                elif price and line.tax_id.amount and price_unit <> price:
+                    discount_tax = price_unit / price
+                    discount_obj.price_tax = discount_tax
 
         return super(SaleOrderLine, self).write(vals)
 
@@ -234,6 +237,12 @@ class SaleOrderLine(models.Model):
         if price_unit:
             partner_id = order_id.partner_id
             discount_obj = self.env['product.price.discount'].search([('partner_id', '=', partner_id.id), ('product_id', '=', product_id.id)])
+            if not discount_obj:
+                discount_obj=self.env['product.price.discount'].create({
+                    'partner_id':partner_id.id,
+                    'product_id':product_id.id
+                })
+
             if partner_id.level == 1:
                 if not tax_id.amount:
                     price = product_id.price1
