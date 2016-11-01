@@ -42,7 +42,7 @@ class PurchaseOrder(models.Model):
                 id_to_delete = r.id
                 proc_obj = self.env['procurement.order'].search([('purchase_line_id','=',id_to_delete)])
                 r.unlink()
-                if not proc_obj:
+                if proc_obj:
                     proc_obj.run()
         if not self.order_line:
             self.unlink()
@@ -116,6 +116,25 @@ class LinklovingPurchaseOrderLine(models.Model):
             'context': {'is_show':True},
             'target': 'new',
         }
+    
+    
+    @api.one
+    def unlink(self):
+        is_exception_order = self.order_id.partner_id == self.env.ref('linkloving_purchase.res_partner_exception_supplier')
+        if not is_exception_order:
+            return super(LinklovingPurchaseOrderLine, self).unlink()
+        else:
+            if self.product_id.seller_ids:
+                id_to_delete = self.id
+                proc_obj = self.env['procurement.order'].search([('purchase_line_id', '=', id_to_delete)])
+                super(LinklovingPurchaseOrderLine, self).unlink()
+                if proc_obj:
+                    proc_obj.run()
+                # if not self.order_id.order_line:
+                #     self.order_id.unlink()
+            else:
+                raise osv.except_osv(_('Error!'),_('该产品还未设置供应商，不可从订单中删除'))
+
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
     po_id = fields.Many2one('purchase.order')
