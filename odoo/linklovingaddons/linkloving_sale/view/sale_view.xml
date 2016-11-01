@@ -24,7 +24,7 @@
 
                 </xpath>
                 <xpath expr="//field[@name='order_line']" position="replace">
-                    <field name="order_line" context="{'default_tax_id':tax_id}">
+                    <field name="order_line" context="{'default_tax_id':tax_id,'order_line':order_line}">
                         <form string="Sales Order Lines">
                             <header groups="base.group_user">
                                 <button name="%(sale.action_view_sale_order_line_make_invoice)d" states="confirmed"

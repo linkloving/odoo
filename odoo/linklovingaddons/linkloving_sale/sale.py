@@ -26,8 +26,21 @@ class SaleOrder(models.Model):
         self.product_count = count
 
 
+
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     tax_id = fields.Many2many(related='order_id.tax_id', store=True)
+
+    # def default_get(self, cr, uid, ids, context=None):
+    #     res = super(SaleOrder, self).default_get(cr, uid, ids, context=None)
+    #     if context:
+    #         context_keys = context.keys()
+    #         next_sequence = 1
+    #         if 'order_line' in context_keys:
+    #             if len(context.get('order_line')) > 0:
+    #                 next_sequence = len(context.get('order_line')) + 1
+    #     res.update({'sequence': next_sequence})
+    #     return res
 
 
