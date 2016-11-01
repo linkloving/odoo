@@ -13,17 +13,17 @@
                                 class="oe_highlight" groups="account.group_account_invoice"/>
                         <button name="reject" string="退回" type="object" states="apply"
                                 class="oe_highlight" groups="account.group_account_invoice"/>
-                        <button name="set_to_apply" string="确认" type="object"
+                        <button name="set_to_apply" string="重置" type="object"
                                 class="oe_highlight" groups="base.group_erp_manager"/>
 
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
-                        <div class="oe_title">
-                            <h1>
-                                付款申请
-                            </h1>
-                        </div>
+                        <h1>
+                            <label string="付款申请"></label>
+                        <field name="name" class="oe_inline"/>
+                    </h1>
+
 
                         <div class="oe_right oe_button_box" name="buttons">
                             <button type="action" name="%(action_view_account_pool2)d" class="oe_stat_button"
@@ -68,6 +68,7 @@
             <field name="model">account.payment</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="name"/>
                     <field name="po_id" readonly="1"/>
                     <field name="amount"/>
                     <field name="partner_id"/>
