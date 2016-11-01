@@ -38,7 +38,7 @@
 
                                 <field name="po_id" string="PO" attrs="{'readonly':[('state','!=','draft')]}"/>
                             <field name="partner_id" string="供应商" domain="[('supplier','=',True)]" required="1"
-                                   attrs="{'readonly':[('state','!=','draft')]}"/>
+                                  />
                                 <field name="bank_id" domain="[('partner_id', '=', partner_id)]" required="1"/>
                             <field name="amount" string="金额" required="1"
                                    attrs="{'readonly':[('state','!=','draft')]}"/>
