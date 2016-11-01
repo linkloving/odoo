@@ -20,9 +20,9 @@
 			<field name="model">purchase.order</field>
 			<field name="inherit_id" ref="purchase.purchase_order_form"/>
 			<field name="arch" type="xml">
-				<xpath expr="//notebook/page/field/tree/field[@name='state']" position="after">
-                    <button name="action_open_product_detail" class="oe_highlight" string="Add Suppliers"
-                            type="object" attrs="{'invisible':False}"/>
+				<xpath expr="//form/header/button[@name='action_cancel']" position="after">
+                    <button name="check_product_has_supplier" class="oe_edit_only" string="Check Suppliers"
+                            type="object"/>
                 </xpath>
                 <xpath expr="//field[@name='order_line']" position="attributes">
                         <attribute name="context">{'order_line':order_line}</attribute>
@@ -39,21 +39,21 @@
 			</field>
         </record>
 
-        <record id="linkloving_product_product_form_view" model="ir.ui.view">
-            <field name="name">product.template.supplier.form.inherit</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_form_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//sheet" position="after">
-                    <!--<field name="name"/>-->
-                    <footer  class="oe_edit_only" invisible="not context.get('is_show', False)">
-                        <button name="do_process" string="Save" type="object" class="oe_highlight"/>
-                        or
-                        <button string="Cancel" class="oe_link" special="cancel"/>
-                    </footer>
-                </xpath>
-            </field>
-        </record>
+        <!--<record id="linkloving_product_product_form_view" model="ir.ui.view">-->
+            <!--<field name="name">product.template.supplier.form.inherit</field>-->
+            <!--<field name="model">product.template</field>-->
+            <!--<field name="inherit_id" ref="product.product_template_form_view"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<xpath expr="//sheet" position="after">-->
+                    <!--&lt;!&ndash;<field name="name"/>&ndash;&gt;-->
+                    <!--<footer  class="oe_edit_only" invisible="not context.get('is_show', False)">-->
+                        <!--<button name="do_process" string="Save" type="object" class="oe_highlight"/>-->
+                        <!--or-->
+                        <!--<button string="Cancel" class="oe_link" special="cancel"/>-->
+                    <!--</footer>-->
+                <!--</xpath>-->
+            <!--</field>-->
+        <!--</record>-->
 
          <!--<record id="modify_product_supplier" model="ir.ui.view">-->
             <!--<field name="name">product.product.form</field>-->
