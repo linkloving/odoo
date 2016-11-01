@@ -276,7 +276,7 @@ class SaleOrder(models.Model):
 
     @api.onchange('tax_id')
     def _onchange_tax_id(self):
-
+        discount=discount_tax=1.0
         if self.order_line:
 
             for line in self.order_line:
