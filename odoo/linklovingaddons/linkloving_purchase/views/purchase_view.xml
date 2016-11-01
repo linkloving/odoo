@@ -24,6 +24,18 @@
                     <button name="action_open_product_detail" class="oe_highlight" string="Add Suppliers"
                             type="object" attrs="{'invisible':False}"/>
                 </xpath>
+                <xpath expr="//field[@name='order_line']" position="attributes">
+                        <attribute name="context">{'order_line':order_line}</attribute>
+                </xpath>
+                      <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position='before'>
+                    <field name="sequence" />
+                </xpath>
+                  <xpath expr="//field[@name='order_line']" position="after">
+                     <group>
+                         <field name="product_count" readonly="1" string="总数量"/>
+                     </group>
+
+                </xpath>
 			</field>
         </record>
 

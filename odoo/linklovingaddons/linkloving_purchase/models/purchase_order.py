@@ -8,23 +8,29 @@ from openerp.osv import osv
 
 _logger = logging.getLogger(__name__)
 
+
 class PurchaseOrder(models.Model):
     """
     采购单
     """
     _inherit = 'purchase.order'
+
     pre_payment_ids = fields.One2many('account.payment', 'po_id')
     prepayment_count = fields.Char(compute='get_pre_payment_ids')
     is_prepayment_deduct = fields.Boolean()
     pre_payment_mount = fields.Float(compute='get_pre_payment_mount')
+    product_count = fields.Float(compute='get_product_count')
+
+    def get_product_count(self):
+        count = 0.0
+        for line in self.order_line:
+            count += line.product_qty
+        self.product_count = count
 
     def get_pre_payment_mount(self):
         self.pre_payment_mount = 0
         for p in self.pre_payment_ids:
             self.pre_payment_mount += p.amount
-
-
-
 
     @api.multi
     def get_pre_payment_ids(self):
@@ -77,8 +83,22 @@ class PurchaseOrder(models.Model):
             result['res_id'] = pre_payment_ids and pre_payment_ids[0] or False
         return result
 
+
 class LinklovingPurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
+    sequence = fields.Integer(string='序号')
+
+    def default_get(self, cr, uid, ids, context=None):
+        res = super(LinklovingPurchaseOrderLine, self).default_get(cr, uid, ids, context=None)
+        print context
+        if context:
+            context_keys = context.keys()
+            next_sequence = 1
+            if 'order_line' in context_keys:
+                if len(context.get('order_line')) > 0:
+                    next_sequence = len(context.get('order_line')) + 1
+        res.update({'sequence': next_sequence})
+        return res
 
     @api.multi
     def action_open_product_detail(self):
@@ -91,14 +111,17 @@ class LinklovingPurchaseOrderLine(models.Model):
             'res_model': 'product.template',
             'view_id': self.env.ref('linkloving_purchase.linkloving_product_product_form_view').id,
             'res_id': self.product_id.product_tmpl_id.id,
-            'context': {'is_show':True},
+            'context': {'is_show': True},
             'target': 'new',
         }
+
+
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
     po_id = fields.Many2one('purchase.order')
     pre_payment_ids = fields.One2many('account.payment', related='po_id.pre_payment_ids')
     pre_payment_amount = fields.Float(string='Pre Payment Amount')
+
 
 class linkloving_procurement_order(models.Model):
     _inherit = 'procurement.order'
@@ -117,30 +140,33 @@ class linkloving_procurement_order(models.Model):
             return self.pool['ir.model.data'].get_object(
                 cr, uid, 'linkloving_purchase', 'res_partner_exception_supplier', context=context)
 
-    # @api.model
-    # def _get_product_supplier(self, procurement,):
-    #     supplierinfo = self.env['product.supplierinfo']
-    #     company_supplier = supplierinfo.search(
-    #                                            [('product_tmpl_id', '=', procurement.product_id.product_tmpl_id.id),
-    #                                             ('company_id', '=', procurement.company_id.id)], limit=1,
-    #                                            )
-    #     if company_supplier:
-    #         return supplierinfo.browse(company_supplier[0].id,).name
-    #     elif procurement.product_id.seller_id:
-    #         return procurement.product_id.seller_id
-    #     else:
-    #         return self.env.ref('linkloving_purchase.res_partner_exception_supplier')
+            # @api.model
+            # def _get_product_supplier(self, procurement,):
+            #     supplierinfo = self.env['product.supplierinfo']
+            #     company_supplier = supplierinfo.search(
+            #                                            [('product_tmpl_id', '=', procurement.product_id.product_tmpl_id.id),
+            #                                             ('company_id', '=', procurement.company_id.id)], limit=1,
+            #                                            )
+            #     if company_supplier:
+            #         return supplierinfo.browse(company_supplier[0].id,).name
+            #     elif procurement.product_id.seller_id:
+            #         return procurement.product_id.seller_id
+            #     else:
+            #         return self.env.ref('linkloving_purchase.res_partner_exception_supplier')
+
+
 class linkloving_product_product(models.Model):
     _inherit = 'product.template'
 
     def do_process(self, cr, uid, ids, context=None):
         purchase_order_line_obj = self.pool['purchase.order.line']
-        order_line = purchase_order_line_obj.browse(cr, uid,context['active_id'])
+        order_line = purchase_order_line_obj.browse(cr, uid, context['active_id'])
         if order_line.product_id.seller_ids:
             order = order_line.order_id
             order.order_line -= order_line
             # order.order_line.remove(order_line)
         return {'type': 'ir.actions.act_window_close'}
+
 
 class procurement_compute_all(osv.osv_memory):
     _inherit = 'procurement.order.compute.all'
@@ -158,7 +184,7 @@ class procurement_compute_all(osv.osv_memory):
         #     'res_id': self.product_id.product_tmpl_id.id,
         #     'target': 'new',
         # }
-    
+
     def procure_calculation(self, cr, uid, ids, context=None):
         """
         @param self: The object pointer.
