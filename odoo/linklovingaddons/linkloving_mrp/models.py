@@ -34,6 +34,7 @@ class linkloving_mrp_bom_line(models.Model):
     _inherit = 'mrp.bom.line'
 
     line_locate = fields.Char(string=_(u'Locate'))
+    product_sepcs=fields.Char(related='product_id.product_sepcs')
 
 
     is_pcba = fields.Boolean(String=_(u'Is Pcba'))
