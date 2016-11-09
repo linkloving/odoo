@@ -40,7 +40,22 @@ class PurchaseOrder(models.Model):
     #         if r.product_id.seller_ids:
     #             r.unlink()
     #     return super(PurchaseOrder, self).write(vals)
+    @api.one
+    def unlink(self):
+        proc_objs = self.env['procurement.order'].search([('purchase_line_id', 'in', [r.id for r in self.order_line])])
+        # if proc_objs:
+            # return {
+            #     'type': 'ir.actions.act_window',
+            #     'name': '删除原因',
+            #     'view_type': 'form',
+            #     'view_mode': 'form',
+            #     'res_model': 'procurement.order',
+            #     'view_id': self.env.ref('linkloving_purchase.unlink_purchase_order_remark').id,
+            #     'context': {'is_show': True},
+            #     'target': 'new',
+            # }
 
+        return super(PurchaseOrder, self).unlink()
     @api.one
     def check_product_has_supplier(self):
         is_exception_order = self.partner_id == self.env.ref('linkloving_purchase.res_partner_exception_supplier')
@@ -166,6 +181,8 @@ class StockPicking(models.Model):
 
 class linkloving_procurement_order(models.Model):
     _inherit = 'procurement.order'
+
+    # unlink_remark = fields.Char(string='删除原因')
 
     def _get_product_supplier(self, cr, uid, procurement, context=None):
         supplierinfo = self.pool['product.supplierinfo']
