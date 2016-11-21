@@ -10,8 +10,8 @@ class Partner(models.Model):
     _inherit = 'res.partner'
 
     level = fields.Selection([
-        (1, '1级'),
-        (2, '2级'),
-        (3, '3级')
-    ],string='客户等级')
+        (1, u'1级'),
+        (2, u'2级'),
+        (3, u'3级')
+    ],string=u'客户等级')
 
