@@ -11,16 +11,16 @@ from openerp.osv import osv
 class res_company_mail(models.Model):
     _inherit = 'res.company'
 
-    mail_auth_password = fields.Char('邮箱授权码')
-    send_mail_server_id = fields.Many2one('ir.mail_server', string='发件邮箱类型')
+    mail_auth_password = fields.Char(u'邮箱授权码')
+    send_mail_server_id = fields.Many2one('ir.mail_server', string=u'发件邮箱类型')
     # rec_mail_server_id = fields.Many2one('fetchmail.server', string='收件邮箱类型')
 
 
 class res_user(models.Model):
     _inherit = 'res.users'
 
-    mail_auth_password = fields.Char('邮箱授权码')
-    send_mail_server_id = fields.Many2one('ir.mail_server', string='发件邮箱类型')
+    mail_auth_password = fields.Char(u'邮箱授权码')
+    send_mail_server_id = fields.Many2one('ir.mail_server', string=u'发件邮箱类型')
     # rec_mail_server_id = fields.Many2one('fetchmail.server', string='收件邮箱类型')
 
 
