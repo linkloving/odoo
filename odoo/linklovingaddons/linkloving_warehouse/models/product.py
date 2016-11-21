@@ -30,7 +30,7 @@ from openerp import _, api, exceptions, fields, models
 class linkloving_product_product(models.Model):
     _inherit = 'product.product'
     area_id = fields.Many2one('stock.location.area', string='Area')
-    product_sepcs=fields.Char(string='产品规格',related='product_tmpl_id.product_sepcs')
+    product_sepcs=fields.Char(string=u'产品规格',related='product_tmpl_id.product_sepcs')
 
 class linkloving_product_template(models.Model):
     _inherit = 'product.template'

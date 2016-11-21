@@ -13,8 +13,8 @@ class AccountPayment(models.Model):
     _order = 'create_date desc'
     _rec_name = 'amount'
     pay_type = fields.Selection([
-        ('1', '预付款'),
-        ('2', '正常款'),
+        ('1', u'预付款'),
+        ('2', u'正常款'),
     ], default='1')
     name = fields.Char()
     is_deduct = fields.Boolean()
@@ -22,14 +22,14 @@ class AccountPayment(models.Model):
     so_id = fields.Many2one('sale.order', string='Sale Order')
     partner_id = fields.Many2one('res.partner')
     bank_id = fields.Many2one('res.partner.bank')
-    tax_id = fields.Many2one('account.tax', string='税种')
+    tax_id = fields.Many2one('account.tax', string=u'税种')
     state = fields.Selection([
         ('draft', u'草稿'),
         ('apply', u'付款申请'),
         ('done', u'完成'),
         ('cancel', u'取消')
     ], default='draft')
-    description = fields.Text(string='备注')
+    description = fields.Text(string=u'备注')
     amount = fields.Float(string='Amount')
 
     _sql_constraints = {

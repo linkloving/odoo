@@ -14,8 +14,8 @@ class AccountPool(models.Model):
     sub_out = fields.Float(compute='_get_sub_out')
     remain_amount = fields.Float(compute='_get_remain_amount')
     state = fields.Selection([
-        ('draft', '草稿'),
-        ('posted', '提交'),
+        ('draft', u'草稿'),
+        ('posted', u'提交'),
     ], 'State', readonly=True, default='draft')
 
     @api.one

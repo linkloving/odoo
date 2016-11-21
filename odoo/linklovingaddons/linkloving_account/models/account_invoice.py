@@ -8,10 +8,10 @@ class AccountInvoice(models.Model):
 
     """
     _inherit = 'account.invoice'
-    deduct_amount = fields.Float(string='扣款')
-    deduct_reason = fields.Text(string='扣款原因')
+    deduct_amount = fields.Float(string=u'扣款')
+    deduct_reason = fields.Text(string=u'扣款原因')
     total = fields.Float(compute='_compute_amount')
-    invoice_no = fields.Char(string='发票号码')
+    invoice_no = fields.Char(string=u'发票号码')
 
     state = fields.Selection([
         ('draft', 'Draft'),

@@ -12,11 +12,11 @@ class AccountAmountReceived(models.Model):
     _inherit = ['mail.thread']
     _order = 'create_date desc'
     name = fields.Char()
-    amount = fields.Float(string='金额')
-    bank_ids = fields.One2many(related='partner_id.bank_ids', string='客户账号')
-    receive_date = fields.Date(string='收款日期', default=fields.date.today())
-    remark = fields.Text(string='备注')
-    partner_id = fields.Many2one('res.partner', string='客户')
+    amount = fields.Float(string=u'金额')
+    bank_ids = fields.One2many(related='partner_id.bank_ids', string=u'客户账号')
+    receive_date = fields.Date(string=u'收款日期', default=fields.date.today())
+    remark = fields.Text(string=u'备注')
+    partner_id = fields.Many2one('res.partner', string=u'客户')
     is_customer = fields.Boolean(related='partner_id.customer', store=True)
     receive_id = fields.Many2one('res.users')
     journal_id = fields.Many2one('account.journal', 'Salary Journal')
@@ -25,13 +25,13 @@ class AccountAmountReceived(models.Model):
         ('pre', '预收款'),
         ('normal', '收款'),
         ('invoice', '发票')
-    ], default='normal', string='收款类型')
+    ], default='normal', string=u'收款类型')
     state = fields.Selection([
-        ('draft', '草稿'),
-        ('posted', '提交'),
-        ('confirm', '销售确认'),
-        ('done', '完成'),
-        ('cancel', '取消')
+        ('draft', u'草稿'),
+        ('posted', u'提交'),
+        ('confirm', u'销售确认'),
+        ('done', u'完成'),
+        ('cancel', u'取消')
     ], 'State', readonly=True, default='draft')
 
     _sql_constraints = {
