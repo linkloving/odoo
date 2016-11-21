@@ -55,20 +55,20 @@
             <!--</field>-->
         <!--</record>-->
 
-         <record id="unlink_purchase_order_remark" model="ir.ui.view">
-            <field name="name">procurement.order.form</field>
-            <field name="model">procurement.order</field>
-            <field name="arch" type="xml">
-            <form string="删除原因备注">
-                <field name="unlink_remark"/>
-                    <footer>
-                        <button name="do_process" string="Save" type="object" class="oe_highlight"/>
-                        or
-                        <button string="Cancel" class="oe_link" special="cancel"/>
-                    </footer>
-            </form>
-           </field>
-        </record>
+         <!--<record id="unlink_purchase_order_remark" model="ir.ui.view">-->
+            <!--<field name="name">procurement.order.form</field>-->
+            <!--<field name="model">procurement.order</field>-->
+            <!--<field name="arch" type="xml">-->
+            <!--<form string="删除原因备注">-->
+                <!--<field name="unlink_remark"/>-->
+                    <!--<footer>-->
+                        <!--<button name="do_process" string="Save" type="object" class="oe_highlight"/>-->
+                        <!--or-->
+                        <!--<button string="Cancel" class="oe_link" special="cancel"/>-->
+                    <!--</footer>-->
+            <!--</form>-->
+           <!--</field>-->
+        <!--</record>-->
 
 
         <record id="action_invoice_supplier" model="ir.actions.act_window">
