@@ -130,5 +130,5 @@ class sale_order(models.Model):
 
     pi_number = fields.Char(string='PI Number')
 
-    delivery_date = fields.Date(string='交货日期')
+    delivery_date = fields.Date(string=u'交货日期')
 
